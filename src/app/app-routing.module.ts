@@ -7,6 +7,8 @@ import { StudentsComponent } from './Components/students/students.component';
 import { PaymentsComponent } from './Components/payments/payments.component';
 import { BranchesComponent } from './Components/branches/branches.component';
 import { GroupsComponent } from './Components/groups/groups.component';
+import { StudentCourseComponent } from './Components/student-course/student-course.component';
+
 
 const routes: Routes = [
   { path:'',component:GroupsComponent},
@@ -17,6 +19,8 @@ const routes: Routes = [
   { path:'students',component:StudentsComponent},
   { path:'payments',component:PaymentsComponent},
   { path:'branches',component:BranchesComponent},
+  { path:'studentcourse',component:StudentCourseComponent},
+
 
 
 
@@ -29,6 +33,6 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-export class AppRoutingModule { 
+export class AppRoutingModule {
 
 }

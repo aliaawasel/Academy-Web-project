@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { PaymentService } from 'src/Service/Payment.Service';
 import { Validators,FormControl,FormGroup } from '@angular/forms';
 import { BranchService } from 'src/Service/branch.service';
-import { CourseService } from 'src/Service/Course.Servise';
+import { CourseService } from 'src/Service/course.service';
 import { tranieeServices } from 'src/Service/traniee.services';
 @Component({
   selector: 'app-payments',
@@ -29,7 +29,7 @@ export class PaymentsComponent {
     private paymentService:PaymentService,
     private branchService:BranchService,
     private tranieeServices:tranieeServices,
-    private coursesService:CourseService,
+    private CourseService:CourseService,
     ){}
 
     trainsacteForm =new FormGroup({
@@ -49,7 +49,7 @@ export class PaymentsComponent {
   };
   get getcourseSelect(){
     return this.trainsacteForm.controls['courseSelect']
-  };  
+  };
   get getRemainingamount(){
     return this.trainsacteForm.controls['Remainingamount']
   };  get getTheamountpaid(){
@@ -59,18 +59,18 @@ export class PaymentsComponent {
   formHandler(e:any){
 
   }
-  
+
 
 
 
    ngOnInit(): void {
 
-  
+
 
       this.branchService.GetAllBranch().subscribe({
         next: (response: any) => {
-          this.branchs = response; 
-          console.log(response);     
+          this.branchs = response;
+          console.log(response);
         },
         error: (error) => {
           console.log(error);
@@ -80,69 +80,69 @@ export class PaymentsComponent {
      this.tranieeServices.GetTranieeAll().subscribe({
        next:(response :any)=>{
          this.traniees=response
-         console.log(response);     
+         console.log(response);
        },
        error:()=>{},
      })
-     this.coursesService.getAllCourses().subscribe({
+     this.CourseService.getAllCourses().subscribe({
       next:(response :any)=>{
         this.courses=response
-        console.log(response);     
+        console.log(response);
       },
       error:()=>{},
     })
-     
-    
-    
-      
+
+
+
+
       }
- 
+
 
       getTraineeId(){
         this.traineeId=this.trainsacteForm.value.studentNameSelected
         console.log(this.traineeId);
       //   this.paymentService.GetCoursesAccountsStatements(this.traineeId).subscribe({
       //    next: (response: any) => {
-      //      this.courses = response; 
-      //      console.log(response);     
+      //      this.courses = response;
+      //      console.log(response);
       //    },
       //    error: (error) => {
       //      console.log(error);
       //    }
       //  });
-    
+
        this.paymentService.GetAllTransction(this.traineeId).subscribe({
         next: (response: any) => {
-          this.tarineeTrainsactionData = response; 
-          console.log( this.tarineeTrainsactionData);     
+          this.tarineeTrainsactionData = response;
+          console.log( this.tarineeTrainsactionData);
         },
         error: (error) => {
           console.log(error);
         }
        })
-  
-       
 
 
-    
+
+
+
   }
   getCourseId(){
     this.courceId=this.trainsacteForm.value.courseSelect;
     console.log(this.courceId);
-    
-    this.coursesService.getcoursesById(this.courceId).subscribe((response:any)=>{
+
+    this.CourseService.getCourseById(this.courceId).subscribe((response:any)=>{
       this.courseName=response[0].courseName;
       console.log(response);
-      
+
     })
    }
 
   addTrainsaction(){
     const today = new Date();
     const day = today.getDate();
-const month = today.getMonth() + 1; 
+const month = today.getMonth() + 1;
 const year = today.getFullYear();
-    
+
         const trainsaction={
       courseName:this.courseName,
       transactionDateTime:day+month+year,
@@ -159,6 +159,6 @@ const year = today.getFullYear();
       this.trainsacteForm.reset();
 
     })
-  
-  }  
+
+  }
 }

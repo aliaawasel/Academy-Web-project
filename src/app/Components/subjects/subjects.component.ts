@@ -1,7 +1,7 @@
 import { FormControl, FormGroup } from '@angular/forms';
 import { Component,OnInit} from '@angular/core';
 import { SubjectService } from 'src/Service/Subject.Servise';
-import { CourseService } from 'src/Service/Course.Servise';
+import { CourseService } from 'src/Service/course.service';
 import { Validators } from '@angular/forms';
 
 @Component({

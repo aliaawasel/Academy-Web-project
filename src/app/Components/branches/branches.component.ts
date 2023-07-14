@@ -24,7 +24,7 @@ export class BranchesComponent implements OnInit
   constructor(private branchService : BranchService ) {
   }
   branchForm =new FormGroup({
-    branchName: new FormControl('',[Validators.required,Validators.minLength(2),Validators.maxLength(15),Validators.pattern('^[a-zA-Z\u0600-\u06FF]+$')]),
+    branchName: new FormControl('',[Validators.required,Validators.minLength(2),Validators.maxLength(30),Validators.pattern('^[a-zA-Z\u0600-\u06FF\s]+$')]),
     supervisorName: new FormControl('',[Validators.required]),
     supervisorPhoneNumber: new FormControl('',[Validators.required,Validators.minLength(11),Validators.maxLength(11),Validators.pattern('^(010|011|012)[0-9]{8}$')]),
     supervisorLandlineNumber: new FormControl('',[Validators.required,Validators.maxLength(10),Validators.minLength(1),Validators.pattern('^[0-9]+$')])

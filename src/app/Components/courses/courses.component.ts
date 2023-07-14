@@ -15,10 +15,10 @@ export class CoursesComponent implements  OnInit{
 constructor(private courseService:CourseService) {
   }
 courseForm=new  FormGroup({
-  courseName:new  FormControl('',[Validators.required,Validators.minLength(3),Validators.maxLength(100),Validators.pattern('^[a-zA-Z\u0600-\u06FF]+$')]),
-  courseDesc : new  FormControl('',[Validators.required,Validators.minLength(3),Validators.maxLength(100),Validators.pattern('^[a-zA-Z\u0600-\u06FF]+$')]),
-  courseduration:new  FormControl('',[Validators.required,Validators.min(5),Validators.max(15)]),
-  courseCost:new  FormControl('',[Validators.required,Validators.min(8),Validators.max(18)])
+  courseName:new  FormControl('',[Validators.required,Validators.minLength(3),Validators.maxLength(100),Validators.pattern('^[a-zA-Z\u0600-\u06FF\s]+$')]),
+  courseDesc : new  FormControl('',[Validators.required,Validators.minLength(3),Validators.pattern('^[a-zA-Z\u0600-\u06FF\s]+$')]),
+  courseduration:new  FormControl('',[Validators.required,Validators.pattern('^[0-9]+$')]),
+  courseCost:new  FormControl('',[Validators.required,Validators.pattern('^[0-9]+$')])
   })
 formHandler(e:any){
 // e.preventDefault();
@@ -38,26 +38,36 @@ get getCourseDuration(){
 get getCourseCost(){
   return  this.courseForm.controls['courseCost']
 }
+
+loadCourses():void{
+  this.courseService.getAllCourses().subscribe((result:any)=>{
+    this.courses=result
+    console.log(this.courses)
+  })
+}
   ngOnInit(): void {
-    this.courseService.getAllCourses().subscribe((result:any)=>{
-      this.courses=result
+    this.loadCourses();
 
-      }
+  }
 
-    )}
-  deletee(courseId:number){
+    deleteCourse(courseId:number){
     this.courseService.deleteCourse(courseId).subscribe(()=>{
-      this.ngOnInit();
-  }) }
+      this.loadCourses();
+  })
+}
+
+
 addCourse(){
-  const course={courseName:this.courseForm.value.courseName,
+  const course={
+    courseId:this.selectCourseId,
+    courseName:this.courseForm.value.courseName,
     courseDescription:this.courseForm.value.courseDesc,
     courseCost:this.courseForm.value.courseCost,
     courseDurationInHours:this.courseForm.value.courseduration
   }
   this.courseService.addCourse(course).subscribe(()=>{
     this.courseForm.reset()
-    this.ngOnInit()
+    this.loadCourses()
   })
 }
 updateCourse(courseId:any){

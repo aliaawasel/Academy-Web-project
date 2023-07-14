@@ -19,7 +19,7 @@
                     <ng-container *ngIf="getbranchSelect.touched" >
                         <div *ngIf="getbranchSelect.hasError('required')" id="subjectName" class="form-text text-danger  w-75">
                           من فضلك ادخل الاسم المادة                                      </div>
-                      
+
                     </ng-container>
                   </div>
                   <div class="mb-3">
@@ -33,20 +33,20 @@
                     </ng-container>
                   </div>
 
-               
+
                     <div class="mb-3">
                         <label for="courseSelect" class="form-label"
                           >اسم الكورس</label
                         >
-    
+
                         <select id="courseSelect" (change)="getCourseId()" class="form-select" formControlName="courseSelect">
                           <option *ngFor="let course of courses" [value]="course.courseId">{{course.courseName}}</option>
                         </select>
                         <ng-container *ngIf="getcourseSelect.touched" >
                             <div *ngIf="getcourseSelect.hasError('required')" id="courseSelect" class="form-text text-danger  w-75">
                               من فضلك اختر اسم الكورس                                     </div>
-                        </ng-container>      
-                      
+                        </ng-container>
+
                       </div>
                       <ng-container *ngFor="let course of courses">
                       <div class="mb-3">
@@ -90,7 +90,7 @@
                   <button class="btn btn-primary ms-2">تراجع</button>
                   <button  [disabled]="!trainsacteForm.valid" class="btn btn-primary ms-2" (click)="addTrainsaction()">اضافة</button>
                 </form>
-  
+
                 <!-- table -->
               </div>
             </div>
@@ -98,7 +98,7 @@
         </div>
       </div>
     </div>
-  
+
     <div class="main-content mt-3">
         <div class="container-fluid">
           <div class="row">

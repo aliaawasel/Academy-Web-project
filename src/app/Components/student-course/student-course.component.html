@@ -22,7 +22,6 @@
                     class="form-select"
                     (change)="getstudents()"
                   >
-                    <option selected>اختر اسم الفرع</option>
                     <option *ngFor="let branch of branches" [value]="branch.id">
                       {{ branch.name }}
                     </option>
@@ -45,7 +44,6 @@
                     class="form-select"
                     (change)="getStudentById();getStudentdCourse()"
                   >
-                    <option selected>اختر اسم الطالب</option>
                     <option
                       *ngFor="let student of students"
                       [value]="student.traineeId"
@@ -72,7 +70,6 @@
                     id="courseSelect"
                     class="form-select"
                   >
-                    <option selected>اختر الكورس</option>
                     <option
                       *ngFor="let course of courses"
                       [value]="course.courseId"
