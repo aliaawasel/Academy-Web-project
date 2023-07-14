@@ -1,0 +1,112 @@
+<div class="container">
+    <div class="main-content ">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-header card-header-danger">
+                            <h4 class="card-title text-center ">إضافة مادة</h4>
+                        </div>
+                        <div class="card-body text-right">
+                            <form [formGroup]="subjectForm" (submit)="formHandler($event)">
+                              
+                                <div class="mb-3">
+                                  <label for="subjectName" class="form-label">إسم المادة</label>
+                                  <input type="text"
+                                   class="form-control"
+                                   formControlName="subjectName"
+                                    id="subjectName"
+                                     aria-describedby="emailHelp">
+                                     <ng-container *ngIf="getSubjectName.touched" >
+                                          <div *ngIf="getSubjectName.hasError('required')" id="subjectName" class="form-text text-danger  w-75">
+                                            من فضلك ادخل الاسم المادة                                      </div>
+                                          <div *ngIf="getSubjectName.hasError('minlength')" id="subjectName" class="form-text text-danger  w-75">
+                                            لا يقل الاسم عن 3 حروف
+                                          </div>
+                                          <div *ngIf="getSubjectName.hasError('pattern')" id="subjectName" class="form-text text-danger">
+                                            ادخل حروف فقط
+                                          </div>
+                                      </ng-container>
+                                </div>
+
+                                  <div class="mb-3">
+                                    <label for="subjectCourse" class="form-label">الاسم الكورسم المحتوي له</label>
+                                    <select *ngFor="let course of Allcourses let i=index" id="subjectCourse" class="form-select"
+                                    formControlName="subjectCourse"
+                                    (change)="loadSubjects()">  
+                                    <option value="{{course.courseId}}">{{course.courseName}}</option>
+                                      
+                                    </select>
+
+                                    <ng-container *ngIf="getSubjectName.touched" >
+                                      <div *ngIf="getSubjectCourse.hasError('required')" id="subjectName" class="form-text text-danger  w-75">
+                                        من فضلك ادخل  الكورس التابعه له المادة                                   
+                                      </div>
+                                  </ng-container>
+                                  </div>
+                                  <button class="btn btn-primary ms-2" (click)="back()" >تراجع</button>
+                                  <button *ngIf="!isEdit" class="btn btn-danger ms-2" (click)="AddSubject()">اضافة</button>
+                                  <button *ngIf="isEdit" class="btn btn-danger ms-2" (click)="saveUpdate()">حفظ</button>
+                  
+                              </form>
+                        </div>
+                    </div>
+                </div>
+               
+            </div>
+        </div>
+      </div> 
+</div>
+
+<div class="main-content mt-3">
+  <div class="container-fluid">
+      <div class="row">
+          <div class="col-md-12">
+              <div class="card">
+                  <div class="card-header card-header-dark bg-dark">
+                      <h4 class="card-title text-center text-white  ">عرض المواد المسجلة</h4>
+                  </div>
+                  <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table text-center">
+                            <thead class=" text-primary">
+                              <th>اسم المادة</th>
+                              <th>اسم الكورس التابعة له</th>
+                              <th> تعديل</th>
+                              <th> حذف</th>
+                            </thead>
+                            <tbody>
+                              <tr *ngFor="let subject of subjctByCrsId;let course; let i = index">
+                                <td>{{ subject.subjectName }}</td>
+                                <td>{{subject.courseId}}</td>
+                                <td>
+                                  <button
+                                    mat-raised-button
+                                    type="submit"
+                                    class="btn btn-danger"
+                                    (click)="EditSubject(subject.subjectId)"
+                                  >
+                                    تعديل
+                                  </button>
+                                </td>
+                                <td>
+                                  <button
+                                    mat-raised-button
+                                    type="submit"
+                                    (click)="DeleteSubject(subject.subjectId)"
+                                    class="btn btn-danger"
+                                  >
+                                    حذف
+                                  </button>
+                                </td>
+                                </tr>
+                            </tbody>
+
+                         </table>
+                      </div>
+                  </div>
+                </div>
+              </div>
+          </div>
+    </div>
+</div>

@@ -1,0 +1,219 @@
+<div class="container">
+  <div class="main-content ">
+      <div class="container-fluid">
+          <div class="row">
+              <div class="col-md-12">
+                  <div class="card">
+                      <div class="card-header card-header-danger">
+                          <h4 class="card-title text-center ">إضافة مستخدم</h4>
+                      </div>
+                      <div class="card-body text-right">
+                          <form [formGroup]="usersForm" (submit)="formHandler($event)" >
+                              <div class="mb-3">
+                                <label for="Username" class="form-label">إسم المستخدم</label>
+                                <input  formControlName="Username" type="text" class="form-control" id="Username" aria-describedby="emailHelp">
+                                <ng-container *ngIf="getUserName.touched">
+                                  <div *ngIf="getUserName.hasError('required')" id="Username" class="form-text text-danger">
+                                  من فضلك ادخل الاسم المستخدم 
+                                  </div>
+                                  <div *ngIf="getUserName.hasError('minlength')" id="Username" class="form-text text-danger">
+                                    لا يقل الاسم عن 3 حروف
+                                    </div>
+                                  <div *ngIf="getUserName.hasError('pattern')" id="Username" class="form-text text-danger">
+                                   ادخل حروف فقط
+                                   </div>
+                                  </ng-container>
+                              </div>
+                              <div class="mb-3">
+                                  <label for="password" class="form-label"> كلمة المرور</label>
+                                  <input formControlName="password" type="password" class="form-control" id="password" aria-describedby="emailHelp">
+                                  <ng-container *ngIf="getUserPassword.touched">
+                                    <div *ngIf="getUserPassword.hasError('required')" id="password" class="form-text text-danger  w-75">
+                                     من فضلك ادخل كلمة المرور
+                                    </div>
+                                    <div *ngIf="getUserPassword.hasError('pattern')" id="password" class="form-text text-danger  w-75">
+                                      يجب ان تحتوى كلمة المرور على الاقل حرف كبير وحروف خاصة وارقام واحرف صغيرة
+                                     </div>
+                                    </ng-container>
+                                </div>
+
+                                <div class="mb-3">
+                                  <label for="name" class="form-label">  الاسم كامل</label>
+                                  <input formControlName="name"  type="text" class="form-control" id="name" aria-describedby="emailHelp">
+                                  <ng-container *ngIf="getName.touched" >
+                                    <div *ngIf="getName.hasError('required')" id="name" class="form-text text-danger  w-75">
+                                     من فضلك ادخل الاسم كامل
+                                    </div>
+                                    <div *ngIf="getName.hasError('minlength')" id="name" class="form-text text-danger  w-75">
+                                      لا يقل الاسم عن 3 حروف
+                                     </div>
+                                     <div *ngIf="getName.hasError('pattern')" id="Username" class="form-text text-danger">
+                                      ادخل حروف فقط
+                                      </div>
+                                    </ng-container>
+                                  
+                                  </div>
+                                <div class="mb-3">
+                                  <label for="email" class="form-label">  البريد الالكتروني</label>
+                                  <input formControlName="email"  type="email" class="form-control" id="email" aria-describedby="emailHelp">
+                                  <ng-container *ngIf="getUserEmail.touched">
+                                    <div *ngIf="getUserEmail.hasError('required')" id="email" class="form-text text-danger  w-75">
+                                     من فضلك ادخل البريد الالكتروني
+                                    </div>
+                                    <div *ngIf="getUserEmail.hasError('email')" id="email" class="form-text text-danger  w-75">
+                                     البريد الالكترونى غير صالح
+                                     </div>
+                                    </ng-container>
+                                </div>
+                                <div class="mb-3">
+                                  <label for="phone" class="form-label"> التليفون المحمول</label>
+                                  <input formControlName="phone" type="text" class="form-control" id="phone" aria-describedby="emailHelp">
+                                  <ng-container *ngIf="getUserPhone.touched">
+                                    <div *ngIf="getUserPhone.hasError('required')" id="phone" class="form-text text-danger  w-75">
+                                     من فضلك  ادخل رقم المحمول
+                                    </div>
+                                    <div *ngIf="getUserPhone.hasError('max')" id="phone" class="form-text text-danger  w-75">
+                                      يجب ان يحتوى الرقم على 11 رقم فقط
+                                     </div>
+                                     <div *ngIf="getUserPhone.hasError('pattern')" id="phone" class="form-text text-danger  w-75">
+                                      رقم المحمول غير صالح
+                                     </div>
+                                    </ng-container>
+                                </div>
+                                 <div class="mb-3">
+                                  <label for="disabledSelect" class="form-label">اسم المجموعه</label>
+                                  <select id="disabledSelect" formControlName="group" class="form-select" >
+                                    <option  *ngFor="let G of Groups" [value]="G.groupId">{{G.groupName}} </option>
+                                  </select>
+                                  <ng-container *ngIf="getUserGroup.touched">
+                                    <div *ngIf="getUserGroup.hasError('required')" id="disabledSelect" class="form-text text-danger  w-75">
+                                     من فضلك اختر  اسم المجموعة
+                                    </div>
+                                    </ng-container>
+                                </div> 
+                                 <div class="mb-3">
+                                  <label for="disabledSelect" class="form-label">الفرع</label>
+                                  <select  formControlName="branch"  id="disabledSelect" class="form-select">
+                                    <option *ngFor="let B of Branches" [value]="B.id">{{B.name}}</option>
+                                  </select>
+                                  <ng-container *ngIf="getUserBranch.touched">
+                                    <div *ngIf="getUserBranch.hasError('required')" id="disabledSelect" class="form-text text-danger  w-75">
+                                     من فضلك اختر اسم الفرع
+                                    </div>
+                                    </ng-container>
+                                </div> 
+                                <div class="mb-3">
+                                  <label for="disabledSelect" class="form-label">اللغة</label>
+                                  <select formControlName="language"  id="disabledSelect" class="form-select">
+                                    <option *ngFor="let L of Languages" [value]="L.languageId">{{L.languageName}}</option>                                    
+                                  </select>
+                                  <ng-container *ngIf="getUserLanguage.touched">
+                                    <div *ngIf="getUserLanguage.hasError('required')" id="disabledSelect" class="form-text text-danger  w-75">
+                                     من فضلك اختر اللغة
+                                    </div>
+                                    </ng-container>
+                                </div>
+                              <button (click)="back()" class="btn btn-primary ms-2">تراجع</button>
+                              <button [disabled]="!usersForm.valid"  (click)="addUser()" *ngIf="!flag" class="btn btn-danger ms-2">إضافة </button>
+                              <button  (click)="saveUser()" *ngIf="flag" class="btn btn-success ms-2">تعديل </button>
+
+
+                            </form>
+                          </div>
+                      </div>
+                  </div>
+                 
+              </div>
+          </div>
+        </div> 
+  </div>
+    <!-- table -->
+    <div class="main-content mt-3">
+      <div class="container-fluid">
+          <div class="row">
+              <div class="col-md-12">
+                  <div class="card">
+                      <div class="card-header card-header-dark bg-dark">
+                          <h4 class="card-title text-center text-white  ">عرض المستخدمين المسجليين</h4>
+                      </div>
+
+
+    <div class="card-body">
+      <div class="table-responsive">
+          <table class="table text-center">
+              <thead class=" text-primary">
+                  <th>
+                    م
+                  </th>
+                  <th>
+                      اسم المستخدم 
+                  </th>
+                  <th>
+                    البريد الإلكترونى
+                </th>
+                <th>
+                  الاسم كامل 
+              </th>
+                  <th>
+                      التليفون المحمول
+                  </th>
+                  <th>
+                       اللغة
+                  </th>
+                  <th>
+                     الفرع
+                </th>
+                <th>
+                  اسم المجموعة
+              </th>
+              <th>
+                 الحالة 
+            </th>
+                  <th>
+                      تعديل
+                  </th>
+                  <th>
+                      حذف
+                  </th>
+              </thead>
+              <tbody>
+                  <tr *ngFor="let item of AllUsers let i=index">
+                      <td>
+                          {{i+1}}
+                      </td>
+                      <td>
+                        {{item.username}}
+                      </td>
+                      <td>
+                        {{item.email}}
+                      </td>
+                      <td>
+                        {{item.fullName}}
+                      </td>
+                      <td >
+                         {{item.phoneNumber}}
+                      </td>
+                      <td >
+                         {{item.languageName}}
+                      </td>
+                      <td >
+                        {{item.branchName}}  
+                      </td>
+                      <td >
+                         {{item.groupName}} 
+                      </td>
+                      <td >
+                         {{item.isActive}} 
+                      </td>
+                      <td><button mat-raised-button (click)="deleteUser(item.userId)" type="submit" class="btn btn-danger ">حذف</button> </td>
+                      <td> <button mat-raised-button (click)="editUser(item.userId)"  type="submit" class="btn btn-success ">تعديل</button>
+                      </tr>
+                    </tbody>
+                 </table>
+              </div>
+          </div>
+        </div>
+      </div>
+  </div>
+</div>
+</div>

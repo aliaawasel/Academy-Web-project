@@ -1,0 +1,188 @@
+<div class="container">
+  <div class="main-content">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="card">
+            <div class="card-header card-header-danger">
+              <h4 class="card-title text-center">إضافة كورس</h4>
+            </div>
+            <div class="card-body text-right">
+              <form  (submit)="formHandler($event)" [formGroup]="courseForm">
+                <div class="mb-3">
+                  <label for="coursename" class="form-label">إسم الكورس</label>
+                  <input
+                  formControlName="courseName"
+                    type="text"
+                    class="form-control"
+                    id="coursename"
+                    aria-describedby="emailHelp"
+                  />
+               <ng-container  *ngIf="getCourseName.touched">
+                  <div *ngIf="getCourseName.hasError('required')" id="name" class="form-text    text-danger">
+          من فضلك ادخل اسم الكورس
+                      </div>
+                      <div *ngIf="getCourseName.hasError('pattern')" id="name" class="form-text    text-danger">
+                          الاسم يحتوي علي حروف فقط
+                          </div>
+                      <div *ngIf="getCourseName.hasError('minlength')" id="name" class="form-text    text-danger">
+الاسم لا يقل  عن ثلاث احرف
+                      </div>
+               </ng-container>
+                </div>
+                <div class="mb-3">
+                  <label for="coursedescription" class="form-label">
+                    وصف الكورس</label
+                  >
+                  <input
+                  formControlName="courseDesc"
+                    type="text"
+                    class="form-control"
+                    id="coursedescription"
+                    aria-describedby="emailHelp"
+                  />
+                  <ng-container  *ngIf="getCourseDesc.touched">
+                      <div *ngIf="getCourseDesc.hasError('required')" id="desc" class="form-text  text-danger">
+                          من فضلك ادخل وصف الكورس
+                      </div>
+                          <div *ngIf="getCourseDesc.hasError('pattern')" id="desc" class="form-text    text-danger">
+                              الوصف يحتوي علي حروف فقط
+                          </div>
+                          <div *ngIf="getCourseDesc.hasError('minlength')" id="desc" class="form-text    text-danger">
+                              الوصف لا يقل  عن ثلاث احرف
+
+                          </div>
+                   </ng-container>
+                </div>
+                <div class="mb-3">
+                  <label for="coursehour" class="form-label">عددالساعات</label>
+                  <input
+                  formControlName="courseduration"
+                    type="number"
+                    class="form-control"
+                    id="coursehour"
+                    aria-describedby="emailHelp"
+                  />
+                  <ng-container  *ngIf="getCourseDuration.touched">
+                      <div *ngIf="getCourseDuration.hasError('required')" id="duration" class="form-text  text-danger">
+                          من فضلك ادخل مدة الكورس
+
+                      </div>
+                    <div *ngIf="getCourseDuration.hasError('min')" id="duration" class="form-text    text-danger">
+                       مدة الكورس لا تقل عن خمس ساعات
+
+                  </div>
+                  <div *ngIf="getCourseDuration.hasError('max')" id="duration" class="form-text    text-danger">
+                      مدة الكورس لا تزيد  عن خمسة عشر  ساعات
+
+                  </div>
+                   </ng-container>
+                </div>
+                <div class="mb-3">
+                  <label for="coursefees" class="form-label">
+                    نكلفة الكورس
+                  </label>
+                  <input
+                  formControlName="courseCost"
+                    type="number"
+                    class="form-control"
+                    id="coursefees"
+                    aria-describedby="emailHelp"
+                  />
+                  <ng-container  *ngIf="getCourseCost.touched">
+                      <div *ngIf="getCourseCost.hasError('required')" id="cost" class="form-text  text-danger">
+                          من فضلك ادخل تكلفة الكورس
+
+                      </div>
+                    <div *ngIf="getCourseCost.hasError('min')" id="cost" class="form-text    text-danger">
+                      تكلفة الكورس لا تقل عن ثمانية دولارات
+
+                  </div>
+                  <div *ngIf="getCourseCost.hasError('max')" id="cost" class="form-text    text-danger">
+                      تكلفة الكورس لا تزيد عن ثمانية عشر دولارات
+
+                  </div>
+                   </ng-container>
+                </div>
+                <button (click)="back()" [disabled]="!courseForm.valid" class="btn btn-primary ms-2">تراجع</button>
+                <button (click)="addCourse()" [disabled]="!courseForm.valid" *ngIf="!flag" class="btn btn-danger ms-2">اضافة</button>
+                <button (click)="savedata()"   *ngIf="flag" class="btn btn-danger ms-2">تعديل</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+<!-- table -->
+<div class="main-content mt-3">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card">
+          <div class="card-header card-header-dark bg-dark">
+            <h4 class="card-title text-center text-white">
+              عرض الكورسات المسجلة
+            </h4>
+          </div>
+          <div class="card-body">
+            <div class="table-responsive">
+              <table class="table text-center">
+                <thead class="text-primary">
+                  <th>م</th>
+                  <th>اسم الكورس</th>
+                  <th>وصف الكورس</th>
+                  <th>عددالساعات</th>
+                  <th>نكلفة الكورس</th>
+                  <th>تعديل</th>
+                  <th>حذف</th>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let course of courses; let i = index">
+                    <td>
+                      {{ i + 1 }}
+                    </td>
+                    <td>
+                      {{ course.courseName }}
+                    </td>
+                    <td>
+                      {{ course.courseDescription }}
+                    </td>
+                    <td>
+                      {{ course.courseCost }}
+                    </td>
+                    <td>
+                      {{ course.courseDurationInHours }}
+                    </td>
+                    <td>
+                      <button
+                      (click)="updateCourse(course.courseId)"
+                        mat-raised-button
+                        type="submit"
+                        class="btn btn-danger"
+                      >
+                        تعديل
+                      </button>
+                    </td>
+
+                    <td>
+                      <button
+                        mat-raised-button
+                        type="submit"
+                        (click)="deletee(course.courseId)"
+                        class="btn btn-danger"
+                      >
+                        حذف
+                      </button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
