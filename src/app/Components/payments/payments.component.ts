@@ -3,7 +3,7 @@ import { PaymentService } from 'src/Service/Payment.Service';
 import { Validators,FormControl,FormGroup } from '@angular/forms';
 import { BranchService } from 'src/Service/branch.service';
 import { CourseService } from 'src/Service/course.service';
-import { tranieeServices } from 'src/Service/traniee.services';
+import { StudentsServices } from 'src/Service/StudentsServices.service';
 @Component({
   selector: 'app-payments',
   templateUrl: './payments.component.html',
@@ -28,7 +28,7 @@ export class PaymentsComponent {
   constructor(
     private paymentService:PaymentService,
     private branchService:BranchService,
-    private tranieeServices:tranieeServices,
+    private StudentsServices:StudentsServices,
     private CourseService:CourseService,
     ){}
 
@@ -77,7 +77,7 @@ export class PaymentsComponent {
         }
       });
 
-     this.tranieeServices.GetTranieeAll().subscribe({
+     this.StudentsServices.GetAllStudents().subscribe({
        next:(response :any)=>{
          this.traniees=response
          console.log(response);

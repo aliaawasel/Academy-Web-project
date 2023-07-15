@@ -13,19 +13,19 @@ export class UserService {
   branchUrl: string='https://localhost:7044/academy-api/branch/all';
   LanguageUrl: string='https://localhost:7044/academy-api/language/all';
   groupUrl: string='https://localhost:7044/academy-api/group/all';
+  deactiveUrl:string='https://localhost:7044/academy-api/user/deactivate/';
 
 
   constructor(private http: HttpClient) {}
-   
+
   getAllUsers() {
-    console.log("ssssss");
-    console.log(this.baseURL);
-    
+
+
     return this.http.get(this.baseURL);
-    
-    
+
+
   }
-   
+
   getBranch(){
    return this.http.get(this.branchUrl);
   }
@@ -33,7 +33,7 @@ export class UserService {
   getGroup(){
   return this.http.get(this.groupUrl);
   }
- 
+
   getLanguage(){
   return this.http.get(this.LanguageUrl);
   }
@@ -53,5 +53,8 @@ export class UserService {
   editUser( user: any) {
     return this.http.put(`${this.updateUrl}`, user);
   }
-  
+  deactiveUser(UserId:any){
+    return this.http.head(`${this.deactiveUrl}${UserId}`)
+    }
+
 }

@@ -7,13 +7,14 @@ import { AppComponent } from './app.component';
 import { SidebarComponent } from './Components/sidebar/sidebar.component';
 import { NavbarComponent } from './Components/navbar/navbar.component';
 import { UsersComponent } from './Components/users/users.component';
-import { StudentsComponent } from './Components/students/students.component';
+import { studentsComponent } from './Components/students/students.component';
 import { BranchesComponent } from './Components/branches/branches.component';
 import { SubjectsComponent } from './Components/subjects/subjects.component';
 import { PaymentsComponent } from './Components/payments/payments.component';
 import { CoursesComponent } from './Components/courses/courses.component';
 import { GroupsComponent } from './Components/groups/groups.component';
 import { StudentCourseComponent } from './Components/student-course/student-course.component';
+import { StudentsServices } from 'src/Service/StudentsServices.service';
 
 @NgModule({
   declarations: [
@@ -21,10 +22,10 @@ import { StudentCourseComponent } from './Components/student-course/student-cour
     SidebarComponent,
     NavbarComponent,
     UsersComponent,
-    StudentsComponent,
     BranchesComponent,
     SubjectsComponent,
     PaymentsComponent,
+    studentsComponent,
     CoursesComponent,
     GroupsComponent,
     StudentCourseComponent

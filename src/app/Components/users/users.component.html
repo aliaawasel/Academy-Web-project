@@ -82,7 +82,7 @@
                                 </div>
                                  <div class="mb-3">
                                   <label for="disabledSelect" class="form-label">اسم المجموعه</label>
-                                  <select id="disabledSelect" formControlName="group" class="form-select" >
+                                  <select  formControlName="group" class="form-select" >
                                     <option  *ngFor="let G of Groups" [value]="G.groupId">{{G.groupName}} </option>
                                   </select>
                                   <ng-container *ngIf="getUserGroup.touched">
@@ -93,18 +93,18 @@
                                 </div> 
                                  <div class="mb-3">
                                   <label for="disabledSelect" class="form-label">الفرع</label>
-                                  <select  formControlName="branch"  id="disabledSelect" class="form-select">
+                                  <select  formControlName="branch"   class="form-select">
                                     <option *ngFor="let B of Branches" [value]="B.id">{{B.name}}</option>
                                   </select>
                                   <ng-container *ngIf="getUserBranch.touched">
-                                    <div *ngIf="getUserBranch.hasError('required')" id="disabledSelect" class="form-text text-danger  w-75">
+                                    <div *ngIf="getUserBranch.hasError('required')"  class="form-text text-danger  w-75">
                                      من فضلك اختر اسم الفرع
                                     </div>
                                     </ng-container>
                                 </div> 
                                 <div class="mb-3">
                                   <label for="disabledSelect" class="form-label">اللغة</label>
-                                  <select formControlName="language"  id="disabledSelect" class="form-select">
+                                  <select formControlName="language"  class="form-select">
                                     <option *ngFor="let L of Languages" [value]="L.languageId">{{L.languageName}}</option>                                    
                                   </select>
                                   <ng-container *ngIf="getUserLanguage.touched">
@@ -139,8 +139,8 @@
 
 
     <div class="card-body">
-      <div class="table-responsive">
-          <table class="table text-center">
+      <div class="table-responsive table table-striped tabel-hover table-bordered  text-center">
+          <table class="table table-striped tabel-hover table-bordered text-center">
               <thead class=" text-primary">
                   <th>
                     م
@@ -203,10 +203,16 @@
                          {{item.groupName}} 
                       </td>
                       <td >
-                         {{item.isActive}} 
-                      </td>
-                      <td><button mat-raised-button (click)="deleteUser(item.userId)" type="submit" class="btn btn-danger ">حذف</button> </td>
-                      <td> <button mat-raised-button (click)="editUser(item.userId)"  type="submit" class="btn btn-success ">تعديل</button>
+                        <button (click)="deactivUser(item.userId)" class="btn btn-outline-danger ss" [ngStyle]="{'color': item.isActive ? '#28a745' : '#dc3545'}">
+                          <ng-container *ngIf="item.isActive; else inactiveIcon">
+                            <i class="bi bi-toggle-on"></i>
+                          </ng-container>
+                          <ng-template #inactiveIcon>
+                            <i class="bi bi-toggle2-off"></i>
+                          </ng-template>
+                        </button>                               </td>
+                      <td><button mat-raised-button (click)="deleteUser(item.userId)" type="submit" class="btn btn-success "><i class="bi bi-pencil-square"></i></button> </td>
+                      <td> <button mat-raised-button (click)="editUser(item.userId)"  type="submit" class="btn btn-danger "><i class="bi bi-trash3-fill"></i> </button>
                       </tr>
                     </tbody>
                  </table>
