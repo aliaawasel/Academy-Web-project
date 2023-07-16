@@ -42,7 +42,7 @@
                     formControlName="studentName"
                     id="nameSelect"
                     class="form-select"
-                    (change)="getStudentById();getStudentdCourse()"
+                    (change)="getStudentById(); getStudentdCourse()"
                   >
                     <option
                       *ngFor="let student of students"
@@ -107,27 +107,22 @@
                     </div>
                   </ng-container>
                 </div>
-                <button (click)="back()" class="btn btn-primary ms-2">
+                <button (click)="back()"class="btn btn-primary ms-2 float-start">
                   تراجع
                 </button>
                 <button
                   [disabled]="!studentCourseForm.valid"
-                  class="btn btn-primary ms-2"
+                  class="btn btn-primary ms-2 float-start"
                   (click)="addStudentCourse()"
                 >
                   اضافة
                 </button>
               </form>
-
-              <!-- table -->
             </div>
           </div>
         </div>
-      </div>
-    </div>
-  </div>
 
-  <!-- table 1
+        <!-- table 1
   <div class="main-content mt-3">
     <div class="container-fluid">
       <div class="row">
@@ -176,7 +171,7 @@
       </div>
     </div>
   </div>-->
-  <!-- table 2
+        <!-- table 2
   <div class="main-content mt-3">
     <div class="container-fluid">
       <div class="row">
@@ -234,57 +229,133 @@
       </div>
     </div>
   </div>-->
-  <p>
-    <button
-      class="btn btn-primary"
-      type="button"
-      data-bs-toggle="collapse"
-      data-bs-target="#collapseExample"
-      aria-expanded="false"
-      aria-controls="collapseExample"
-    >
-      عرض بيانات الطالب
-    </button>
-  </p>
-  <div class="collapse" id="collapseExample">
-    <div class="card card-body">
-      <div class="main-content mt-3">
-        <div class="container-fluid">
-          <div class="row">
-            <div class="col-md-12">
-              <div class="card-body">
-                <div class="table-responsive">
-                  <table class="table text-center">
-                    <thead class="text-primary">
-                      <th>م</th>
-                      <th>اسم الطالب</th>
-                      <th>الرقم القومي</th>
-                      <th>المؤهل</th>
-                      <th>تليفون للتواصل</th>
-                      <th>الموقف التجنيدي</th>
-                      <th>اسم الفرع</th>
-                    </thead>
-                    <tbody>
-                      <tr *ngIf="studentOfId">
-                        <td>
-                          {{1}}
-                        </td>
-                        <td>
-                          {{studentOfId.arabicFullName}}
-                        </td>
-                        <td>
-                          {{ studentOfId.traineeNationalId }}
-                        </td>
-                        <td>
-                          {{ studentOfId.academicQualification }}
-                        </td>
-                        <td>{{ studentOfId.firstPhoneNumber }}</td>
-                        <td>{{ studentOfId.militaryStatus }}</td>
-                        <td>{{ studentOfId.branchName }}</td>
-
-                      </tr>
-                    </tbody>
-                  </table>
+        <p class="p-3 d-flex justify-content-start">
+          <button
+            class="btn btn-primary p-3 fs-4"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#collapseExample"
+            aria-expanded="false"
+            aria-controls="collapseExample"
+          >
+            عرض بيانات الطالب
+          </button>
+        </p>
+        <div class="collapse" id="collapseExample">
+          <div class="card card-body">
+            <div class="main-content mt-3">
+              <div class="container-fluid">
+                <div class="row">
+                  <div class="col-md-12">
+                    <div class="card-body">
+                      <div class="table-responsive">
+                        <table class="table text-center">
+                          <thead class="text-primary">
+                            <th>م</th>
+                            <th>اسم الطالب</th>
+                            <th>الرقم القومي</th>
+                            <th>المؤهل</th>
+                            <th>تليفون للتواصل</th>
+                            <th>الموقف التجنيدي</th>
+                            <th>اسم الفرع</th>
+                          </thead>
+                          <tbody>
+                            <tr *ngIf="studentOfId">
+                              <td>
+                                {{ 1 }}
+                              </td>
+                              <td>
+                                {{ studentOfId.arabicFullName }}
+                              </td>
+                              <td>
+                                {{ studentOfId.traineeNationalId }}
+                              </td>
+                              <td>
+                                {{ studentOfId.academicQualification }}
+                              </td>
+                              <td>{{ studentOfId.firstPhoneNumber }}</td>
+                              <td>{{ studentOfId.militaryStatus }}</td>
+                              <td>{{ studentOfId.branchName }}</td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <p class="p-3 d-flex justify-content-start">
+          <button
+            class="btn btn-primary p-3 fs-4"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#collapseExample"
+            aria-expanded="false"
+            aria-controls="collapseExample"
+          >
+            عرض كورسات الطالب
+          </button>
+        </p>
+        <div class="collapse" id="collapseExample">
+          <div class="card card-body">
+            <div class="main-content mt-3">
+              <div class="container-fluid">
+                <div class="row">
+                  <div class="col-md-12">
+                    <div class="card-body">
+                      <div class="table-responsive">
+                        <table class="table text-center">
+                          <thead class="text-primary">
+                            <th>م</th>
+                            <th>اسم الكورس</th>
+                            <th>وصف الكورس</th>
+                            <th>عددالساعات</th>
+                            <th>تاريخ التقديم</th>
+                            <th>نكلفة الكورس</th>
+                            <th>حذف</th>
+                          </thead>
+                          <tbody>
+                            <tr *ngFor="let Scrs of StdCrs; let i = index">
+                              <td>
+                                {{ i + 1 }}
+                              </td>
+                              <td>
+                                {{ Scrs.courseName }}
+                              </td>
+                              <td>
+                                {{ Scrs.courseDescription }}
+                              </td>
+                              <td>{{ Scrs.courseDurationInHours }}</td>
+                              <td>
+                                {{
+                                  Scrs.registrationDate | date : "mediumDate"
+                                }}
+                              </td>
+                              <td>{{ Scrs.courseCost }}</td>
+                              <td>
+                                <button
+                                  mat-raised-button
+                                  type="submit"
+                                  class="btn btn-danger"
+                                  (click)="
+                                    deleteCourseStudent(
+                                      Scrs.courseId,
+                                      Scrs.registrationDate
+                                    )
+                                  "
+                                >
+                                  حذف
+                                </button>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -293,72 +364,4 @@
       </div>
     </div>
   </div>
-  <p>
-    <button
-      class="btn btn-primary"
-      type="button"
-      data-bs-toggle="collapse"
-      data-bs-target="#collapseExample"
-      aria-expanded="false"
-      aria-controls="collapseExample"
-    >
-      عرض كورسات الطالب
-    </button>
-  </p>
-  <div class="collapse" id="collapseExample">
-    <div class="card card-body">
-      <div class="main-content mt-3">
-        <div class="container-fluid">
-          <div class="row">
-            <div class="col-md-12">
-              <div class="card-body">
-                <div class="table-responsive">
-                  <table class="table text-center">
-                    <thead class="text-primary">
-                      <th>م</th>
-                      <th>اسم الكورس</th>
-                      <th>وصف الكورس</th>
-                      <th>عددالساعات</th>
-                      <th>تاريخ التقديم</th>
-                      <th>نكلفة الكورس</th>
-                      <th>حذف</th>
-                    </thead>
-                    <tbody>
-                      <tr *ngFor="let Scrs of StdCrs; let i = index">
-                        <td>
-                          {{ i + 1 }}
-                        </td>
-                        <td>
-                          {{ Scrs.courseName }}
-                        </td>
-                        <td>
-                          {{ Scrs.courseDescription }}
-                        </td>
-                        <td>{{Scrs.courseDurationInHours}}</td>
-                        <td>
-                          {{ Scrs.registrationDate | date:'mediumDate'}}
-                        </td>
-                        <td>{{ Scrs.courseCost }}</td>
-                        <td>
-                          <button
-                            mat-raised-button
-                            type="submit"
-                            class="btn btn-danger"
-                            (click)="deleteCourseStudent(Scrs.courseId,Scrs.registrationDate)"
-                          >
-                            حذف
-                          </button>
-                        </td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
 </div>

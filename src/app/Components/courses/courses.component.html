@@ -9,8 +9,10 @@
             </div>
             <div class="card-body text-right">
               <form (submit)="formHandler($event)" [formGroup]="courseForm">
-                <div class="mb-3">
-                  <label for="coursename" class="form-label">إسم الكورس</label>
+
+                <div class="row">
+                  <div class="col mb-3">
+                    <label for="coursename" class="form-label">إسم الكورس</label>
                   <input
                     formControlName="courseName"
                     type="text"
@@ -41,102 +43,106 @@
                       الاسم لا يقل عن ثلاث احرف
                     </div>
                   </ng-container>
+                  </div>
+                  <div class="col mb-3">
+                    <label for="coursedescription" class="form-label">
+                      وصف الكورس</label
+                    >
+                    <input
+                      formControlName="courseDesc"
+                      type="text"
+                      class="form-control"
+                      id="coursedescription"
+                      aria-describedby="emailHelp"
+                    />
+                    <ng-container *ngIf="getCourseDesc.touched">
+                      <div
+                        *ngIf="getCourseDesc.hasError('required')"
+                        id="desc"
+                        class="form-text text-danger"
+                      >
+                        من فضلك ادخل وصف الكورس
+                      </div>
+                      <div
+                        *ngIf="getCourseDesc.hasError('pattern')"
+                        id="desc"
+                        class="form-text text-danger"
+                      >
+                        الوصف يحتوي علي حروف فقط
+                      </div>
+                      <div
+                        *ngIf="getCourseDesc.hasError('minlength')"
+                        id="desc"
+                        class="form-text text-danger"
+                      >
+                        الوصف لا يقل عن ثلاث احرف
+                      </div>
+                    </ng-container>
                 </div>
-                <div class="mb-3">
-                  <label for="coursedescription" class="form-label">
-                    وصف الكورس</label
-                  >
-                  <input
-                    formControlName="courseDesc"
-                    type="text"
-                    class="form-control"
-                    id="coursedescription"
-                    aria-describedby="emailHelp"
-                  />
-                  <ng-container *ngIf="getCourseDesc.touched">
-                    <div
-                      *ngIf="getCourseDesc.hasError('required')"
-                      id="desc"
-                      class="form-text text-danger"
-                    >
-                      من فضلك ادخل وصف الكورس
-                    </div>
-                    <div
-                      *ngIf="getCourseDesc.hasError('pattern')"
-                      id="desc"
-                      class="form-text text-danger"
-                    >
-                      الوصف يحتوي علي حروف فقط
-                    </div>
-                    <div
-                      *ngIf="getCourseDesc.hasError('minlength')"
-                      id="desc"
-                      class="form-text text-danger"
-                    >
-                      الوصف لا يقل عن ثلاث احرف
-                    </div>
-                  </ng-container>
                 </div>
-                <div class="mb-3">
-                  <label for="coursehour" class="form-label">عددالساعات</label>
-                  <input
-                    formControlName="courseduration"
-                    type="number"
-                    class="form-control"
-                    id="coursehour"
-                    aria-describedby="emailHelp"
-                  />
-                  <ng-container *ngIf="getCourseDuration.touched">
-                    <div
-                      *ngIf="getCourseDuration.hasError('required')"
-                      id="duration"
-                      class="form-text text-danger"
-                    >
-                      من فضلك ادخل مدة الكورس
-                    </div>
+                <div class="row">
+                  <div class="col mb-3">
+                    <label for="coursehour" class="form-label">عددالساعات</label>
+                    <input
+                      formControlName="courseduration"
+                      type="number"
+                      class="form-control"
+                      id="coursehour"
+                      aria-describedby="emailHelp"
+                    />
+                    <ng-container *ngIf="getCourseDuration.touched">
+                      <div
+                        *ngIf="getCourseDuration.hasError('required')"
+                        id="duration"
+                        class="form-text text-danger"
+                      >
+                        من فضلك ادخل مدة الكورس
+                      </div>
 
-                    <div
-                      *ngIf="getCourseDuration.hasError('pattern')"
-                      id="duration"
-                      class="form-text text-danger"
-                    >
-                      ارقام فقط
-                    </div>
-                  </ng-container>
-                </div>
-                <div class="mb-3">
-                  <label for="coursefees" class="form-label">
-                    نكلفة الكورس
-                  </label>
-                  <input
-                    formControlName="courseCost"
-                    type="number"
-                    class="form-control"
-                    id="coursefees"
-                    aria-describedby="emailHelp"
-                  />
-                  <ng-container *ngIf="getCourseCost.touched">
-                    <div
-                      *ngIf="getCourseCost.hasError('required')"
-                      id="cost"
-                      class="form-text text-danger"
-                    >
-                      من فضلك ادخل تكلفة الكورس
-                    </div>
+                      <div
+                        *ngIf="getCourseDuration.hasError('pattern')"
+                        id="duration"
+                        class="form-text text-danger"
+                      >
+                        ارقام فقط
+                      </div>
+                    </ng-container>
+                  </div>
+                  <div class="col mb-3">
+                    <label for="coursefees" class="form-label">
+                      نكلفة الكورس
+                    </label>
+                    <input
+                      formControlName="courseCost"
+                      type="number"
+                      class="form-control"
+                      id="coursefees"
+                      aria-describedby="emailHelp"
+                    />
+                    <ng-container *ngIf="getCourseCost.touched">
+                      <div
+                        *ngIf="getCourseCost.hasError('required')"
+                        id="cost"
+                        class="form-text text-danger"
+                      >
+                        من فضلك ادخل تكلفة الكورس
+                      </div>
 
-                    <div
-                      *ngIf="getCourseCost.hasError('pattern')"
-                      id="cost"
-                      class="form-text text-danger"
-                    >
-                      ارقام فقط
-                    </div>
-                  </ng-container>
+                      <div
+                        *ngIf="getCourseCost.hasError('pattern')"
+                        id="cost"
+                        class="form-text text-danger"
+                      >
+                        ارقام فقط
+                      </div>
+                    </ng-container>
                 </div>
+                </div>
+
                 <button
                   (click)="back()"
                   [disabled]="!courseForm.valid"
-                  class="btn btn-primary ms-2"
+                  class="btn btn-primary ms-2 float-start"
                 >
                   تراجع
                 </button>
@@ -144,14 +150,14 @@
                   (click)="addCourse()"
                   [disabled]="!courseForm.valid"
                   *ngIf="!flag"
-                  class="btn btn-danger ms-2"
+                  class="btn btn-danger ms-2 float-start"
                 >
                   اضافة
                 </button>
                 <button
                   (click)="savedata()"
                   *ngIf="flag"
-                  class="btn btn-danger ms-2"
+                  class="btn btn-danger ms-2 float-start"
                 >
                   تعديل
                 </button>
@@ -234,9 +240,9 @@
     </div>
   </div>-->
 </div>
-<p>
+<p class="py-3 px-5 d-flex justify-content-start">
   <button
-    class="btn btn-primary"
+    class="btn btn-primary p-3 fs-4"
     type="button"
     data-bs-toggle="collapse"
     data-bs-target="#collapseExample"
@@ -312,4 +318,5 @@
       </div>
     </div>
   </div>
+
 </div>

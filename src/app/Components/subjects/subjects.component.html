@@ -44,9 +44,9 @@
                                       </div>
                                   </ng-container>
                                   </div>
-                                  <button class="btn btn-primary ms-2" (click)="back()" >تراجع</button>
-                                  <button *ngIf="!isEdit" class="btn btn-danger ms-2" (click)="AddSubject()">اضافة</button>
-                                  <button *ngIf="isEdit" class="btn btn-danger ms-2" (click)="saveUpdate()">حفظ</button>
+                                  <button class="btn btn-primary ms-2 float-start" (click)="back()" >تراجع</button>
+                                  <button *ngIf="!isEdit" class="btn btn-primary ms-2 float-start" (click)="AddSubject()">اضافة</button>
+                                  <button *ngIf="isEdit" class="btn btn-primary ms-2 float-start" (click)="saveUpdate()">حفظ</button>
 
                               </form>
                         </div>
@@ -109,9 +109,9 @@
               </div>
           </div>
     </div>-->
-    <p>
+    <p class="py-3 px-5 d-flex justify-content-start">
       <button
-        class="btn btn-primary"
+        class="btn btn-primary p-3 fs-4"
         type="button"
         data-bs-toggle="collapse"
         data-bs-target="#collapseExample"
