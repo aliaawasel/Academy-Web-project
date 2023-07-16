@@ -17,6 +17,7 @@ export class SubjectsComponent implements  OnInit {
   selectedSubjectID!:Number;
   courceId:any
   courseId:any
+  subjectId:any
 
 
   // courseId:any
@@ -77,12 +78,13 @@ console.log("on it fn");
 }
 
 DeleteSubject(id:number){
+  console.log(id)
     this.subjectService.deleteSubject(id).subscribe(()=>{
-      console.log("deleted")
       this.loadSubjects();
   })
   }
   EditSubject(id:number){
+    this.subjectId=id
     this.subjectService.getSubjectById(id).subscribe((result:any)=>{
       console.log(result)
       this.isEdit=true;
@@ -98,7 +100,7 @@ DeleteSubject(id:number){
   }
   saveUpdate(){
     const subject={
-      subjectId:this.courseId,
+      subjectId:this.subjectId,
       subjectName:this.subjectForm.value.subjectName,
       courseId:this.subjectForm.value.subjectCourse,
     }
@@ -110,7 +112,6 @@ DeleteSubject(id:number){
       this.isEdit=false;
       this.courceId=0;
       this.subjectForm.reset();
-      this.ngOnInit();
 
   })
   }

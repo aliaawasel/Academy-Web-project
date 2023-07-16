@@ -127,7 +127,7 @@
     </div>
   </div>
 
-  <!-- table 1-->
+  <!-- table 1
   <div class="main-content mt-3">
     <div class="container-fluid">
       <div class="row">
@@ -175,8 +175,8 @@
         </div>
       </div>
     </div>
-  </div>
-  <!-- table 2-->
+  </div>-->
+  <!-- table 2
   <div class="main-content mt-3">
     <div class="container-fluid">
       <div class="row">
@@ -210,7 +210,7 @@
                       </td>
                       <td>{{Scrs.courseDurationInHours}}</td>
                       <td>
-                        {{ Scrs.registrationDate }}
+                        {{ Scrs.registrationDate | date:'mediumDate'}}
                       </td>
                       <td>{{ Scrs.courseCost }}</td>
                       <td>
@@ -233,5 +233,132 @@
         </div>
       </div>
     </div>
+  </div>-->
+  <p>
+    <button
+      class="btn btn-primary"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#collapseExample"
+      aria-expanded="false"
+      aria-controls="collapseExample"
+    >
+      عرض بيانات الطالب
+    </button>
+  </p>
+  <div class="collapse" id="collapseExample">
+    <div class="card card-body">
+      <div class="main-content mt-3">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-md-12">
+              <div class="card-body">
+                <div class="table-responsive">
+                  <table class="table text-center">
+                    <thead class="text-primary">
+                      <th>م</th>
+                      <th>اسم الطالب</th>
+                      <th>الرقم القومي</th>
+                      <th>المؤهل</th>
+                      <th>تليفون للتواصل</th>
+                      <th>الموقف التجنيدي</th>
+                      <th>اسم الفرع</th>
+                    </thead>
+                    <tbody>
+                      <tr *ngIf="studentOfId">
+                        <td>
+                          {{1}}
+                        </td>
+                        <td>
+                          {{studentOfId.arabicFullName}}
+                        </td>
+                        <td>
+                          {{ studentOfId.traineeNationalId }}
+                        </td>
+                        <td>
+                          {{ studentOfId.academicQualification }}
+                        </td>
+                        <td>{{ studentOfId.firstPhoneNumber }}</td>
+                        <td>{{ studentOfId.militaryStatus }}</td>
+                        <td>{{ studentOfId.branchName }}</td>
+
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
+  <p>
+    <button
+      class="btn btn-primary"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#collapseExample"
+      aria-expanded="false"
+      aria-controls="collapseExample"
+    >
+      عرض كورسات الطالب
+    </button>
+  </p>
+  <div class="collapse" id="collapseExample">
+    <div class="card card-body">
+      <div class="main-content mt-3">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-md-12">
+              <div class="card-body">
+                <div class="table-responsive">
+                  <table class="table text-center">
+                    <thead class="text-primary">
+                      <th>م</th>
+                      <th>اسم الكورس</th>
+                      <th>وصف الكورس</th>
+                      <th>عددالساعات</th>
+                      <th>تاريخ التقديم</th>
+                      <th>نكلفة الكورس</th>
+                      <th>حذف</th>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="let Scrs of StdCrs; let i = index">
+                        <td>
+                          {{ i + 1 }}
+                        </td>
+                        <td>
+                          {{ Scrs.courseName }}
+                        </td>
+                        <td>
+                          {{ Scrs.courseDescription }}
+                        </td>
+                        <td>{{Scrs.courseDurationInHours}}</td>
+                        <td>
+                          {{ Scrs.registrationDate | date:'mediumDate'}}
+                        </td>
+                        <td>{{ Scrs.courseCost }}</td>
+                        <td>
+                          <button
+                            mat-raised-button
+                            type="submit"
+                            class="btn btn-danger"
+                            (click)="deleteCourseStudent(Scrs.courseId,Scrs.registrationDate)"
+                          >
+                            حذف
+                          </button>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
 </div>

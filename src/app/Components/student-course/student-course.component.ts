@@ -75,6 +75,8 @@ get getdateOfCoursee(){
   getcourses(){
     this.studentCourseService.getCourses().subscribe((res:any)=>{
       this.courses=res
+      ;
+
     })
   }
   getStudentdCourse(){
@@ -82,6 +84,7 @@ get getdateOfCoursee(){
     this.studentCourseService.getStudentdCourse(studentId).subscribe((res:any)=>{
       this.StdCrs=res
       console.log("done 2");
+      console.log(this.StdCrs)
     })
   }
 

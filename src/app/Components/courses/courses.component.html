@@ -162,7 +162,7 @@
       </div>
     </div>
   </div>
-  <!-- table -->
+  <!-- table
   <div class="main-content mt-3">
     <div class="container-fluid">
       <div class="row">
@@ -173,6 +173,85 @@
                 عرض الكورسات المسجلة
               </h4>
             </div>
+            <div class="card-body">
+              <div class="table-responsive">
+                <table class="table text-center">
+                  <thead class="text-primary">
+                    <th>م</th>
+                    <th>اسم الكورس</th>
+                    <th>وصف الكورس</th>
+                    <th>عددالساعات</th>
+                    <th>نكلفة الكورس</th>
+                    <th>تعديل</th>
+                    <th>حذف</th>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let course of courses; let i = index">
+                      <td>
+                        {{ i + 1 }}
+                      </td>
+                      <td>
+                        {{ course.courseName }}
+                      </td>
+                      <td>
+                        {{ course.courseDescription }}
+                      </td>
+                      <td>
+                        {{ course.courseCost }}
+                      </td>
+                      <td>
+                        {{ course.courseDurationInHours }}
+                      </td>
+                      <td>
+                        <button
+                          (click)="updateCourse(course.courseId)"
+                          mat-raised-button
+                          type="submit"
+                          class="btn btn-danger"
+                        >
+                          تعديل
+                        </button>
+                      </td>
+
+                      <td>
+                        <button
+                          mat-raised-button
+                          type="submit"
+                          (click)="deleteCourse(course.courseId)"
+                          class="btn btn-danger"
+                        >
+                          حذف
+                        </button>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>-->
+</div>
+<p>
+  <button
+    class="btn btn-primary"
+    type="button"
+    data-bs-toggle="collapse"
+    data-bs-target="#collapseExample"
+    aria-expanded="false"
+    aria-controls="collapseExample"
+  >
+    عرض الكورسات المسجلة
+  </button>
+</p>
+<div class="collapse" id="collapseExample">
+  <div class="card card-body">
+    <div class="main-content mt-3">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-md-12">
             <div class="card-body">
               <div class="table-responsive">
                 <table class="table text-center">

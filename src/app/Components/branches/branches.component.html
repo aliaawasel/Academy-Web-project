@@ -54,9 +54,9 @@
                     formControlName="supervisorName"
                     class="form-select"
                   >
-                  <option *ngFor="let x of users" [value]="x">
-                    {{ x }}
-                  </option>
+                    <option *ngFor="let x of users" [value]="x">
+                      {{ x }}
+                    </option>
                   </select>
                   <!--- <input
                     type="text"
@@ -170,7 +170,7 @@
       </div>
     </div>
   </div>
-  <!-- table -->
+  <!-- table
   <div class="main-content mt-3">
     <div class="container-fluid">
       <div class="row">
@@ -181,6 +181,84 @@
                 عرض فروع الاكاديميه
               </h4>
             </div>
+            <div class="card-body">
+              <div class="table-responsive">
+                <table class="table text-center">
+                  <thead class="text-primary">
+                    <th>م</th>
+                    <th>اسم الفرع</th>
+                    <th>اسم مشرف الفرع</th>
+                    <th>التليفون المحمول</th>
+                    <th>التليفون الارضي</th>
+                    <th>تعديل</th>
+                    <th>حذف</th>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let branch of branches; let i = index">
+                      <td>
+                        {{ i + 1 }}
+                      </td>
+                      <td>
+                        {{ branch.name }}
+                      </td>
+                      <td>
+                        {{ branch.supervisorName }}
+                      </td>
+                      <td>
+                        {{ branch.supervisorPhoneNumber }}
+                      </td>
+                      <td>
+                        {{ branch.supervisorLandlineNumber }}
+                      </td>
+                      <td>
+                        <button
+                          mat-raised-button
+                          type="submit"
+                          class="btn btn-danger"
+                          (click)="EditBranch(branch.id)"
+                        >
+                          تعديل
+                        </button>
+                      </td>
+                      <td>
+                        <button
+                          mat-raised-button
+                          type="submit"
+                          (click)="DeleteBranch(branch.id)"
+                          class="btn btn-danger"
+                        >
+                          حذف
+                        </button>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>-->
+<p c>
+  <button
+    class="btn btn-primary"
+    type="button"
+    data-bs-toggle="collapse"
+    data-bs-target="#collapseExample"
+    aria-expanded="false"
+    aria-controls="collapseExample"
+  >
+    عرض فروع الاكاديميه
+  </button>
+</p>
+<div class="collapse" id="collapseExample">
+  <div class="card card-body">
+    <div class="main-content mt-3">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-md-12">
             <div class="card-body">
               <div class="table-responsive">
                 <table class="table text-center">
