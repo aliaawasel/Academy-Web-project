@@ -9,7 +9,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class UsersComponent implements OnInit {
     usersForm = new FormGroup({
-    Username : new FormControl("",[Validators.required,Validators.minLength(3),Validators.pattern('^[a-zA-Z\u0600-\u06FF]+$')]),
+    Username : new FormControl("",[Validators.required,Validators.minLength(3)]),
     password : new FormControl("", [Validators.required]),
     name : new FormControl("",[Validators.required, Validators.minLength(3)]),
     email : new FormControl("",[Validators.required, Validators.email]),
@@ -155,6 +155,7 @@ saveUser(){
   this.userService.editUser(user).subscribe(({
     next:(res:any)=>{
       this.usersForm.reset();
+      this.flag=false;
     this.ngOnInit();
     }
   }))

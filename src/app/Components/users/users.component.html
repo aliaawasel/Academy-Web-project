@@ -19,9 +19,9 @@
                                   <div *ngIf="getUserName.hasError('minlength')" id="Username" class="form-text text-danger">
                                     لا يقل الاسم عن 3 حروف
                                     </div>
-                                  <div *ngIf="getUserName.hasError('pattern')" id="Username" class="form-text text-danger">
+                                  <!-- <div *ngIf="getUserName.hasError('pattern')" id="Username" class="form-text text-danger">
                                    ادخل حروف فقط
-                                   </div>
+                                   </div> -->
                                   </ng-container>
                               </div>
                               <div class="mb-3">
@@ -113,9 +113,9 @@
                                     </div>
                                     </ng-container>
                                 </div>
-                              <button (click)="back()" class="btn btn-primary ms-2">تراجع</button>
-                              <button [disabled]="!usersForm.valid"  (click)="addUser()" *ngIf="!flag" class="btn btn-danger ms-2">إضافة </button>
-                              <button  (click)="saveUser()" *ngIf="flag" class="btn btn-success ms-2">تعديل </button>
+                              <button (click)="back()" class="btn btn-primary m-2">تراجع</button>
+                              <button [disabled]="!usersForm.valid"  (click)="addUser()" *ngIf="!flag" class="btn btn-danger m-2">إضافة </button>
+                              <button  (click)="saveUser()" *ngIf="flag" class="btn btn-success m-2">تعديل </button>
 
 
                             </form>
@@ -211,8 +211,8 @@
                             <i class="bi bi-toggle2-off"></i>
                           </ng-template>
                         </button>                               </td>
-                      <td><button mat-raised-button (click)="deleteUser(item.userId)" type="submit" class="btn btn-success "><i class="bi bi-pencil-square"></i></button> </td>
-                      <td> <button mat-raised-button (click)="editUser(item.userId)"  type="submit" class="btn btn-danger "><i class="bi bi-trash3-fill"></i> </button>
+                      <td><button mat-raised-button (click)="editUser(item.userId)"  type="submit" class="btn btn-success "><i class="bi bi-pencil-square"></i></button> </td>
+                      <td> <button mat-raised-button  (click)="deleteUser(item.userId)" type="submit" class="btn btn-danger "><i class="bi bi-trash3-fill"></i> </button>
                       </tr>
                     </tbody>
                  </table>

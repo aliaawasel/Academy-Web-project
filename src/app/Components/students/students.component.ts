@@ -184,7 +184,9 @@ addStudent(){
   }
   console.log(Student);
 this.StudentServices.addStudent(Student).subscribe(()=>{
-  console.log(Student);
+ // console.log(Student );
+ 
+  
   this.ngOnInit();
   this.StusForm.reset();
 })
@@ -195,9 +197,8 @@ this.StudentServices.addStudent(Student).subscribe(()=>{
  UdateStudent(id:any){
 this.flag=true;
 this.SelectedId=id,
-this.StudentServices.getStudentById(this.SelectedId).subscribe((res:any)=>{
+this.StudentServices.getStudentById(id).subscribe((res:any)=>{
   console.log(res);
-
   this.StusForm.patchValue({
     nationalNumber:res.traineeNationalId,
     Username:res.arabicFullName,
@@ -226,6 +227,7 @@ this.StudentServices.getStudentById(this.SelectedId).subscribe((res:any)=>{
  /** Save Student */
  Save(){
   const Student={
+    traineeId:this.SelectedId,
     traineeNationalId:this.StusForm.value.nationalNumber,
     arabicFullName:this.StusForm.value.Username,
     englishFullName:this.StusForm.value.userNameE,
@@ -250,7 +252,9 @@ this.StudentServices.getStudentById(this.SelectedId).subscribe((res:any)=>{
   }
   this.StudentServices.UpdateStudent(Student).subscribe(({
     next:(res:any)=>{
-      this.StusForm.reset;
+      this.StusForm.reset();
+      this
+      this.flag=false;
       this.ngOnInit();
     }
   }))

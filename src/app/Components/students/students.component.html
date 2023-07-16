@@ -263,11 +263,11 @@
                                                 </ng-container>
                                             </div> 
                                             
-                                     
-                                <button raised-button *ngIf="!flag" (click)="addStudent()" type="submit"  class="btn btn-danger m-2 pull-right">إضافة</button>
-                                <button raised-button (click)="back()" type="submit" class="btn btn-success m-2 pull-right">تراجع</button>
-                                <button  (click)="Save()" *ngIf="flag" class="btn btn-warning ms-2">تعديل </button>
+                               <button  (click)="back()" type="submit" class="btn btn-success m-2 pull-right">تراجع</button>
 
+                                <button raised-button [disabled]="!StusForm.valid" (click)="addStudent()" *ngIf="!flag"  class="btn btn-danger m-2 pull-right">إضافة</button>
+                                <button raised-button (click)="Save()" *ngIf="flag" class="btn btn-warning m-2 pull-right">تعديل </button>
+                                
                                 <div class="clearfix"></div>
                             </form>
                         </div>
@@ -280,10 +280,6 @@
     
     </div>
     
-    <!-- model -->
-    
-
-  <!-- model -->
       <!-- tabel -->
     
       <div class="main-content dd">
