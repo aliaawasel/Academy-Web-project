@@ -15,6 +15,8 @@ import { CoursesComponent } from './Components/courses/courses.component';
 import { GroupsComponent } from './Components/groups/groups.component';
 import { StudentCourseComponent } from './Components/student-course/student-course.component';
 import { StudentsServices } from 'src/Service/StudentsServices.service';
+import { LoginComponent } from './Components/login/login.component';
+
 
 @NgModule({
   declarations: [
@@ -28,7 +30,8 @@ import { StudentsServices } from 'src/Service/StudentsServices.service';
     studentsComponent,
     CoursesComponent,
     GroupsComponent,
-    StudentCourseComponent
+    StudentCourseComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,

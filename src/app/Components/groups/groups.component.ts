@@ -34,7 +34,7 @@ export class GroupsComponent implements OnInit {
 
 
 
-  // This Function To Return all Groubs 
+  // This Function To Return all Groubs
   loadAllGroubs(): void {
     this.groupService.getAllGroupsAuth().subscribe(
       (result: any) => {
@@ -73,9 +73,9 @@ export class GroupsComponent implements OnInit {
         branchesPage: this.GroupAuthForm.value.branches,
         coursesPage: this.GroupAuthForm.value.Courses,
         subjectsPage: this.GroupAuthForm.value.Subject,
-        traineeAdditionPage: true,
-        coursesToTraineeAdditionPage: true,
-        traineeCombinedAccountStatementPage: true,
+        traineeAdditionPage: this.GroupAuthForm.value.Student,
+        coursesToTraineeAdditionPage: this.GroupAuthForm.value.Student,
+        traineeCombinedAccountStatementPage: this.GroupAuthForm.value.Student,
       }
 
       console.log(Group);
@@ -111,7 +111,7 @@ export class GroupsComponent implements OnInit {
         branches: group.branchesPage,
         Courses: group.coursesPage,
         Subject: group.subjectsPage,
-        Student: group.studentsPage
+        Student: group.traineeAdditionPage
       });
       console.log(this.isEdit);
       console.log(this.selectedGroupID);
@@ -128,9 +128,9 @@ export class GroupsComponent implements OnInit {
       branchesPage: this.GroupAuthForm.value.branches,
       coursesPage: this.GroupAuthForm.value.Courses,
       subjectsPage: this.GroupAuthForm.value.Subject,
-      traineeAdditionPage: true,
-      coursesToTraineeAdditionPage: true,
-      traineeCombinedAccountStatementPage: true,
+      traineeAdditionPage: this.GroupAuthForm.value.Student,
+      coursesToTraineeAdditionPage: this.GroupAuthForm.value.Student,
+      traineeCombinedAccountStatementPage: this.GroupAuthForm.value.Student,
       groupId: this.selectedGroupID,
 
     }
