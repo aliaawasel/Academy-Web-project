@@ -4,7 +4,7 @@ import { UsersComponent } from './Components/users/users.component';
 import { SubjectsComponent } from './Components/subjects/subjects.component';
 import { CoursesComponent } from './Components/courses/courses.component';
 import { studentsComponent } from './Components/students/students.component';
-import { PaymentsComponent } from './Components/payments/payments.component';
+// import { PaymentsComponent } from './Components/payments/payments.component';
 import { BranchesComponent } from './Components/branches/branches.component';
 import { GroupsComponent } from './Components/groups/groups.component';
 import { StudentCourseComponent } from './Components/student-course/student-course.component';
@@ -17,7 +17,7 @@ const routes: Routes = [
   { path:'subjects',component:SubjectsComponent},
   { path:'courses',component:CoursesComponent},
   { path:'students',component:studentsComponent},
-  { path:'payments',component:PaymentsComponent},
+  // { path:'payments',component:PaymentsComponent},
   { path:'branches',component:BranchesComponent},
   { path:'studentcourse',component:StudentCourseComponent},
 

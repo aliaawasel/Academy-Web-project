@@ -1,4 +1,4 @@
-<div class="container">
+<!-- <div class="container">
     <div class="main-content">
       <div class="container-fluid">
         <div class="row">
@@ -19,8 +19,8 @@
                     <ng-container *ngIf="getbranchSelect.touched" >
                         <div *ngIf="getbranchSelect.hasError('required')" id="subjectName" class="form-text text-danger  w-75">
                           من فضلك ادخل الاسم المادة                                      </div>
-                      
-                 
+
+
 
                     </ng-container>
                   </div>
@@ -36,20 +36,20 @@
                     </ng-container>
                   </div>
 
-               
+
                     <div class="mb-3">
                         <label for="courseSelect" class="form-label"
                           >اسم الكورس</label
                         >
-    
+
                         <select id="courseSelect"  class="form-select" formControlName="courseSelect">
                           <option *ngFor="let course of traineeCourses; let i=index"  [value]="i">{{course.courseName}}</option>
                         </select>
                         <ng-container *ngIf="getcourseSelect.touched" >
                             <div *ngIf="getcourseSelect.hasError('required')" id="courseSelect" class="form-text text-danger  w-75">
                               من فضلك اختر اسم الكورس                                     </div>
-                        </ng-container>      
-                      
+                        </ng-container>
+
                       </div>
                       <ng-container *ngFor="let course of traineeCourses">
                       <div class="mb-3">
@@ -81,7 +81,7 @@
                           formControlName="notes"
                           aria-describedby="notes"
                         />
-          
+
                       </div>
                  </ng-container>
                   </ng-container>
@@ -89,14 +89,13 @@
                   <button class="btn btn-primary ms-2" (click)="back()">تراجع</button>
                   <button  [disabled]="!trainsacteForm.valid" class="btn btn-primary ms-2" (click)="addTrainsaction()">اضافة</button>
                 </form>
-  
+
               </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-                  <!-- table 1 -->
 <div class="main-content mt-3">
   <div class="container-fluid">
     <div class="row">
@@ -117,7 +116,7 @@
                   <th>المبلغ المدفوع حتى الان</th>
                   <th>المبلغ المتبقى</th>
                   <th>الحالة</th>
-            
+
                 </thead>
                 <tbody>
                   <tr *ngFor="let courseData of tarineeTrainsactionData;let i=index">
@@ -138,7 +137,6 @@
   </div>
   </div>
 
-                  <!-- table 2 -->
 
 
 <div class="main-content mt-3">
@@ -182,4 +180,4 @@
     </div>
   </div>
   </div>
-
+ -->

@@ -16,6 +16,8 @@ export class StudentsServices {
   deleteUrl:string='https://localhost:44334/academy-api/trainee/delete/';
   branchUrl: string='https://localhost:44334/academy-api/branch/all';
  deactiveUrl:string='https://localhost:44334/academy-api/trainee/deactivate/';
+ studentbyBranch:string=' https://localhost:7044/academy-api/trainee/all-by-branch-id'
+
 
   constructor(private http: HttpClient) {}
 
@@ -28,7 +30,9 @@ export class StudentsServices {
  getStudentById(studentId: any) {
   return this.http.get(`${this.idUrl}${studentId}`);
 }
-
+getStudentByBranch(branchId:any){
+  return this.http.get(`${this.studentbyBranch}/${branchId}`)
+}
  addStudent(student:any){
 return this.http.post(`${this.addUrl}`,student);
  }

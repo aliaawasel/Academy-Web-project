@@ -10,7 +10,7 @@ import { UsersComponent } from './Components/users/users.component';
 import { studentsComponent } from './Components/students/students.component';
 import { BranchesComponent } from './Components/branches/branches.component';
 import { SubjectsComponent } from './Components/subjects/subjects.component';
-import { PaymentsComponent } from './Components/payments/payments.component';
+// import { PaymentsComponent } from './Components/payments/payments.component';
 import { CoursesComponent } from './Components/courses/courses.component';
 import { GroupsComponent } from './Components/groups/groups.component';
 import { StudentCourseComponent } from './Components/student-course/student-course.component';
@@ -24,7 +24,7 @@ import { StudentsServices } from 'src/Service/StudentsServices.service';
     UsersComponent,
     BranchesComponent,
     SubjectsComponent,
-    PaymentsComponent,
+    // PaymentsComponent,
     studentsComponent,
     CoursesComponent,
     GroupsComponent,
