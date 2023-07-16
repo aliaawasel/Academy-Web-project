@@ -1,0 +1,71 @@
+.ss:hover {
+  background-color: inherit;
+}
+
+.address{
+  background-color: #30475E;
+}
+.save{
+  background-color: #F05454;
+  color: white;
+  border: none;
+  border-radius:20px ;
+  padding: 20px;
+  box-shadow: 2px 2px 2px;
+}
+.save:hover{
+  background-color:#DDDDDD;
+  color: #F05454;
+  border: none;
+  border-radius:20px ;
+  padding: 20px;
+  box-shadow: 2px 2px 2px;
+}
+.back{
+  background-color:#DDDDDD;
+  color: #F05454;
+  border: none;
+  border-radius:20px ;
+  padding: 20px;
+  box-shadow: 2px 2px 2px;
+}
+.back:hover{
+  background-color: #F05454;
+  color: white;
+  border: none;
+  border-radius:20px ;
+  padding: 20px;
+  box-shadow: 2px 2px 2px;
+}
+.show{
+  background-color: #30475E;
+  color: white;
+  border: none;
+  border-radius:20px ;
+  padding: 20px;
+
+}
+.show:hover{
+  background-color: #F05454;
+  color: white;
+  border: none;
+  border-radius:20px ;
+  padding: 20px;
+
+}
+.card{
+  box-shadow: 2px 2px 2px 2px rgb(169, 168, 168);
+  background-color: #EEEEEE;
+}
+input,select{
+  border-radius: 20px;
+  border: none;
+}
+input:hover,select:hover{
+  border: 2px #F05454;
+  border-radius: 20px;
+}
+.Tabletext{
+  color: #30475E;
+  font-size: 20px;
+}

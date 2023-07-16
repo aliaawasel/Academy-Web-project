@@ -4,10 +4,10 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="card">
-                        <div class="card-header card-header-danger">
+                        <div class="card-header card-header-danger text-white address">
                             <h4 class="card-title text-center ">إضافة مادة</h4>
                         </div>
-                        <div class="card-body text-right">
+                        <div class="card-body text-right fs-5">
                             <form [formGroup]="subjectForm" (submit)="formHandler($event)">
 
                                 <div class="mb-3">
@@ -44,9 +44,9 @@
                                       </div>
                                   </ng-container>
                                   </div>
-                                  <button class="btn btn-primary ms-2 float-start" (click)="back()" >تراجع</button>
-                                  <button *ngIf="!isEdit" class="btn btn-primary ms-2 float-start" (click)="AddSubject()">اضافة</button>
-                                  <button *ngIf="isEdit" class="btn btn-primary ms-2 float-start" (click)="saveUpdate()">حفظ</button>
+                                  <button class="btn btn-primary ms-2 float-start back" (click)="back()" >تراجع</button>
+                                  <button *ngIf="!isEdit" class="btn btn-primary ms-2 float-start save" (click)="AddSubject()">اضافة</button>
+                                  <button *ngIf="isEdit" class="btn btn-primary ms-2 float-start save" (click)="saveUpdate()">حفظ</button>
 
                               </form>
                         </div>
@@ -111,7 +111,7 @@
     </div>-->
     <p class="py-3 px-5 d-flex justify-content-start">
       <button
-        class="btn btn-primary p-3 fs-4"
+        class="btn btn-primary p-3 fs-4 show"
         type="button"
         data-bs-toggle="collapse"
         data-bs-target="#collapseExample"
@@ -129,36 +129,30 @@
               <div class="col-md-12">
                 <div class="card-body">
                   <div class="table-responsive">
-                      <table class="table text-center">
-                          <thead class=" text-primary">
+                    <table class="table text-center table table-striped table-hover Tabletext">
+                      <thead class=" text-primary">
+                        <tr>
                             <th>اسم المادة</th>
                             <th>اسم الكورس التابعة له</th>
                             <th> تعديل</th>
                             <th> حذف</th>
+                            <tr>
                           </thead>
                           <tbody>
                             <tr *ngFor="let subject of subjctByCrsId;let course; let i = index">
                               <td>{{ subject.subjectName }}</td>
                               <td>{{subject.courseId}}</td>
+
                               <td>
-                                <button
-                                  mat-raised-button
-                                  type="submit"
-                                  class="btn btn-danger"
-                                  (click)="EditSubject(subject.subjectId)"
-                                >
-                                  تعديل
-                                </button>
+                                <button class="btn btn-warning"  (click)="EditSubject(subject.subjectId)">
+                                    <i class="bi bi-pencil-square text-light"></i>
+                              </button>
                               </td>
+
                               <td>
-                                <button
-                                  mat-raised-button
-                                  type="submit"
-                                  (click)="DeleteSubject(subject.subjectId)"
-                                  class="btn btn-danger"
-                                >
-                                  حذف
-                                </button>
+                                <button class="btn btn-danger" (click)="DeleteSubject(subject.subjectId)">
+                                  <i class="bi bi-trash3-fill"></i>
+                              </button>
                               </td>
                               </tr>
                           </tbody>

@@ -4,10 +4,10 @@
       <div class="row">
         <div class="col-md-12">
           <div class="card">
-            <div class="card-header card-header-danger">
+            <div class="card-header text-white p-3 address ">
               <h4 class="card-title text-center">إضافة مستخدم</h4>
             </div>
-            <div class="card-body text-right">
+            <div class="card-body text-right fs-5">
               <form [formGroup]="usersForm" (submit)="formHandler($event)" >
 
                 <div class="row">
@@ -118,9 +118,9 @@
                         </ng-container>
                 </div>
                 </div>
-                  <button (click)="back()" class="btn btn-primary m-2 float-start">تراجع</button>
-                  <button [disabled]="!usersForm.valid"  (click)="addUser()" *ngIf="!flag" class="btn btn-danger m-2 float-start">إضافة </button>
-                  <button  (click)="saveUser()" *ngIf="flag" class="btn btn-success m-2 float-start">تعديل </button>
+                  <button (click)="back()" class="btn btn-primary m-2 float-start back">تراجع</button>
+                  <button [disabled]="!usersForm.valid"  (click)="addUser()" *ngIf="!flag" class="btn btn-danger m-2 float-start save">إضافة </button>
+                  <button  (click)="saveUser()" *ngIf="flag" class="btn btn-success m-2 float-start save">تعديل </button>
 
                 </form>
             </div>
@@ -227,7 +227,7 @@
 </div>-->
 <p class="p-3 d-flex justify-content-start">
   <button
-    class="btn btn-primary p-3 fs-4"
+    class="btn btn-primary p-3 fs-4 show"
     type="button"
     data-bs-toggle="collapse"
     data-bs-target="#collapseExample"
@@ -247,10 +247,10 @@
               <div
                 class="table-responsive table table-striped tabel-hover table-bordered text-center"
               >
-                <table
-                  class="table table-striped tabel-hover table-bordered text-center"
-                >
+              <table class="table text-center table table-striped table-hover Tabletext">
+
                   <thead class="text-primary">
+                    <tr>
                     <th>م</th>
                     <th>اسم المستخدم</th>
                     <th>البريد الإلكترونى</th>
@@ -262,6 +262,7 @@
                     <th>الحالة</th>
                     <th>تعديل</th>
                     <th>حذف</th>
+                    </tr>
                   </thead>
                   <tbody>
                     <tr *ngFor="let item of AllUsers; let i = index">
@@ -308,24 +309,14 @@
                         </button>
                       </td>
                       <td>
-                        <button
-                          mat-raised-button
-                          (click)="editUser(item.userId)"
-                          type="submit"
-                          class="btn btn-success"
-                        >
-                          <i class="bi bi-pencil-square"></i>
-                        </button>
+                        <button class="btn btn-warning"  (click)="editUser(item.userId)">
+                            <i class="bi bi-pencil-square text-light"></i>
+                      </button>
                       </td>
                       <td>
-                        <button
-                          mat-raised-button
-                          (click)="deleteUser(item.userId)"
-                          type="submit"
-                          class="btn btn-danger"
-                        >
+                        <button class="btn btn-danger" (click)="deleteUser(item.userId)">
                           <i class="bi bi-trash3-fill"></i>
-                        </button>
+                      </button>
                       </td>
                     </tr>
                   </tbody>

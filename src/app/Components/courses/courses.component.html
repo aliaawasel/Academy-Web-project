@@ -4,10 +4,10 @@
       <div class="row">
         <div class="col-md-12">
           <div class="card">
-            <div class="card-header card-header-danger">
+            <div class="card-header card-header-danger text-white address">
               <h4 class="card-title text-center">إضافة كورس</h4>
             </div>
-            <div class="card-body text-right">
+            <div class="card-body text-right fs-5">
               <form (submit)="formHandler($event)" [formGroup]="courseForm">
 
                 <div class="row">
@@ -142,7 +142,7 @@
                 <button
                   (click)="back()"
                   [disabled]="!courseForm.valid"
-                  class="btn btn-primary ms-2 float-start"
+                  class="btn btn-primary ms-2 float-start back"
                 >
                   تراجع
                 </button>
@@ -150,14 +150,14 @@
                   (click)="addCourse()"
                   [disabled]="!courseForm.valid"
                   *ngIf="!flag"
-                  class="btn btn-danger ms-2 float-start"
+                  class="btn btn-danger ms-2 float-start save"
                 >
                   اضافة
                 </button>
                 <button
                   (click)="savedata()"
                   *ngIf="flag"
-                  class="btn btn-danger ms-2 float-start"
+                  class="btn btn-danger ms-2 float-start save"
                 >
                   تعديل
                 </button>
@@ -242,7 +242,7 @@
 </div>
 <p class="py-3 px-5 d-flex justify-content-start">
   <button
-    class="btn btn-primary p-3 fs-4"
+    class="btn btn-primary p-3 fs-4 show"
     type="button"
     data-bs-toggle="collapse"
     data-bs-target="#collapseExample"
@@ -260,7 +260,7 @@
           <div class="col-md-12">
             <div class="card-body">
               <div class="table-responsive">
-                <table class="table text-center">
+                <table class="table text-center table table-striped table-hover Tabletext">
                   <thead class="text-primary">
                     <th>م</th>
                     <th>اسم الكورس</th>
@@ -288,25 +288,14 @@
                         {{ course.courseDurationInHours }}
                       </td>
                       <td>
-                        <button
-                          (click)="updateCourse(course.courseId)"
-                          mat-raised-button
-                          type="submit"
-                          class="btn btn-danger"
-                        >
-                          تعديل
-                        </button>
+                        <button class="btn btn-warning"  (click)="updateCourse(course.courseId)">
+                            <i class="bi bi-pencil-square text-light"></i>
+                      </button>
                       </td>
-
                       <td>
-                        <button
-                          mat-raised-button
-                          type="submit"
-                          (click)="deleteCourse(course.courseId)"
-                          class="btn btn-danger"
-                        >
-                          حذف
-                        </button>
+                        <button class="btn btn-danger" (click)="deleteCourse(course.courseId)">
+                          <i class="bi bi-trash3-fill"></i>
+                      </button>
                       </td>
                     </tr>
                   </tbody>
