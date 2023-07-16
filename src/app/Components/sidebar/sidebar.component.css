@@ -1,4 +1,14 @@
-
-
-
-
+.test{
+  height: 100%;
+  width: 280px;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  right: 0;
+  /* background: linear-gradient(to bottom, #05474c 0%, #f0f0f0 100%); */
+  /* background: linear-gradient(0deg, rgba(22,139,140,1) 14%, rgba(40,136,137,1) 19%, rgba(255,255,255,1) 100%); */
+  background:#497174;
+  /*background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(2,2,32,1) 13%, rgba(6,135,161,1) 100%);*/
+  overflow-x: hidden;
+  padding-top: 20p
+}

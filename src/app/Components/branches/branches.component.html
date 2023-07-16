@@ -9,8 +9,9 @@
             </div>
             <div class="card-body text-right">
               <form [formGroup]="branchForm" (submit)="formHandelr($event)">
-                <div class="mb-3">
-                  <label for="branchname" class="form-label">إسم الفرع</label>
+                <div class="row">
+                  <div class="col mb-3">
+                    <label for="branchname" class="form-label">إسم الفرع</label>
                   <input
                     type="text"
                     class="form-control"
@@ -44,113 +45,111 @@
                       ادخل حروف فقط
                     </div>
                   </ng-container>
-                </div>
-                <div class="mb-3">
-                  <label for="branchsupervisor" class="form-label">
-                    اسم مشرف الفرع</label
-                  >
-                  <select
-                    id="disabledSelect"
-                    formControlName="supervisorName"
-                    class="form-select"
-                  >
-                  <option *ngFor="let x of users" [value]="x">
-                    {{ x }}
-                  </option>
-                  </select>
-                  <!--- <input
-                    type="text"
-                    class="form-control"
-                    formControlName="supervisorName"
-                    id="branchsupervisor"
-                    aria-describedby="emailHelp"
-                  />-->
-                  <ng-container *ngIf="branchForm.touched">
-                    <div
-                      *ngIf="getSupervisorName.hasError('required')"
-                      class="form-text text-danger"
+                  </div>
+                  <div class="col mb-3">
+                    <label for="branchsupervisor" class="form-label">
+                      اسم مشرف الفرع</label
                     >
-                      من فضلك اختر اسم مشرف الفرع
-                    </div>
-                  </ng-container>
+                    <select
+                      id="disabledSelect"
+                      formControlName="supervisorName"
+                      class="form-select"
+                    >
+                    <option *ngFor="let x of users" [value]="x">
+                      {{ x }}
+                    </option>
+                    </select>
+
+                    <ng-container *ngIf="branchForm.touched">
+                      <div
+                        *ngIf="getSupervisorName.hasError('required')"
+                        class="form-text text-danger"
+                      >
+                        من فضلك اختر اسم مشرف الفرع
+                      </div>
+                    </ng-container>
+                </div>
                 </div>
 
-                <div class="mb-3">
-                  <label for="phone" class="form-label">التليفون المحمول</label>
-                  <input
-                    type="text"
-                    formControlName="supervisorPhoneNumber"
-                    class="form-control"
-                    id="phone"
-                    aria-describedby="emailHelp"
-                  />
-                  <ng-container *ngIf="getSupervisorPhoneNumber.touched">
-                    <div
-                      *ngIf="getSupervisorPhoneNumber.hasError('required')"
-                      class="form-text text-danger"
-                    >
-                      من فضلك ادخل رقم التليفون المحمول
-                    </div>
-                    <div
-                      *ngIf="getSupervisorPhoneNumber.hasError('minlength')"
-                      class="form-text text-danger"
-                    >
-                      لا يقل الرقم عن 11 رقم
-                    </div>
-                    <div
-                      *ngIf="getSupervisorPhoneNumber.hasError('maxlength')"
-                      class="form-text text-danger"
-                    >
-                      لا يزيد الرقم عن 11 رقم
-                    </div>
+                <div class="row">
+                  <div class="col mb-3">
+                    <label for="phone" class="form-label">التليفون المحمول</label>
+                    <input
+                      type="text"
+                      formControlName="supervisorPhoneNumber"
+                      class="form-control"
+                      id="phone"
+                      aria-describedby="emailHelp"
+                    />
+                    <ng-container *ngIf="getSupervisorPhoneNumber.touched">
+                      <div
+                        *ngIf="getSupervisorPhoneNumber.hasError('required')"
+                        class="form-text text-danger"
+                      >
+                        من فضلك ادخل رقم التليفون المحمول
+                      </div>
+                      <div
+                        *ngIf="getSupervisorPhoneNumber.hasError('minlength')"
+                        class="form-text text-danger"
+                      >
+                        لا يقل الرقم عن 11 رقم
+                      </div>
+                      <div
+                        *ngIf="getSupervisorPhoneNumber.hasError('maxlength')"
+                        class="form-text text-danger"
+                      >
+                        لا يزيد الرقم عن 11 رقم
+                      </div>
 
-                    <div
-                      *ngIf="getSupervisorPhoneNumber.hasError('pattern')"
-                      class="form-text text-danger"
-                    >
-                      من فضلك ادخل ارقام فقط تبداء ب 010/011/012
-                    </div>
-                  </ng-container>
+                      <div
+                        *ngIf="getSupervisorPhoneNumber.hasError('pattern')"
+                        class="form-text text-danger"
+                      >
+                        من فضلك ادخل ارقام فقط تبداء ب 010/011/012
+                      </div>
+                    </ng-container>
+                  </div>
+                  <div class="col mb-3">
+                    <label for="homephone" class="form-label">
+                      التليفون الارضي
+                    </label>
+                    <input
+                      type="text"
+                      formControlName="supervisorLandlineNumber"
+                      class="form-control"
+                      id="homephone"
+                      aria-describedby="emailHelp"
+                    />
+                    <ng-container *ngIf="getSupervisorPhoneNumber.touched">
+                      <div
+                        *ngIf="getSupervisorLandlineNumber.hasError('required')"
+                        class="form-text text-danger"
+                      >
+                        من فضلك ادخل رقم التليفون الارضي
+                      </div>
+                      <div
+                        *ngIf="getSupervisorLandlineNumber.hasError('minlength')"
+                        class="form-text text-danger"
+                      >
+                        لا يقل الرقم عن 8 أرقام
+                      </div>
+                      <div
+                        *ngIf="getSupervisorLandlineNumber.hasError('pattern')"
+                        class="form-text text-danger"
+                      >
+                        ادخل ارقام فقط
+                      </div>
+                    </ng-container>
                 </div>
-                <div class="mb-3">
-                  <label for="homephone" class="form-label">
-                    التليفون الارضي
-                  </label>
-                  <input
-                    type="text"
-                    formControlName="supervisorLandlineNumber"
-                    class="form-control"
-                    id="homephone"
-                    aria-describedby="emailHelp"
-                  />
-                  <ng-container *ngIf="getSupervisorPhoneNumber.touched">
-                    <div
-                      *ngIf="getSupervisorLandlineNumber.hasError('required')"
-                      class="form-text text-danger"
-                    >
-                      من فضلك ادخل رقم التليفون الارضي
-                    </div>
-                    <div
-                      *ngIf="getSupervisorLandlineNumber.hasError('minlength')"
-                      class="form-text text-danger"
-                    >
-                      لا يقل الرقم عن 8 أرقام
-                    </div>
-                    <div
-                      *ngIf="getSupervisorLandlineNumber.hasError('pattern')"
-                      class="form-text text-danger"
-                    >
-                      ادخل ارقام فقط
-                    </div>
-                  </ng-container>
                 </div>
-                <button class="btn btn-primary ms-2" (click)="back()">
+                <button class="btn btn-primary ms-2 float-start" (click)="back()">
                   تراجع
                 </button>
+
                 <button
                   *ngIf="!isEdit"
                   [disabled]="!branchForm.valid"
-                  class="btn btn-danger ms-2"
+                  class="btn btn-danger ms-2 float-start"
                   (click)="AddBranch()"
                 >
                   اضافة
@@ -158,7 +157,7 @@
                 <button
                   *ngIf="isEdit"
                   [disabled]="!branchForm.valid"
-                  class="btn btn-danger ms-2"
+                  class="btn ms-2 float-start color"
                   (click)="saveUpdate()"
                 >
                   حفظ
@@ -170,7 +169,7 @@
       </div>
     </div>
   </div>
-  <!-- table -->
+  <!-- table
   <div class="main-content mt-3">
     <div class="container-fluid">
       <div class="row">
@@ -181,6 +180,84 @@
                 عرض فروع الاكاديميه
               </h4>
             </div>
+            <div class="card-body">
+              <div class="table-responsive">
+                <table class="table text-center">
+                  <thead class="text-primary">
+                    <th>م</th>
+                    <th>اسم الفرع</th>
+                    <th>اسم مشرف الفرع</th>
+                    <th>التليفون المحمول</th>
+                    <th>التليفون الارضي</th>
+                    <th>تعديل</th>
+                    <th>حذف</th>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let branch of branches; let i = index">
+                      <td>
+                        {{ i + 1 }}
+                      </td>
+                      <td>
+                        {{ branch.name }}
+                      </td>
+                      <td>
+                        {{ branch.supervisorName }}
+                      </td>
+                      <td>
+                        {{ branch.supervisorPhoneNumber }}
+                      </td>
+                      <td>
+                        {{ branch.supervisorLandlineNumber }}
+                      </td>
+                      <td>
+                        <button
+                          mat-raised-button
+                          type="submit"
+                          class="btn btn-danger"
+                          (click)="EditBranch(branch.id)"
+                        >
+                          تعديل
+                        </button>
+                      </td>
+                      <td>
+                        <button
+                          mat-raised-button
+                          type="submit"
+                          (click)="DeleteBranch(branch.id)"
+                          class="btn btn-danger"
+                        >
+                          حذف
+                        </button>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>-->
+<p class="p-3 d-flex justify-content-start">
+  <button
+    class="btn btn-primary p-3 fs-4"
+    type="button"
+    data-bs-toggle="collapse"
+    data-bs-target="#collapseExample"
+    aria-expanded="false"
+    aria-controls="collapseExample"
+  >
+    عرض فروع الاكاديميه
+  </button>
+</p>
+<div class="collapse" id="collapseExample">
+  <div class="card card-body">
+    <div class="main-content mt-3">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-md-12">
             <div class="card-body">
               <div class="table-responsive">
                 <table class="table text-center">

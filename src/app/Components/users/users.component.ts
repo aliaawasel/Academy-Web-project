@@ -8,21 +8,12 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./users.component.css']
 })
 export class UsersComponent implements OnInit {
-    // usersForm = new FormGroup({
-    // Username : new FormControl("",[Validators.required,Validators.minLength(3),Validators.pattern('^[a-zA-Z\u0600-\u06FF]+$')]),
-    // password : new FormControl("", [Validators.required, Validators.pattern('^(?=.?[A-Z])(?=.?[a-z])(?=.?[0-9])(?=.?[^\w\s]).{8,}$')]),
-    // name : new FormControl("",[Validators.required, Validators.minLength(3),Validators.pattern('^[a-zA-Z\u0600-\u06FF]+$')]),
-    // email : new FormControl("",[Validators.required, Validators.email]),
-    // phone : new FormControl("",[Validators.required,Validators.minLength(11),Validators.maxLength(11),Validators.pattern('^(010|011|012)[0-9]{8}$')]),
-    // branch : new FormControl("",[Validators.required]),
-    // group : new FormControl("",[Validators.required]),
-    // language : new FormControl("",[Validators.required]),
-        usersForm = new FormGroup({
+    usersForm = new FormGroup({
     Username : new FormControl("",[Validators.required,Validators.minLength(3)]),
     password : new FormControl("", [Validators.required]),
-    name : new FormControl("",[Validators.required]),
+    name : new FormControl("",[Validators.required, Validators.minLength(3)]),
     email : new FormControl("",[Validators.required, Validators.email]),
-    phone : new FormControl("",[Validators.required,Validators.minLength(11),Validators.maxLength(11)]),
+    phone : new FormControl("",[Validators.required,Validators.minLength(11),Validators.maxLength(11),Validators.pattern('^(010|011|012)[0-9]{8}$')]),
     branch : new FormControl("",[Validators.required]),
     group : new FormControl("",[Validators.required]),
     language : new FormControl("",[Validators.required]),
@@ -64,8 +55,8 @@ export class UsersComponent implements OnInit {
   user:any
   selectedId:any
   constructor(
-    private userService:UserService,
-    private activatedRoute: ActivatedRoute,
+    private userService:UserService, 
+    private activatedRoute: ActivatedRoute, 
     private router: Router
     ){}
 
@@ -85,7 +76,7 @@ ngOnInit(): void {
       this.Groups=Response;
     },
     error:(error) =>{
-      console.log(error);
+      console.log(error); 
     }
   })
   /** Get All Langusges */
@@ -94,20 +85,20 @@ ngOnInit(): void {
       this.Languages=Response;
     },
     error:(error) =>{
-      console.log(error);
+      console.log(error); 
     }
    })
- /* Get All Users*/
+ /* Get All Users*/ 
     this.userService.getAllUsers().subscribe({
       next: (response: any) => {
-        this.AllUsers = response;
+        this.AllUsers = response;     
       },
       error: (error) => {
         console.log(error);
       }
     });
   }
-/** Add Uer */
+/** Add Uer */ 
 flag:boolean=false;
 addUser(){
   const user ={
@@ -119,11 +110,11 @@ addUser(){
     groupId:Number(this.usersForm.value.group),
     languageId:Number(this.usersForm.value.language),
     branchId:Number(this.usersForm.value.branch),
-
+   
   }
   console.log(user);
   this.userService.addUser(user).subscribe(()=>{
-   console.log(user);
+   console.log(user); 
    this.usersForm.reset();
    this.ngOnInit()
   })
@@ -142,7 +133,7 @@ editUser(id:any){
      group:res.groupId,
     branch:res.branchId,
     language:res.languageId
-    })
+    }) 
   })
 }
 /** Save User */
@@ -158,13 +149,13 @@ saveUser(){
     languageId:Number(this.usersForm.value.language),
     branchId:Number(this.usersForm.value.branch),
     isActive:true,
-
+    
   }
   console.log(user);
   this.userService.editUser(user).subscribe(({
     next:(res:any)=>{
       this.usersForm.reset();
-    console.log(user);
+      this.flag=false;
     this.ngOnInit();
     }
   }))
@@ -176,8 +167,13 @@ back(){
 }
 /** Delete User */
 deleteUser(id:any){
-this.userService.deleteUser(id).subscribe(() =>{
+this.userService.deleteUser(id).subscribe(() =>{  
 console.log("deleted")
 this.ngOnInit();
   })}
+  deactivUser(id:any){
+    this.userService.deactiveUser(id).subscribe(()=>{
+      this.ngOnInit(); 
+    })
+    }
 }

@@ -1,130 +1,534 @@
 <div class="container">
-    <div class="main-content ">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="card">
-                        <div class="card-header card-header-danger">
-                            <h4 class="card-title text-center ">إضافة طالب</h4>
-                        </div>
-                        <div class="card-body ">
-                            <form>
-                                    <div class="mb-3">
-                                        <label for="Username" id="Username" class="form-label">  إسم الطالب باللغة العربية </label>
-                                        <input type="text" class="form-control" id="Username" placeholder=" ">
-                                      </div>
-                                      <div class="mb-3">
-                                        <label for="Username" id="Username" class="form-label">  إسم الطالب باللغة الانجليزية </label>
-                                        <input type="text" class="form-control" id="Username" placeholder=" ">
-                                      </div>
-                                      <div class="mb-3">
-                                        <label for="exampleFormControlInput1" class="form-label">  الرقم القومى"</label>
-                                        <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="">
-                                      </div>
-                                    <div class="mb-3">
-                                        <label for="exampleFormControlInput1" class="form-label">  البريد الإلكترونى"</label>
-                                        <input type="text" class="form-control" id="exampleFormControlInput1" placeholder=" ">
-                                      </div>
-                               <div class="mb-3">
-                                <label class="form-label">الديناية</label>
-                                <select class="form-select" id="disabledSelect">
-                                    <option>1</option>
-                                    <option value="1">One</option>
-                                  </select>
-                                </div> 
-    
-                                <div class="mb-3">
-                                <label class="form-label">النوع</label>
-                                <select class="form-select" id="disabledSelect">
-                                    <option>1</option>
-                                    <option value="1">One</option>
-                                  </select>
-                                </div> 
-                                
-                                    <div class="mb-3">
-                                        <label for="exampleFormControlInput1" class="form-label">  تاريخ الميلاد</label>
-                                        <input type="date" class="form-control" id="exampleFormControlInput1" placeholder=" ">
-                                      </div>
-                                      <div class="mb-3">
-                                        <label for="exampleFormControlInput1" class="form-label">  عنوان الطالب</label>
-                                        <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="">
-                                      </div>
-                                      
-                                      <div class="mb-3">
-                                        <label for="exampleFormControlInput1" class="form-label"> التليفون الارضى </label>
-                                        <input type="text" class="form-control" id="exampleFormControlInput1" placeholder=" ">
-                                      </div>
-                                      <div class="mb-3">
-                                        <label for="exampleFormControlInput1" class="form-label">  التليفون المحمول 1 </label>
-                                        <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="">
-                                      </div>
-                                      <div class="mb-3">
-                                        <label for="exampleFormControlInput1" class="form-label">  التليفون المحمول 2 </label>
-                                        <input type="text" class="form-control" id="exampleFormControlInput1" placeholder=" ">
-                                      </div>
-                                      <div class="mb-3">
-                                        <label for="exampleFormControlInput1" class="form-label"> جهة الترشيح </label>
-                                        <input type="text" class="form-control" id="exampleFormControlInput1" placeholder=" ">
-                                      </div>
-                                      <div class="mb-3">
-                                        <label for="exampleFormControlInput1" class="form-label"> المؤهل </label>
-                                        <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="    ">
-                                      </div>
-                                      <select class="form-select" aria-label="Default select example">
-                                        <option selected>عام الحصول على المؤهل</option>
-                                        <option value="1">One</option>
-                                      </select>
-                                    <div class="mb-3">
-                                        <label for="exampleFormControlInput1" class="form-label"> العام الدراسى </label>
-                                        <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="  ">
-                                      </div>
-                                      <div class="mb-3">
-                                        <label class="form-label">الموقف من التجنيد</label>
-                                        <select class="form-select" id="disabledSelect">
-                                            <option>1</option>
-                                            <option value="1">One</option>
-                                          </select>
-                                        </div> 
-                                        
-                                        <div class=" col-md-12 mb-3">
-                                            <label for="formFile" class="form-label">صورة الطالب الشخصية</label>
-                                            <input class="form-control" type="file" id="formFile">
-                                          </div>
-                                          <div class=" col-md-12 mb-3">
-                                            <label for="formFile" class="form-label">صورة بطاقة الرقم القومى</label>
-                                            <input class="form-control" type="file" id="formFile">
-                                          </div>
-                                          <div class=" col-md-12 mb-3">
-                                            <label for="formFile" class="form-label">صورة شهادة المؤهل الدراسى</label>
-                                            <input class="form-control" type="file" id="formFile">
-                                          </div>
-                                          <div class="mb-3">
-                                            <label class="form-label">اسم الفرع الملتحق فيه الطالب</label>
-                                            <select class="form-select" id="disabledSelect">
-                                                <option>1</option>
-                                                <option value="1">One</option>
-                                              </select>
-                                            </div> 
-                                            
-                                     
-                                <button raised-button type="submit" class="btn btn-danger m-2 pull-right">إضافة</button>
-                                <button raised-button type="submit" class="btn btn-success m-2 pull-right">تراجع</button>
-      
-                                <div class="clearfix"></div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-               
+  <div class="main-content">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="card">
+            <div class="card-header card-header-danger">
+              <h4 class="card-title text-center">إضافة طالب</h4>
             </div>
+            <div class="card-body">
+              <form [formGroup]="StusForm" (submit)="formHandler($event)">
+                <div class="">
+                  <label for="Username" id="Username" class="form-label">
+                    إسم الطالب باللغة العربية
+                  </label>
+                  <input
+                    type="text"
+                    formControlName="Username"
+                    class="form-control"
+                    id="Username"
+                    placeholder=" "
+                  />
+                  <ng-container *ngIf="getUserName.touched">
+                    <div
+                      *ngIf="getUserName.hasError('required')"
+                      id="Username"
+                      class="form-text text-danger"
+                    >
+                      من فضلك ادخل الاسم الطالب باللغة العربية
+                    </div>
+                    <div
+                      *ngIf="getUserName.hasError('minlength')"
+                      id="Username"
+                      class="form-text text-danger"
+                    >
+                      لا يقل الاسم عن 3 حروف
+                    </div>
+                    <div
+                      *ngIf="getUserName.hasError('pattern')"
+                      id="Username"
+                      class="form-text text-danger"
+                    >
+                      ادخل حروف فقط
+                    </div>
+                  </ng-container>
+                </div>
+                <div class="">
+                  <label for="Username" id="Username" class="form-label">
+                    إسم الطالب باللغة الانجليزية
+                  </label>
+                  <input
+                    type="text"
+                    formControlName="userNameE"
+                    class="form-control"
+                    id="Username"
+                    placeholder=" "
+                  />
+                  <ng-container *ngIf="getuserNameE.touched">
+                    <div
+                      *ngIf="getuserNameE.hasError('required')"
+                      id="Username"
+                      class="form-text text-danger"
+                    >
+                      من فضلك ادخل الاسم الطالب باللغة الانجليزية
+                    </div>
+                    <div
+                      *ngIf="getuserNameE.hasError('minlength')"
+                      id="Username"
+                      class="form-text text-danger"
+                    >
+                      لا يقل الاسم عن 3 حروف
+                    </div>
+                    <div
+                      *ngIf="getuserNameE.hasError('pattern')"
+                      id="Username"
+                      class="form-text text-danger"
+                    >
+                      ادخل حروف فقط
+                    </div>
+                  </ng-container>
+                </div>
+                <div class="">
+                  <label for="exampleFormControlInput1" class="form-label">
+                    الرقم القومى"</label
+                  >
+                  <input
+                    type="text"
+                    formControlName="nationalNumber"
+                    class="form-control"
+                    id="exampleFormControlInput1"
+                    placeholder=""
+                  />
+                  <ng-container *ngIf="getnationalNumber.touched">
+                    <div
+                      *ngIf="getnationalNumber.hasError('required')"
+                      id="Username"
+                      class="form-text text-danger"
+                    >
+                      من فضلك ادخل الرقم القومى
+                    </div>
+                    <div
+                      *ngIf="getnationalNumber.hasError('minlength')"
+                      id="Username"
+                      class="form-text text-danger"
+                    >
+                      لا يقل الرقم عن 14
+                    </div>
+                    <div
+                      *ngIf="getnationalNumber.hasError('maxlength')"
+                      id="Username"
+                      class="form-text text-danger"
+                    >
+                      لا يزيد الرقم عن 14
+                    </div>
+                  </ng-container>
+                </div>
+                <!-- <div class="">
+                                        <label for="exampleFormControlInput1" class="form-label">  البريد الإلكترونى"</label>
+                                        <input type="text" formControlName="email" class="form-control" id="exampleFormControlInput1" placeholder=" ">
+                                        <ng-container *ngIf="getemail.touched">
+                                          <div *ngIf="getemail.hasError('required')" id="Username" class="form-text text-danger">
+                                          من فضلك ادخل البريدالالكترونى
+                                          </div>
+                                          <div *ngIf="getemail.hasError('')" id="Username" class="form-text text-danger">
+                                            االبريد الالكترونى غير صالح
+                                            </div>
+
+                                          </ng-container>
+                                      </div> -->
+                <div class="">
+                  <label class="form-label">الديناية</label>
+                  <select
+                    formControlName="religion"
+                    class="form-select"
+                    id="disabledSelect"
+                  >
+                    <option [value]="R" *ngFor="let R of religions">
+                      {{ R }}
+                    </option>
+                  </select>
+                  <ng-container *ngIf="getreligion.touched">
+                    <div
+                      *ngIf="getreligion.hasError('required')"
+                      id="Username"
+                      class="form-text text-danger"
+                    >
+                      من فضلك اختر الديناية
+                    </div>
+                  </ng-container>
+                </div>
+
+                <div class="">
+                  <label class="form-label">النوع</label>
+                  <select formControlName="type" class="form-select">
+                    <option [value]="Ge" *ngFor="let Ge of gender">
+                      {{ Ge }}
+                    </option>
+                  </select>
+                  <ng-container *ngIf="gettype.touched">
+                    <div
+                      *ngIf="gettype.hasError('required')"
+                      id="Username"
+                      class="form-text text-danger"
+                    >
+                      من فضلك اخترالنوع
+                    </div>
+                  </ng-container>
+                </div>
+
+                <div class="">
+                  <label for="exampleFormControlInput1" class="form-label">
+                    تاريخ الميلاد</label
+                  >
+                  <input
+                    type="date"
+                    formControlName="DOB"
+                    class="form-control"
+                    id="exampleFormControlInput1"
+                    placeholder=" "
+                  />
+                  <ng-container *ngIf="getDOB.touched">
+                    <div
+                      *ngIf="getDOB.hasError('required')"
+                      id="Username"
+                      class="form-text text-danger"
+                    >
+                      من فضلك ادخل تاريخ الميلاد
+                    </div>
+                  </ng-container>
+                </div>
+                <div class="">
+                  <label for="exampleFormControlInput1" class="form-label">
+                    عنوان الطالب</label
+                  >
+                  <input
+                    type="text"
+                    formControlName="address"
+                    class="form-control"
+                    id="exampleFormControlInput1"
+                    placeholder=""
+                  />
+                  <ng-container *ngIf="getaddress.touched">
+                    <div
+                      *ngIf="getaddress.hasError('required')"
+                      id="Username"
+                      class="form-text text-danger"
+                    >
+                      من فضلك ادخل العنوان
+                    </div>
+                  </ng-container>
+                </div>
+
+                <div class="">
+                  <label for="exampleFormControlInput1" class="form-label">
+                    التليفون الارضى
+                  </label>
+                  <input
+                    type="text"
+                    formControlName="LinePhone"
+                    class="form-control"
+                    id="exampleFormControlInput1"
+                    placeholder=" "
+                  />
+                  <ng-container *ngIf="getLinePhone.touched">
+                    <div
+                      *ngIf="getLinePhone.hasError('required')"
+                      id="phone"
+                      class="form-text text-danger w-75"
+                    >
+                      من فضلك ادخل رقم المحمول
+                    </div>
+                    <div
+                      *ngIf="getLinePhone.hasError('max')"
+                      id="phone"
+                      class="form-text text-danger w-75"
+                    >
+                      يجب ان يحتوى الرقم على 9 رقم فقط
+                    </div>
+                    <div
+                      *ngIf="getLinePhone.hasError('pattern')"
+                      id="phone"
+                      class="form-text text-danger w-75"
+                    >
+                      رقم المحمول غير صالح
+                    </div>
+                  </ng-container>
+                </div>
+                <div class="">
+                  <label for="exampleFormControlInput1" class="form-label">
+                    التليفون المحمول 1
+                  </label>
+                  <input
+                    type="text"
+                    formControlName="phoneNumber1"
+                    class="form-control"
+                    id="exampleFormControlInput1"
+                    placeholder=""
+                  />
+                  <ng-container *ngIf="getphoneNumber1.touched">
+                    <div
+                      *ngIf="getphoneNumber1.hasError('required')"
+                      id="phone"
+                      class="form-text text-danger w-75"
+                    >
+                      من فضلك ادخل رقم المحمول
+                    </div>
+                    <div
+                      *ngIf="getphoneNumber1.hasError('max')"
+                      id="phone"
+                      class="form-text text-danger w-75"
+                    >
+                      يجب ان يحتوى الرقم على 11 رقم فقط
+                    </div>
+                    <div
+                      *ngIf="getphoneNumber1.hasError('pattern')"
+                      id="phone"
+                      class="form-text text-danger w-75"
+                    >
+                      رقم المحمول غير صالح
+                    </div>
+                  </ng-container>
+                </div>
+                <div class="">
+                  <label for="exampleFormControlInput1" class="form-label">
+                    التليفون المحمول 2
+                  </label>
+                  <input
+                    formControlName="phoneNumber2"
+                    type="text"
+                    class="form-control"
+                    id="exampleFormControlInput1"
+                    placeholder=" "
+                  />
+                  <ng-container *ngIf="getphoneNumber2.touched">
+                    <div
+                      *ngIf="getphoneNumber2.hasError('required')"
+                      id="phone"
+                      class="form-text text-danger w-75"
+                    >
+                      من فضلك ادخل رقم المحمول
+                    </div>
+                    <div
+                      *ngIf="getphoneNumber2.hasError('max')"
+                      id="phone"
+                      class="form-text text-danger w-75"
+                    >
+                      يجب ان يحتوى الرقم على 11 رقم فقط
+                    </div>
+                    <div
+                      *ngIf="getphoneNumber2.hasError('pattern')"
+                      id="phone"
+                      class="form-text text-danger w-75"
+                    >
+                      رقم المحمول غير صالح
+                    </div>
+                  </ng-container>
+                </div>
+                <div class="">
+                  <label for="exampleFormControlInput1" class="form-label">
+                    جهة الترشيح
+                  </label>
+                  <input
+                    type="text"
+                    formControlName="recommand"
+                    class="form-control"
+                    id="exampleFormControlInput1"
+                    placeholder=" "
+                  />
+                  <ng-container *ngIf="getRecommend.touched">
+                    <div
+                      *ngIf="getRecommend.hasError('required')"
+                      id="name"
+                      class="form-text text-danger"
+                    >
+                      من فضلك ادخل جهه الترشيح
+                    </div>
+                    <div
+                      *ngIf="getRecommend.hasError('pattern')"
+                      id="name"
+                      class="form-text text-danger"
+                    >
+                      جهة الترشيح نحتوي علي حروف فقط
+                    </div>
+                    <div
+                      *ngIf="getRecommend.hasError('minlength')"
+                      id="name"
+                      class="form-text text-danger"
+                    >
+                      جهة الترشيح لا يقل عن ثلاث احرف
+                    </div>
+                     </ng-container
+                  >
+                </div>
+                <div class="">
+                  <label for="exampleFormControlInput1" class="form-label">
+                    المؤهل
+                  </label>
+                  <input
+                    type="text"
+                    formControlName="Quali"
+                    class="form-control"
+                    id="exampleFormControlInput1"
+                    placeholder="    "
+                  />
+                  <ng-container *ngIf="getQuality.touched">
+                    <div
+                      *ngIf="getQuality.hasError('required')"
+                      id="name"
+                      class="form-text text-danger"
+                    >
+                      من فضلك ادخل المؤهل
+                    </div>
+                    <div
+                      *ngIf="getQuality.hasError('pattern')"
+                      id="name"
+                      class="form-text text-danger"
+                    >
+                      المؤهل يحتوي علي حروف فقط
+                    </div>
+                    <div
+                      *ngIf="getQuality.hasError('minlength')"
+                      id="name"
+                      class="form-text text-danger"
+                    >
+                      المؤهل لا يقل عن ثلاث احرف
+                    </div>
+                     </ng-container
+                  >
+                </div>
+                <div class="">
+                  <label>عام الحصول على المؤهل</label>
+
+                  <select formControlName="year" class="form-select">
+                    <option *ngFor="let B of year" [value]="B">{{ B }}</option>
+                  </select>
+                  <ng-container *ngIf="getyear.touched">
+                    <div
+                      *ngIf="getyear.hasError('required')"
+                      id="name"
+                      class="form-text text-danger"
+                    >
+                      اختر عام الحصول علي المؤهل
+                    </div>
+                     </ng-container
+                  >
+                </div>
+                <div class="">
+                  <label for="exampleFormControlInput1" class="form-label">
+                    العام الدراسى
+                  </label>
+                  <select formControlName="YearStudy" class="form-select">
+                    <option *ngFor="let B of year" [value]="B">{{ B }}</option>
+                  </select>
+                  <ng-container *ngIf="getYearStudy.touched">
+                    <div
+                      *ngIf="getYearStudy.hasError('required')"
+                      id="name"
+                      class="form-text text-danger"
+                    >
+                      اختر العام الدراسى
+                    </div>
+                     </ng-container
+                  >
+                </div>
+                <div class="">
+                  <label class="form-label">الموقف من التجنيد</label>
+                  <select
+                    formControlName="status"
+                    class="form-select"
+                    id="disabledSelect"
+                  >
+                    <option *ngFor="let Stats of Status" [value]="Stats">
+                      {{ Stats }}
+                    </option>
+                  </select>
+                  <ng-container *ngIf="getstatus.touched">
+                    <div
+                      *ngIf="getstatus.hasError('required')"
+                      id="name"
+                      class="form-text text-danger"
+                    >
+                      اختر موقفك من التجنيد
+                    </div>
+                     </ng-container
+                  >
+                </div>
+
+                <!-- <div class=" col-md-12 mb-1">
+                                            <label for="formFile" class="form-label">صورة الطالب الشخصية</label>
+                                            <input formControlName="personalImage" class="form-control" type="file" id="formFile">
+                                            <ng-container *ngIf="getpersonalImage.touched">
+                                              <div *ngIf="getpersonalImage.hasError('required')" id="Username" class="form-text text-danger">
+                                              من فضلك اضف الصورة الشخصيه
+                                              </div>
+                                              </ng-container>
+                                          </div> -->
+                <!-- <div class=" col-md-12 mb-1">
+                                            <label for="formFile" class="form-label">صورة بطاقة الرقم القومى</label>
+                                            <input formControlName="nationalImage" class="form-control" type="file" id="formFile">
+                                            <ng-container *ngIf="getnationalImage.touched">
+                                              <div *ngIf="getnationalImage.hasError('required')" id="Username" class="form-text text-danger">
+                                              من فضلك اضف صورة البطاقة
+                                              </div>
+                                              </ng-container>
+                                          </div> -->
+                <!-- <div class=" col-md-12 mb-1">
+                                            <label for="formFile" class="form-label">صورة شهادة المؤهل الدراسى</label>
+                                            <input formControlName="QulifImage" class="form-control" type="file" id="formFile">
+                                            <ng-container *ngIf="getQulifImage.touched">
+                                              <div *ngIf="getQulifImage.hasError('required')" id="Username" class="form-text text-danger">
+                                              من فضلك اضف صورى الشهادة المؤهل
+                                              </div>
+                                              </ng-container>
+                                          </div> -->
+                <div class="">
+                  <label class="form-label">اسم الفرع الملتحق فيه الطالب</label>
+                  <select formControlName="branch" class="form-select">
+                    <option selected>Select Branch ...</option>
+                    <option *ngFor="let B of Branches" [value]="B.id">
+                      {{ B.name }}
+                    </option>
+                  </select>
+                  <ng-container *ngIf="getbranch.touched">
+                    <div
+                      *ngIf="getbranch.hasError('required')"
+                      id="Username"
+                      class="form-text text-danger"
+                    >
+                      من فضلك اختر الفرع
+                    </div>
+                  </ng-container>
+                </div>
+
+                <button
+                  (click)="back()"
+                  type="submit"
+                  class="btn btn-success m-2 pull-right"
+                >
+                  تراجع
+                </button>
+
+                <button
+                  raised-button
+                  [disabled]="!StusForm.valid"
+                  (click)="addStudent()"
+                  *ngIf="!flag"
+                  class="btn btn-danger m-2 pull-right"
+                >
+                  إضافة
+                </button>
+                <button
+                  raised-button
+                  (click)="Save()"
+                  *ngIf="flag"
+                  class="btn btn-warning m-2 pull-right"
+                >
+                  تعديل
+                </button>
+
+                <div class="clearfix"></div>
+              </form>
+            </div>
+          </div>
         </div>
-      </div> 
-    
+      </div>
     </div>
-    
-    
-      <!-- tabel -->
-    
+  </div>
+</div>
+
+<!-- tabel
+
       <div class="main-content dd">
         <div class="container-fluid">
             <div class="row">
@@ -134,10 +538,10 @@
                             <h4 class="card-title text-center text-white  ">عرض الطلاب المسجلين</h4>
                         </div>
       <div class="card-body">
-        <div class="table-responsive">
+        <div class=" table table-striped tabel-hover table-bordered text-center">
             <table class="table table-bordered table-hover text-center">
                 <thead class=" text-primary">
-                    
+
                     <th>
                         اسم الطالب
                     </th>
@@ -145,7 +549,7 @@
                       الرقم القومى
                   </th>
                   <th>
-                    المؤهل  
+                    المؤهل
                 </th>
                     <th>
                         التليفون للتواصل
@@ -156,238 +560,271 @@
                     <th>
                         اسم الفرع
                   </th>
-                  <th>
-                    تفاصيل 
-                </th>
                 <th>
-                   الحالة 
+                   الحالة
               </th>
-                    <th>
-                        تعديل
-                    </th>
+              <th>تفاصيل</th>
+                    <th>  تعديل   </th>
                     <th>
                         حذف
                     </th>
                 </thead>
                 <tbody>
-                    <tr>
+                    <tr *ngFor="let s of students  let i =index"  >
                         <td>
-                            Mayar
-                        </td>
-                        <td>
-                          29802012341
+                            {{s.arabicFullName}}
                         </td>
                         <td>
-                            Bac
+                          {{s.traineeNationalId}}
                         </td>
                         <td>
-                            01018661641
+                            {{s.academicQualification}}
+                        </td>
+                        <td>
+                            {{s.firstPhoneNumber}}
                         </td>
                         <td >
-                           no 
+                           {{s.militaryStatus}}
                         </td>
                         <td >
-                           egypt 
+                           {{s.branchName}}
                         </td>
                         <td >
-                           Details 
-                        </td>
+                          <button (click)="deactivateStudent(s.traineeId)" class="btn btn-outline-danger ss" [ngStyle]="{'color': s.isActive ? '#28a745' : '#dc3545'}">
+                            <ng-container *ngIf="s.isActive; else inactiveIcon">
+                              <i class="bi bi-toggle-on"></i>
+                            </ng-container>
+                            <ng-template #inactiveIcon>
+                              <i class="bi bi-toggle2-off"></i>
+                            </ng-template>
+                          </button>                        </td>
                         <td >
-                           Active 
-                        </td>
-                        <td><button mat-raised-button type="submit" class="btn btn-danger ">حذف</button> </td>
-                        <td> <button mat-raised-button type="submit" class="btn btn-danger ">تعديل</button>
-                       
+
+                          <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" [attr.data-bs-target]="'#offcanvasExample-'+s.traineeId" aria-controls="offcanvasExample">
+                            <i class="bi bi-eye-fill"></i>
+                          </button>
+                          <div class="offcanvas offcanvas-start" tabindex="-1" [id]="'offcanvasExample-'+s.traineeId" aria-labelledby="offcanvasExampleLabel">
+                            <div class="offcanvas-header">
+                              <h5 class="offcanvas-title text-center" id="offcanvasExampleLabel">Detalis</h5>
+                              <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                            </div>
+                            <div class="offcanvas-body m-auto text-center">
+                              <div class="card" style="width: 20rem;">
+                                <ul class="list-group list-group-flush text-centr ">
+                                  <li class="list-group-item text-danger"><span class="btn btn-outline-dark" >الاسم </span>      {{s.arabicFullName}}</li>
+                                  <li class="list-group-item text-danger"> <span class="btn btn-outline-dark">رقم التليفون</span>   {{s.firstPhoneNumber}} </li>
+                                  <li class="list-group-item text-danger"> <span class="btn btn-outline-dark">الفرع </span>    {{s.branchName}}</li>
+                                  <li class="list-group-item text-danger"> <span class="btn btn-outline-dark"> الديانة</span>   {{s.religion}}</li>
+                                  <li class="list-group-item text-danger"> <span class="btn btn-outline-dark"> العنوان</span>   {{s.address}}</li>
+                                  <li class="list-group-item text-danger"> <span class="btn btn-outline-dark"> النوع</span>    {{s.gender}}</li>
+                                  <li class="list-group-item text-danger"> <span class="btn btn-outline-dark"> الترشيح</span>    {{s.recommender}}</li>
+                                  <li class="list-group-item text-danger"> <span class="btn btn-outline-dark"> العام الدراسى</span>   {{s.academicYear}}</li>
+                                </ul>
+
+                              </div>
+
+
+
+                            </div>
+                          </div>
+                       </td>
+                       <td >
+                        <button (click)="UdateStudent(s.traineeId)" class="btn btn-success"><i class="bi bi-pencil-square"></i></button>
+                     </td>
+                     <td >
+                      <button  (click)="DeleteStudent(s.traineeId)" class="btn btn-danger"><i class="bi bi-trash3-fill"></i></button>
+                   </td>
                     </tr>
                 </tbody>
             </table>
         </div>
       </div>
-      </div>
-
-      <div class="container">
-        <div class="main-content ">
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="card">
-                            <div class="card-header card-header-danger">
-                                <h4 class="card-title text-center ">إضافة كورس للطالب</h4>
-                            </div>
-                            <div class="card-body text-right">
-                                <form>
-                                      <div class="mb-3">
-                                        <label for="branchSelect" class="form-label">بحث بالفرع</label>
-                                        <select id="branchSelect" class="form-select">
-                                          <option selected>ادخل اسم الفرع</option>
-                                          <option>1</option>
-                                        </select>
-                                      </div>
-                                      <div class="mb-3">
-                                        <label for="nameSelect" class="form-label">بحث بالاسم</label>
-                                        <select id="nameSelect" class="form-select">
-                                          <option selected>ادخل اسم الطالب</option>
-                                          <option>1</option>
-                                        </select>
-                                      </div>
-                                      <div class="mb-3">
-                                        <label for="courseSelect" class="form-label">اسم الكورس</label>
-                                        <select id="courseSelect" class="form-select">
-                                          <option selected>اختر الكورس</option>
-                                          <option>1</option>
-                                        </select>
-                                      </div>
-                                      <div class="mb-3">
-                                        <label for="time" class="form-label">تاريخ التقديم</label>
-                                        <input type="date" class="form-control" id="time"  placeholder="يوم/شهر/سنة" aria-describedby="emailHelp">
-                                      </div>
-                                      <div class="mb-3">
-                                        <label for="disabledSelect" class="form-label">اللغة</label>
-                                        <select id="disabledSelect" class="form-select">
-                                          <option>1</option>                                    
-                                        </select>
-                                      </div>
-                                    <button class="btn btn-primary ms-2">تراجع</button>
-                                    <button class="btn btn-primary ms-2">اضافة</button>
-      
-                                  </form>
-      
-                           <!-- table -->
-                            </div>
-                        </div>
-                    </div>
-                   
-                </div>
-            </div>
-          </div> 
-         
-              <!-- table 1-->
-              <div class="main-content mt-3">
-                <div class="container-fluid">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="card">
-                                <div class="card-header card-header-dark bg-dark">
-                                    <h4 class="card-title text-center text-white  ">بيانات الطالب</h4>
-                                </div>
-              <div class="card-body">
-                <div class="table-responsive">
-                    <table class="table text-center">
-                        <thead class=" text-primary">
-                           
-                          
-                          <th>
-                            م
-                          </th>
-                          <th>
-                              اسم الطالب
-                          </th>
-                          <th>
-                          الرقم القومي
-                        </th>
-                        <th>
-                          المؤهل
-                      </th>
-                      <th>تليفون للتواصلth>
-                          <th>
-                              الموقف التجنيدي
-                          </th>
-                          <th>
-                              اسم الفرع
-                          </th>
-                          <th>
-                            تفاصيل
-                        </th>
-                      </thead>
-                      <tbody>
-                          <tr>
-                              <td>
-                                  1
-                              </td>
-                              <td>
-                                hagar
-                              </td>
-                              <td>
-                                29904058800983
-                              </td>
-                              <td >
-                                 عالي 
-                              </td>
-                              <td>010123469861</td>
-                              <td>مؤجل</td>
-                              <td>شبين</td>
-                              <td><button mat-raised-button type="submit" class="btn btn-danger ">تفاصيل</button> </td>
-                          </tr>
-                      </tbody>
-                  </table>
-                </div>
-              </div>
-              </div>
-          </div>
-                    </div>
-                </div>
-              </div>
-          <!-- table 2-->
-          <div class="main-content mt-3">
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="card">
-                            <div class="card-header card-header-dark bg-dark">
-                                <h4 class="card-title text-center text-white  ">كورسات الطالب</h4>
-                            </div>
-          <div class="card-body">
-            <div class="table-responsive">
-                <table class="table text-center">
-                    <thead class=" text-primary">
-                       
-                      
-                      <th>
-                        م
-                      </th>
-                      <th>
-                          اسم الكورس 
-                      </th>
-                      <th>
-                      وصف الكورس
-                    </th>
-                    <th>
-                      عددالساعات 
-                  </th>
-                  <th>تاريخ التقديم</th>
-                      <th>
-                          نكلفة الكورس
-                      </th>
-                      <th>
-                          حذف
-                      </th>
+      </div>-->
+<p class="p-3 d-flex justify-content-start">
+  <button
+    class="btn btn-primary p-3 fs-4"
+    type="button"
+    data-bs-toggle="collapse"
+    data-bs-target="#collapseExample"
+    aria-expanded="false"
+    aria-controls="collapseExample"
+  >
+    عرض ببيانات الطلاب
+  </button>
+</p>
+<div class="collapse" id="collapseExample">
+  <div class="card card-body">
+    <div class="main-content mt-3">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="card-body">
+              <div
+                class="table table-striped tabel-hover table-bordered text-center"
+              >
+                <table class="table table-bordered table-hover text-center">
+                  <thead class="text-primary">
+                    <th>اسم الطالب</th>
+                    <th>الرقم القومى</th>
+                    <th>المؤهل</th>
+                    <th>التليفون للتواصل</th>
+                    <th>الموقف التجنيدى</th>
+                    <th>اسم الفرع</th>
+                    <th>الحالة</th>
+                    <th>تفاصيل</th>
+                    <th>تعديل</th>
+                    <th>حذف</th>
                   </thead>
                   <tbody>
-                      <tr>
-                          <td>
-                              1
-                          </td>
-                          <td>
-                            Mayar
-                          </td>
-                          <td>
-                              mayar@gmail.com
-                          </td>
-                          <td>
-                            Mayar Ashraf
-                          </td>
-                          <td >
-                             01018661641 
-                          </td>
-                          <td>30/10/2023</td>
-                          <td><button mat-raised-button type="submit" class="btn btn-danger ">حذف</button> </td>
-                      </tr>
+                    <tr *ngFor="let s of students; let i = index">
+                      <td>
+                        {{ s.arabicFullName }}
+                      </td>
+                      <td>
+                        {{ s.traineeNationalId }}
+                      </td>
+                      <td>
+                        {{ s.academicQualification }}
+                      </td>
+                      <td>
+                        {{ s.firstPhoneNumber }}
+                      </td>
+                      <td>
+                        {{ s.militaryStatus }}
+                      </td>
+                      <td>
+                        {{ s.branchName }}
+                      </td>
+                      <td>
+                        <button
+                          (click)="deactivateStudent(s.traineeId)"
+                          class="btn btn-outline-danger ss"
+                          [ngStyle]="{
+                            color: s.isActive ? '#28a745' : '#dc3545'
+                          }"
+                        >
+                          <ng-container *ngIf="s.isActive; else inactiveIcon">
+                            <i class="bi bi-toggle-on"></i>
+                          </ng-container>
+                          <ng-template #inactiveIcon>
+                            <i class="bi bi-toggle2-off"></i>
+                          </ng-template>
+                        </button>
+                      </td>
+                      <td>
+                        <button
+                          class="btn btn-primary"
+                          type="button"
+                          data-bs-toggle="offcanvas"
+                          [attr.data-bs-target]="
+                            '#offcanvasExample-' + s.traineeId
+                          "
+                          aria-controls="offcanvasExample"
+                        >
+                          <i class="bi bi-eye-fill"></i>
+                        </button>
+                        <div
+                          class="offcanvas offcanvas-start"
+                          tabindex="-1"
+                          [id]="'offcanvasExample-' + s.traineeId"
+                          aria-labelledby="offcanvasExampleLabel"
+                        >
+                          <div class="offcanvas-header">
+                            <h5
+                              class="offcanvas-title text-center"
+                              id="offcanvasExampleLabel"
+                            >
+                              Detalis
+                            </h5>
+                            <button
+                              type="button"
+                              class="btn-close text-reset"
+                              data-bs-dismiss="offcanvas"
+                              aria-label="Close"
+                            ></button>
+                          </div>
+                          <div class="offcanvas-body m-auto text-center">
+                            <div class="card" style="width: 20rem">
+                              <ul
+                                class="list-group list-group-flush text-centr"
+                              >
+                                <li class="list-group-item text-danger">
+                                  <span class="btn btn-outline-dark"
+                                    >الاسم
+                                  </span>
+                                  {{ s.arabicFullName }}
+                                </li>
+                                <li class="list-group-item text-danger">
+                                  <span class="btn btn-outline-dark"
+                                    >رقم التليفون</span
+                                  >
+                                  {{ s.firstPhoneNumber }}
+                                </li>
+                                <li class="list-group-item text-danger">
+                                  <span class="btn btn-outline-dark"
+                                    >الفرع
+                                  </span>
+                                  {{ s.branchName }}
+                                </li>
+                                <li class="list-group-item text-danger">
+                                  <span class="btn btn-outline-dark">
+                                    الديانة</span
+                                  >
+                                  {{ s.religion }}
+                                </li>
+                                <li class="list-group-item text-danger">
+                                  <span class="btn btn-outline-dark">
+                                    العنوان</span
+                                  >
+                                  {{ s.address }}
+                                </li>
+                                <li class="list-group-item text-danger">
+                                  <span class="btn btn-outline-dark">
+                                    النوع</span
+                                  >
+                                  {{ s.gender }}
+                                </li>
+                                <li class="list-group-item text-danger">
+                                  <span class="btn btn-outline-dark">
+                                    الترشيح</span
+                                  >
+                                  {{ s.recommender }}
+                                </li>
+                                <li class="list-group-item text-danger">
+                                  <span class="btn btn-outline-dark">
+                                    العام الدراسى</span
+                                  >
+                                  {{ s.academicYear }}
+                                </li>
+                              </ul>
+                            </div>
+                          </div>
+                        </div>
+                      </td>
+                      <td>
+                        <button
+                          (click)="UdateStudent(s.traineeId)"
+                          class="btn btn-success"
+                        >
+                          <i class="bi bi-pencil-square"></i>
+                        </button>
+                      </td>
+                      <td>
+                        <button
+                          (click)="DeleteStudent(s.traineeId)"
+                          class="btn btn-danger"
+                        >
+                          <i class="bi bi-trash3-fill"></i>
+                        </button>
+                      </td>
+                    </tr>
                   </tbody>
-              </table>
+                </table>
+              </div>
             </div>
           </div>
-          </div>
+        </div>
       </div>
-                </div>
-            </div>
-          </div>
+    </div>
+  </div>
+</div>
