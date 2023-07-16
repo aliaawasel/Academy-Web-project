@@ -2,8 +2,8 @@ import { Component } from '@angular/core';
 import { PaymentService } from 'src/Service/Payment.Service';
 import { Validators,FormControl,FormGroup } from '@angular/forms';
 import { BranchService } from 'src/Service/branch.service';
-import { CourseService } from 'src/Service/course.service';
-import { StudentsServices } from 'src/Service/StudentsServices.service';
+import { CourseService } from 'src/Service/Course.Servise';
+import { tranieeServices } from 'src/Service/traniee.services';
 @Component({
   selector: 'app-payments',
   templateUrl: './payments.component.html',
@@ -11,33 +11,29 @@ import { StudentsServices } from 'src/Service/StudentsServices.service';
 })
 export class PaymentsComponent {
   branchs:any []=[]
-  courses:any
-  traniees:any
+  traineeCourses:any
+  tranieesBybranch:any
+  branchId:any
   traineeId:any
-  tarineeTrainsactionData:any
-  isEdit:boolean=false;
-  courseName:any
-
-  selectedCourseID!:number;
-  selectedSubjectID!:Number;
+  selectedCourseIndex:any;
   courceId:any
-  courseId:any
+  courseName:any
+  tarineeTrainsactionData:any
+  AllTransactions:any
 
-
-  // courseId:any
   constructor(
     private paymentService:PaymentService,
     private branchService:BranchService,
-    private StudentsServices:StudentsServices,
-    private CourseService:CourseService,
+    private tranieeServices:tranieeServices,
+    private coursesService:CourseService,
     ){}
 
     trainsacteForm =new FormGroup({
       branchSelect: new FormControl('',[Validators.required]),
       studentNameSelected: new FormControl('',[Validators.required]),
       courseSelect: new FormControl('',[Validators.required]),
-      Remainingamount: new FormControl('',[Validators.required,Validators.pattern('^[0-9]+$')]),
       Theamountpaid: new FormControl('',[Validators.required,Validators.pattern('^[0-9]+$')]),
+      notes: new FormControl(''),
 
   })
 
@@ -49,116 +45,112 @@ export class PaymentsComponent {
   };
   get getcourseSelect(){
     return this.trainsacteForm.controls['courseSelect']
-  };
-  get getRemainingamount(){
-    return this.trainsacteForm.controls['Remainingamount']
-  };  get getTheamountpaid(){
+  }; 
+  get getTheamountpaid(){
     return this.trainsacteForm.controls['Theamountpaid']
-  };
+  }; 
+  get getnotes(){
+    return this.trainsacteForm.controls['notes']
+  }; 
 
-  formHandler(e:any){
+  formHandler(e:any){}
+
+  loadTransactions():void{
+    this.getCoursesAccountStatements();
+    this.getAllTransactions();
 
   }
-
-
-
-
+  
    ngOnInit(): void {
-
-
+ 
 
       this.branchService.GetAllBranch().subscribe({
         next: (response: any) => {
-          this.branchs = response;
-          console.log(response);
+          this.branchs = response; 
+          console.log(response);     
         },
         error: (error) => {
           console.log(error);
         }
-      });
-
-     this.StudentsServices.GetAllStudents().subscribe({
-       next:(response :any)=>{
-         this.traniees=response
-         console.log(response);
-       },
-       error:()=>{},
-     })
-     this.CourseService.getAllCourses().subscribe({
-      next:(response :any)=>{
-        this.courses=response
-        console.log(response);
-      },
-      error:()=>{},
-    })
-
-
-
-
+      });    
       }
 
 
-      getTraineeId(){
+      GetTranieeByBranchIdAll(){
+        console.log("traineeid");
+        
+        this.branchId=this.trainsacteForm.value.branchSelect
+        this.tranieeServices.GetTranieeByBranchIdAll(this.branchId).subscribe({
+          next:(response :any)=>{
+            this.tranieesBybranch=response
+            console.log(response);     
+          },
+          error:()=>{},
+        })
+      }  
+
+      GetTranieeCourses(){
         this.traineeId=this.trainsacteForm.value.studentNameSelected
-        console.log(this.traineeId);
-      //   this.paymentService.GetCoursesAccountsStatements(this.traineeId).subscribe({
-      //    next: (response: any) => {
-      //      this.courses = response;
-      //      console.log(response);
-      //    },
-      //    error: (error) => {
-      //      console.log(error);
-      //    }
-      //  });
+        this.coursesService.getcoursesByTraineeId(this.traineeId).subscribe({
+          next:(response :any)=>{
+            this.traineeCourses=response
+            console.log(response);     
+          },
+          error:()=>{},
+        })
+        this.getCoursesAccountStatements();
+        this.getAllTransactions();
+      }
 
-       this.paymentService.GetAllTransction(this.traineeId).subscribe({
-        next: (response: any) => {
-          this.tarineeTrainsactionData = response;
-          console.log( this.tarineeTrainsactionData);
-        },
-        error: (error) => {
-          console.log(error);
+ 
+      getCoursesAccountStatements(){
+        this.paymentService.GetCoursesAccountsStatements(this.traineeId).subscribe({
+          next:(response :any)=>{
+            this.tarineeTrainsactionData=response
+            console.log(response);     
+          },
+          error:()=>{},
+        })
         }
-       })
 
+        getAllTransactions(){
+          this.paymentService.GetAllTransction(this.traineeId).subscribe({
+            next:(response :any)=>{
+              this.AllTransactions=response
+              console.log(response);     
+            },
+            error:()=>{},
 
-
-
-
-  }
-  getCourseId(){
-    this.courceId=this.trainsacteForm.value.courseSelect;
-    console.log(this.courceId);
-
-    this.CourseService.getCourseById(this.courceId).subscribe((response:any)=>{
-      this.courseName=response[0].courseName;
-      console.log(response);
-
-    })
-   }
-
-  addTrainsaction(){
-    const today = new Date();
-    const day = today.getDate();
-const month = today.getMonth() + 1;
-const year = today.getFullYear();
-
-        const trainsaction={
-      courseName:this.courseName,
-      transactionDateTime:day+month+year,
-      receivedMoneyAmount:this.trainsacteForm.value.Theamountpaid,
-      dashboardUser:"sara",
-      notes:"لا يوجد",
-      traineeId:this.traineeId,
-      courseId: this.courceId,
-    }
-    console.log(trainsaction);
-    this.paymentService.AddTransction(trainsaction).subscribe(()=>{
-      console.log("added");
-      // this.loadSubjects();
-      this.trainsacteForm.reset();
-
-    })
-
-  }
+          })
+          
+        }
+        addTrainsaction(){
+          this.selectedCourseIndex=this.trainsacteForm.value.courseSelect;
+      
+          const trainsaction={
+                  courseName:this.traineeCourses[this.selectedCourseIndex].courseName,
+                  transactionDateTime:new Date().toISOString(),
+                  receivedMoneyAmount:Number(this.trainsacteForm.value.Theamountpaid),
+                  dashboardUser:"mayar",
+                  notes:this.trainsacteForm.value.notes,
+                  traineeId:Number(this.traineeId),
+                  courseId: this.traineeCourses[this.selectedCourseIndex].courseId
+                }
+                console.log(trainsaction);
+                    this.paymentService.AddTransction(trainsaction).subscribe(()=>{
+                      console.log("added");
+                      // this.loadSubjects();
+                      this.trainsacteForm.reset();
+                
+                    })
+                    // this.getCoursesAccountStatements();
+                    // this.getAllTransactions();
+                    this.loadTransactions();
+        }
+        
+  
+        back(){
+          this.trainsacteForm.reset();
+        }
 }
+ 

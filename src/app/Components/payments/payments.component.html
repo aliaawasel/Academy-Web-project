@@ -13,19 +13,22 @@
                     <label for="branchSelect" class="form-label"
                       >اختر الفرع</label
                     >
-                    <select id="branchSelect"  class="form-select" formControlName="branchSelect">
+                    <select id="branchSelect"  class="form-select"  (change)="GetTranieeByBranchIdAll()"formControlName="branchSelect">
                       <option *ngFor="let branche of branchs"[value]="branche.id">{{branche.name}}</option>
                     </select>
                     <ng-container *ngIf="getbranchSelect.touched" >
                         <div *ngIf="getbranchSelect.hasError('required')" id="subjectName" class="form-text text-danger  w-75">
                           من فضلك ادخل الاسم المادة                                      </div>
+                      
+                 
 
                     </ng-container>
                   </div>
+                 <ng-container  *ngFor="let branche of branchs">
                   <div class="mb-3">
                     <label for="studentNameSelected" class="form-label">اختر الاسم</label>
-                    <select id="studentNameSelected"  (change)="getTraineeId()" class="form-select" formControlName="studentNameSelected">
-                        <option *ngFor="let traniee of traniees" [value]="traniee.traineeId" >{{traniee.arabicFullName}}</option>
+                    <select id="studentNameSelected"  (change)="GetTranieeCourses()" class="form-select" formControlName="studentNameSelected">
+                        <option [value]="tranieesBybranch.traineeId" >{{tranieesBybranch.arabicFullName}}</option>
                     </select>
                     <ng-container *ngIf="getstudentNameSelected.touched" >
                         <div *ngIf="getstudentNameSelected.hasError('required')" id="studentNameSelected" class="form-text text-danger  w-75">
@@ -33,43 +36,25 @@
                     </ng-container>
                   </div>
 
-
+               
                     <div class="mb-3">
                         <label for="courseSelect" class="form-label"
                           >اسم الكورس</label
                         >
-
-                        <select id="courseSelect" (change)="getCourseId()" class="form-select" formControlName="courseSelect">
-                          <option *ngFor="let course of courses" [value]="course.courseId">{{course.courseName}}</option>
+    
+                        <select id="courseSelect"  class="form-select" formControlName="courseSelect">
+                          <option *ngFor="let course of traineeCourses; let i=index"  [value]="i">{{course.courseName}}</option>
                         </select>
                         <ng-container *ngIf="getcourseSelect.touched" >
                             <div *ngIf="getcourseSelect.hasError('required')" id="courseSelect" class="form-text text-danger  w-75">
                               من فضلك اختر اسم الكورس                                     </div>
-                        </ng-container>
-
+                        </ng-container>      
+                      
                       </div>
-                      <ng-container *ngFor="let course of courses">
+                      <ng-container *ngFor="let course of traineeCourses">
                       <div class="mb-3">
                         <label for="Remainingamount" class="form-label">
                           المبلغ المستلم الان </label
-                        >
-                        <input
-                          type="input"
-                          class="form-control"
-                          id="Remainingamount"
-                          formControlName="Remainingamount"
-                          aria-describedby="Remainingamount"
-                        />
-                        <ng-container *ngIf="getRemainingamount.touched" >
-                            <div *ngIf="getRemainingamount.hasError('required')" id="Remainingamount" class="form-text text-danger  w-75">
-                              من فضلك ادخل المبلغ المستلم                                      </div>
-                              <div *ngIf="getRemainingamount.hasError('pattern')" id="Remainingamount" class="form-text text-danger  w-75">
-                                من فضلك ادخل المبلغ بالارقام                                     </div>
-                            </ng-container>
-                      </div>
-                      <div class="mb-3">
-                        <label for="The amount paid" class="form-label">
-                          المبلغ المتبقى </label
                         >
                         <input
                           type="input"
@@ -78,71 +63,123 @@
                           formControlName="Theamountpaid"
                           aria-describedby="Theamountpaid"
                         />
-                        <ng-container *ngIf="getRemainingamount.touched" >
-                            <div *ngIf="getTheamountpaid.hasError('required')" id="Theamountpaid" class="form-text text-danger  w-75">
-                              من فضلك ادخل المبلغ المتبقى                                     </div>
-                              <div *ngIf="getTheamountpaid.hasError('pattern')" id="Theamountpaid" class="form-text text-danger  w-75">
-                                من فضلك ادخل الاسم المبلغ بالارقام                                      </div>
+                        <ng-container *ngIf="getTheamountpaid.touched" >
+                            <div *ngIf="getTheamountpaid.hasError('required')" id="Remainingamount" class="form-text text-danger  w-75">
+                              من فضلك ادخل المبلغ المستلم                                      </div>
+                              <div *ngIf="getTheamountpaid.hasError('pattern')" id="Remainingamount" class="form-text text-danger  w-75">
+                                من فضلك ادخل المبلغ بالارقام                                     </div>
                             </ng-container>
                       </div>
+                      <div class="mb-3">
+                        <label for="The amount paid" class="form-label">
+                         ملاحظات </label
+                        >
+                        <input
+                          type="input"
+                          class="form-control"
+                          id="notes"
+                          formControlName="notes"
+                          aria-describedby="notes"
+                        />
+          
+                      </div>
+                 </ng-container>
                   </ng-container>
 
-                  <button class="btn btn-primary ms-2">تراجع</button>
+                  <button class="btn btn-primary ms-2" (click)="back()">تراجع</button>
                   <button  [disabled]="!trainsacteForm.valid" class="btn btn-primary ms-2" (click)="addTrainsaction()">اضافة</button>
                 </form>
-
-                <!-- table -->
+  
               </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-
-    <div class="main-content mt-3">
-        <div class="container-fluid">
-          <div class="row">
-            <div class="col-md-12">
-              <div class="card">
-                <div class="card-header card-header-dark bg-dark">
-                  <h4 class="card-title text-center text-white">
-                    كشف حساب بالكورسات الحاليه
-                  </h4>
-                </div>
-                <div class="card-body">
-                  <div class="table-responsive">
-                    <table class="table text-center">
-                      <thead class="text-primary">
-                        <th>م</th>
-                        <th>اسم الكورس</th>
-                        <th>تاريخ التقديم</th>
-                        <th>الحالة</th>
-                        <th>التكلفه الاجماليه للكورس</th>
-                        <th>المبلغ المدفوع حتى الان</th>
-                        <th>المبلغ المتبقى</th>
-                        <th>المستخدم القائم بالدفع</th>
-                        <th>ملاحظات</th>
-                        <th>حذف</th>
-                      </thead>
-                      <tbody>
-                        <tr>
-                          <td>1</td>
-                          <td>Html</td>
-                          <td>2/2/2023</td>
-                          <td>مطلوب</td>
-                          <td>3000 $</td>
-                          <td>2000 $</td>
-                          <td>1000 $</td>
-                          <td>mayar</td>
-                          <td>notes</td>
-                          <td>حذف</td>
-                        </tr>
-                      </tbody>
-                    </table>
-                  </div>
-                </div>
-              </div>
+                  <!-- table 1 -->
+<div class="main-content mt-3">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card">
+          <div class="card-header card-header-dark bg-dark">
+            <h4 class="card-title text-center text-white">
+              كشف حساب بالكورسات الحاليه
+            </h4>
+          </div>
+          <div class="card-body">
+            <div class="table-responsive">
+              <table class="table text-center">
+                <thead class="text-primary">
+                  <th>م</th>
+                  <th>اسم الكورس</th>
+                  <th>التكلفه الاجماليه للكورس</th>
+                  <th>المبلغ المدفوع حتى الان</th>
+                  <th>المبلغ المتبقى</th>
+                  <th>الحالة</th>
+            
+                </thead>
+                <tbody>
+                  <tr *ngFor="let courseData of tarineeTrainsactionData;let i=index">
+                    <td>{{i+1}}</td>
+                    <td>{{courseData.courseName}}</td>
+                    <td>{{courseData.courseCost}}</td>
+                    <td>{{courseData.totalReceivedMoneyAmount}}</td>
+                    <td>{{courseData.remainingMoneyAmount}}</td>
+                    <td>{{courseData.paymentStatus}}</td>
+                  </tr>
+                </tbody>
+              </table>
             </div>
           </div>
         </div>
-      </div>
+      </div>
+    </div>
+  </div>
+  </div>
+
+                  <!-- table 2 -->
+
+
+<div class="main-content mt-3">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card">
+          <div class="card-header card-header-dark bg-dark">
+            <h4 class="card-title text-center text-white">
+              كشف حساب  بالمعاملات الماية
+            </h4>
+          </div>
+          <div class="card-body">
+            <div class="table-responsive">
+              <table class="table text-center">
+                <thead class="text-primary">
+                  <th>م</th>
+                  <th>اسم الكورس</th>
+                  <th>تاريخ و وقت المعاملة</th>
+                  <th>المبلغ المستلم </th>
+                  <th>المستخدم القائم بالعملية</th>
+                  <th>ملاحظات</th>
+                  <th>حذف</th>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let trainsactionData of AllTransactions;let i=index">
+                    <td>{{i+1}}</td>
+                    <td>{{trainsactionData.courseName}}</td>
+                    <td>{{trainsactionData.transactionDateTime}}</td>
+                    <td>{{trainsactionData.receivedMoneyAmount}}</td>
+                    <td>{{trainsactionData.dashboardUser}}</td>
+                    <td>{{trainsactionData.notes}}</td>
+                    <td>حذف</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+
