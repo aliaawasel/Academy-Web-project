@@ -43,6 +43,22 @@ export class GroupsComponent implements OnInit {
     );
   }
 
+  setFalseValueAcademyNumbers: boolean = true;
+  setFalseValuegroupsPage: boolean = true;
+  setFalseValueusersPage: boolean = true;
+  setFalseValuebranchesPage: boolean = true;
+  setFalseValuecoursesPage: boolean = true;
+  setFalseValuesubjectsPage: boolean = true;
+  setFalseValuetraineeAdditionPage: boolean = true;
+  resetFalsyValyes() {
+    this.setFalseValueAcademyNumbers=true;
+    this.setFalseValuegroupsPage = true;
+    this.setFalseValueusersPage = true;
+    this.setFalseValuebranchesPage = true;
+    this.setFalseValuecoursesPage = true;
+    this.setFalseValuesubjectsPage = true;
+    this.setFalseValuetraineeAdditionPage = true;
+  }
   addNewGroup() {
     if (this.GroupAuthForm.value.all) {
       const Group = {
@@ -63,19 +79,45 @@ export class GroupsComponent implements OnInit {
         this.loadAllGroubs();
         this.GroupAuthForm.reset();
       });
-    } else {
+    }
+    else {
+      if (this.GroupAuthForm.value.academyinnumber == null) {
+        this.setFalseValueAcademyNumbers = false;
+      }
+      if (this.GroupAuthForm.value.Groups == null) {
+        this.setFalseValuegroupsPage = false;
 
+      }
+      if (this.GroupAuthForm.value.users == null) {
+        this.setFalseValueusersPage = false;
+      }
+      if (this.GroupAuthForm.value.branches == null) {
+        this.setFalseValuebranchesPage = false;
+
+      }
+      if (this.GroupAuthForm.value.Courses == null) {
+        this.setFalseValuecoursesPage = false;
+
+      }
+      if (this.GroupAuthForm.value.Subject == null) {
+        this.setFalseValuesubjectsPage = false;
+
+      }
+      if (this.GroupAuthForm.value.Student == null) {
+        this.setFalseValuetraineeAdditionPage = false;
+
+      }
       const Group = {
         groupName: this.GroupAuthForm.value.name,
-        academyInNumbersPage: this.GroupAuthForm.value.academyinnumber,
-        groupsPage: this.GroupAuthForm.value.Groups,
-        usersPage: this.GroupAuthForm.value.users,
-        branchesPage: this.GroupAuthForm.value.branches,
-        coursesPage: this.GroupAuthForm.value.Courses,
-        subjectsPage: this.GroupAuthForm.value.Subject,
-        traineeAdditionPage: this.GroupAuthForm.value.Student,
-        coursesToTraineeAdditionPage: this.GroupAuthForm.value.Student,
-        traineeCombinedAccountStatementPage: this.GroupAuthForm.value.Student,
+        academyInNumbersPage: this.setFalseValueAcademyNumbers,
+        groupsPage: this.setFalseValuegroupsPage,
+        usersPage: this.setFalseValueusersPage,
+        branchesPage: this.setFalseValuebranchesPage,
+        coursesPage: this.setFalseValuecoursesPage,
+        subjectsPage: this.setFalseValuesubjectsPage,
+        traineeAdditionPage: this.setFalseValuetraineeAdditionPage,
+        coursesToTraineeAdditionPage: this.setFalseValuetraineeAdditionPage,
+        traineeCombinedAccountStatementPage: this.setFalseValuetraineeAdditionPage,
       }
 
       console.log(Group);
@@ -83,6 +125,7 @@ export class GroupsComponent implements OnInit {
         console.log("Done New Group Added");
         this.loadAllGroubs();
         this.GroupAuthForm.reset();
+        this.resetFalsyValyes();
       });
     }
 
@@ -120,7 +163,7 @@ export class GroupsComponent implements OnInit {
   }
 
   saveUpdate() {
-    const group = {
+    const group2 = {
       groupName: this.GroupAuthForm.value.name,
       academyInNumbersPage: this.GroupAuthForm.value.academyinnumber,
       groupsPage: this.GroupAuthForm.value.Groups,
@@ -134,12 +177,14 @@ export class GroupsComponent implements OnInit {
       groupId: this.selectedGroupID,
 
     }
+    console.log(group2);
     console.log("I AM IN save Updates");
-    this.groupService.Update(group).subscribe(() => {
+    this.groupService.Update(group2).subscribe(() => {
       console.log("edited")
       this.loadAllGroubs();
       this.GroupAuthForm.reset();
       this.isEdit = false;
+      console.log(group2);
 
     })
 

@@ -1,7 +1,7 @@
 .test{
   height: 100%;
   width: 280px;
-  position: fixed;
+  /* position: fixed; */
   z-index: 1;
   top: 0;
   right: 0;
@@ -10,5 +10,7 @@
   background:#30475E;
   /*background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(2,2,32,1) 13%, rgba(6,135,161,1) 100%);*/
   overflow-x: hidden;
-  padding-top: 20p
+  /* padding-top: 20p */
+  min-height: 100vh;
+  height: auto;
 }

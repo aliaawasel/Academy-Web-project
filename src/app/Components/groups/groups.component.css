@@ -1,50 +1,60 @@
-.address{
+.address {
   background-color: #30475E;
 }
-.save{
+
+.save {
   background-color: #F05454;
   color: white;
   border: none;
-  border-radius:20px ;
+  border-radius: 20px;
   padding: 20px;
   box-shadow: 2px 2px 2px;
 }
-.save:hover{
-  background-color:#DDDDDD;
+
+.save:hover {
+  background-color: #DDDDDD;
   color: #F05454;
   border: none;
-  border-radius:20px ;
+  border-radius: 20px;
   padding: 20px;
   box-shadow: 2px 2px 2px;
 }
-.show{
+
+.show {
   background-color: #30475E;
   color: white;
   border: none;
-  border-radius:20px ;
-  padding: 20px;
+  border-radius: 3px;
+  padding: 4px;
+  text-align: center;
 
 }
-.show:hover{
+
+.show:hover {
   background-color: #F05454;
   color: white;
   border: none;
-  border-radius:20px ;
-  padding: 20px;
+  border-radius: 3px;
+ 
 
 }
-.card{
+
+.card {
   box-shadow: 2px 2px 2px 2px rgb(169, 168, 168);
   background-color: #EEEEEE;
 }
-input{
+
+input {
   border-radius: 20px;
   border: none;
 }
-input:hover{
+
+input:hover {
   border: 2px #F05454;
-  border-radius: 20px;
-}.Tabletext{
+  border-radius: 10px
+}
+
+.Tabletext {
   color: #30475E;
   font-size: 20px;
 }
