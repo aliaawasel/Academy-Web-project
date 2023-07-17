@@ -22,6 +22,9 @@ baseUrl:string="https://localhost:7044/academy-api/course"
       return  this.http.post(`${this.baseUrl}/insert`,data)
 
     }
+    getcoursesByTraineeId(id:any){
+      return  this.http.get(`${this.baseUrl}/all-trainee-courses/${id}`)
+    }
     UpdateCourse(data:any ){
       return  this.http.post(`${this.baseUrl}/update`,data)
 

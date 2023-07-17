@@ -141,7 +141,7 @@
                           <tbody>
                             <tr *ngFor="let subject of subjctByCrsId;let course; let i = index">
                               <td>{{ subject.subjectName }}</td>
-                              <td>{{subject.courseId}}</td>
+                              <td>{{subject.courseName}}</td>
 
                               <td>
                                 <button class="btn btn-warning"  (click)="EditSubject(subject.subjectId)">
@@ -151,8 +151,7 @@
 
                               <td>
                                 <button class="btn btn-danger" (click)="DeleteSubject(subject.subjectId)">
-                                  <i class="bi bi-trash3-fill"></i>
-                              </button>
+                                  <i class="bi bi-trash3-fill"></i></button>
                               </td>
                               </tr>
                           </tbody>

@@ -4,521 +4,272 @@
       <div class="row">
         <div class="col-md-12">
           <div class="card">
-            <div class="card-header card-header-danger">
+            <div class="card-header card-header-danger text-white address">
               <h4 class="card-title text-center">إضافة طالب</h4>
             </div>
             <div class="card-body">
-              <form [formGroup]="StusForm" (submit)="formHandler($event)">
-                <div class="">
-                  <label for="Username" id="Username" class="form-label">
-                    إسم الطالب باللغة العربية
-                  </label>
-                  <input
-                    type="text"
-                    formControlName="Username"
-                    class="form-control"
-                    id="Username"
-                    placeholder=" "
-                  />
+              <form [formGroup]="StusForm"(submit)="formHandler($event)" >
+                <div class="row">
+                  <div class="col  mb-3">
+                    <label for="Username" id="Username" class="form-label">  إسم الطالب باللغة العربية </label>
+                  <input type="text" formControlName="Username" class="form-control" id="Username" placeholder=" ">
                   <ng-container *ngIf="getUserName.touched">
-                    <div
-                      *ngIf="getUserName.hasError('required')"
-                      id="Username"
-                      class="form-text text-danger"
-                    >
-                      من فضلك ادخل الاسم الطالب باللغة العربية
+                    <div *ngIf="getUserName.hasError('required')" id="Username" class="form-text text-danger">
+                    من فضلك ادخل الاسم الطالب  باللغة العربية
                     </div>
-                    <div
-                      *ngIf="getUserName.hasError('minlength')"
-                      id="Username"
-                      class="form-text text-danger"
-                    >
+                    <div *ngIf="getUserName.hasError('minlength')" id="Username" class="form-text text-danger">
                       لا يقل الاسم عن 3 حروف
-                    </div>
-                    <div
-                      *ngIf="getUserName.hasError('pattern')"
-                      id="Username"
-                      class="form-text text-danger"
-                    >
-                      ادخل حروف فقط
-                    </div>
-                  </ng-container>
-                </div>
-                <div class="">
-                  <label for="Username" id="Username" class="form-label">
-                    إسم الطالب باللغة الانجليزية
-                  </label>
-                  <input
-                    type="text"
-                    formControlName="userNameE"
-                    class="form-control"
-                    id="Username"
-                    placeholder=" "
-                  />
-                  <ng-container *ngIf="getuserNameE.touched">
-                    <div
-                      *ngIf="getuserNameE.hasError('required')"
-                      id="Username"
-                      class="form-text text-danger"
-                    >
+                      </div>
+                    <div *ngIf="getUserName.hasError('pattern')" id="Username" class="form-text text-danger">
+                     ادخل حروف فقط
+                     </div>
+                    </ng-container>
+                  </div>
+                  <div class="col  mb-3">
+                    <label for="Username" id="Username" class="form-label">  إسم الطالب باللغة الانجليزية </label>
+                    <input type="text" formControlName="userNameE" class="form-control" id="Username" placeholder=" ">
+                    <ng-container *ngIf="getuserNameE.touched">
+                      <div *ngIf="getuserNameE.hasError('required')" id="Username" class="form-text text-danger">
                       من فضلك ادخل الاسم الطالب باللغة الانجليزية
-                    </div>
-                    <div
-                      *ngIf="getuserNameE.hasError('minlength')"
-                      id="Username"
-                      class="form-text text-danger"
-                    >
-                      لا يقل الاسم عن 3 حروف
-                    </div>
-                    <div
-                      *ngIf="getuserNameE.hasError('pattern')"
-                      id="Username"
-                      class="form-text text-danger"
-                    >
-                      ادخل حروف فقط
-                    </div>
-                  </ng-container>
+                      </div>
+                      <div *ngIf="getuserNameE.hasError('minlength')" id="Username" class="form-text text-danger">
+                        لا يقل الاسم عن 3 حروف
+                        </div>
+                      <div *ngIf="getuserNameE.hasError('pattern')" id="Username" class="form-text text-danger">
+                       ادخل حروف فقط
+                       </div>
+                      </ng-container>
                 </div>
-                <div class="">
-                  <label for="exampleFormControlInput1" class="form-label">
-                    الرقم القومى"</label
-                  >
-                  <input
-                    type="text"
-                    formControlName="nationalNumber"
-                    class="form-control"
-                    id="exampleFormControlInput1"
-                    placeholder=""
-                  />
+                <div class="col  mb-3">
+                  <label for="exampleFormControlInput1" class="form-label">  الرقم القومى"</label>
+                  <input type="text" formControlName="nationalNumber" class="form-control" id="exampleFormControlInput1" placeholder="">
                   <ng-container *ngIf="getnationalNumber.touched">
-                    <div
-                      *ngIf="getnationalNumber.hasError('required')"
-                      id="Username"
-                      class="form-text text-danger"
-                    >
-                      من فضلك ادخل الرقم القومى
+                    <div *ngIf="getnationalNumber.hasError('required')" id="Username" class="form-text text-danger">
+                    من فضلك ادخل الرقم القومى
                     </div>
-                    <div
-                      *ngIf="getnationalNumber.hasError('minlength')"
-                      id="Username"
-                      class="form-text text-danger"
-                    >
+                    <div *ngIf="getnationalNumber.hasError('minlength')" id="Username" class="form-text text-danger">
                       لا يقل الرقم عن 14
-                    </div>
-                    <div
-                      *ngIf="getnationalNumber.hasError('maxlength')"
-                      id="Username"
-                      class="form-text text-danger"
-                    >
-                      لا يزيد الرقم عن 14
-                    </div>
-                  </ng-container>
+                      </div>
+                    <div *ngIf="getnationalNumber.hasError('maxlength')" id="Username" class="form-text text-danger">
+                    لا يزيد الرقم عن 14
+                     </div>
+                    </ng-container>
                 </div>
-                <!-- <div class="">
-                                        <label for="exampleFormControlInput1" class="form-label">  البريد الإلكترونى"</label>
-                                        <input type="text" formControlName="email" class="form-control" id="exampleFormControlInput1" placeholder=" ">
-                                        <ng-container *ngIf="getemail.touched">
-                                          <div *ngIf="getemail.hasError('required')" id="Username" class="form-text text-danger">
-                                          من فضلك ادخل البريدالالكترونى
-                                          </div>
-                                          <div *ngIf="getemail.hasError('')" id="Username" class="form-text text-danger">
-                                            االبريد الالكترونى غير صالح
-                                            </div>
+                </div>
+                <div>
+                </div>
+                <div class="row  mb-3">
+                  <div class="col">
+                    <label class="form-label">الديناية</label>
+                    <select formControlName="religion" class="form-select" id="disabledSelect">
+                      <option [value]="R" *ngFor="let R of religions">{{R}}</option>
 
-                                          </ng-container>
-                                      </div> -->
-                <div class="">
-                  <label class="form-label">الديناية</label>
-                  <select
-                    formControlName="religion"
-                    class="form-select"
-                    id="disabledSelect"
-                  >
-                    <option [value]="R" *ngFor="let R of religions">
-                      {{ R }}
-                    </option>
-                  </select>
-                  <ng-container *ngIf="getreligion.touched">
-                    <div
-                      *ngIf="getreligion.hasError('required')"
-                      id="Username"
-                      class="form-text text-danger"
-                    >
-                      من فضلك اختر الديناية
-                    </div>
-                  </ng-container>
-                </div>
+                      </select>
+                      <ng-container *ngIf="getreligion.touched">
+                        <div  *ngIf="getreligion.hasError('required')" id="Username" class="form-text text-danger">
+                        من فضلك اختر الديناية
+                        </div>
+                        </ng-container>
+                  </div>
+                  <div class="col">
+                    <label class="form-label">النوع</label>
+          <select formControlName="type" class="form-select">
 
-                <div class="">
-                  <label class="form-label">النوع</label>
-                  <select formControlName="type" class="form-select">
-                    <option [value]="Ge" *ngFor="let Ge of gender">
-                      {{ Ge }}
-                    </option>
-                  </select>
-                  <ng-container *ngIf="gettype.touched">
-                    <div
-                      *ngIf="gettype.hasError('required')"
-                      id="Username"
-                      class="form-text text-danger"
-                    >
-                      من فضلك اخترالنوع
-                    </div>
-                  </ng-container>
-                </div>
+              <option [value]="Ge" *ngFor="let Ge of gender" >{{Ge}}</option>
 
-                <div class="">
-                  <label for="exampleFormControlInput1" class="form-label">
-                    تاريخ الميلاد</label
-                  >
-                  <input
-                    type="date"
-                    formControlName="DOB"
-                    class="form-control"
-                    id="exampleFormControlInput1"
-                    placeholder=" "
-                  />
-                  <ng-container *ngIf="getDOB.touched">
-                    <div
-                      *ngIf="getDOB.hasError('required')"
-                      id="Username"
-                      class="form-text text-danger"
-                    >
-                      من فضلك ادخل تاريخ الميلاد
-                    </div>
-                  </ng-container>
+
+            </select>
+            <ng-container *ngIf="gettype.touched">
+              <div *ngIf="gettype.hasError('required')" id="Username" class="form-text text-danger">
+              من فضلك اخترالنوع
+              </div>
+              </ng-container>
+                 </div>
+                 <div class="col">
+                  <label for="exampleFormControlInput1" class="form-label">  تاريخ الميلاد</label>
+            <input type="date" formControlName="DOB" class="form-control" id="exampleFormControlInput1" placeholder=" ">
+            <ng-container *ngIf="getDOB.touched">
+              <div *ngIf="getDOB.hasError('required')" id="Username" class="form-text text-danger">
+              من فضلك ادخل تاريخ الميلاد
+              </div>
+              </ng-container>
+
                 </div>
-                <div class="">
-                  <label for="exampleFormControlInput1" class="form-label">
-                    عنوان الطالب</label
-                  >
-                  <input
-                    type="text"
-                    formControlName="address"
-                    class="form-control"
-                    id="exampleFormControlInput1"
-                    placeholder=""
-                  />
+                </div>
+                <div class="row  mb-3">
+                  <div class="col">
+                    <label for="exampleFormControlInput1" class="form-label">  عنوان الطالب</label>
+                  <input type="text" formControlName="address" class="form-control" id="exampleFormControlInput1" placeholder="">
                   <ng-container *ngIf="getaddress.touched">
-                    <div
-                      *ngIf="getaddress.hasError('required')"
-                      id="Username"
-                      class="form-text text-danger"
-                    >
-                      من فضلك ادخل العنوان
+                    <div *ngIf="getaddress.hasError('required')" id="Username" class="form-text text-danger">
+                    من فضلك ادخل العنوان
                     </div>
+                    </ng-container>
+                  </div>
+                  <div class="col">
+                    <label for="exampleFormControlInput1" class="form-label"> التليفون الارضى </label>
+                    <input type="text" formControlName="LinePhone" class="form-control" id="exampleFormControlInput1" placeholder=" ">
+                    <ng-container *ngIf="getLinePhone.touched">
+                      <div *ngIf="getLinePhone.hasError('required')" id="phone" class="form-text text-danger  w-75">
+                       من فضلك  ادخل رقم المحمول
+                      </div>
+                      <div *ngIf="getLinePhone.hasError('max')" id="phone" class="form-text text-danger  w-75">
+                        يجب ان يحتوى الرقم على 9 رقم فقط
+                       </div>
+                       <div *ngIf="getLinePhone.hasError('pattern')" id="phone" class="form-text text-danger  w-75">
+                        رقم المحمول غير صالح
+                       </div>
+                      </ng-container>
+              </div>
+              <div class="col">
+                <label for="exampleFormControlInput1" class="form-label">  التليفون المحمول 1 </label>
+                <input type="text" formControlName="phoneNumber1" class="form-control" id="exampleFormControlInput1" placeholder="">
+                <ng-container *ngIf="getphoneNumber1.touched">
+                  <div *ngIf="getphoneNumber1.hasError('required')" id="phone" class="form-text text-danger  w-75">
+                   من فضلك  ادخل رقم المحمول
+                  </div>
+                  <div *ngIf="getphoneNumber1.hasError('max')" id="phone" class="form-text text-danger  w-75">
+                    يجب ان يحتوى الرقم على 11 رقم فقط
+                   </div>
+                   <div *ngIf="getphoneNumber1.hasError('pattern')" id="phone" class="form-text text-danger  w-75">
+                    رقم المحمول غير صالح
+                   </div>
                   </ng-container>
+              </div>
                 </div>
-
-                <div class="">
-                  <label for="exampleFormControlInput1" class="form-label">
-                    التليفون الارضى
-                  </label>
-                  <input
-                    type="text"
-                    formControlName="LinePhone"
-                    class="form-control"
-                    id="exampleFormControlInput1"
-                    placeholder=" "
-                  />
-                  <ng-container *ngIf="getLinePhone.touched">
-                    <div
-                      *ngIf="getLinePhone.hasError('required')"
-                      id="phone"
-                      class="form-text text-danger w-75"
-                    >
-                      من فضلك ادخل رقم المحمول
-                    </div>
-                    <div
-                      *ngIf="getLinePhone.hasError('max')"
-                      id="phone"
-                      class="form-text text-danger w-75"
-                    >
-                      يجب ان يحتوى الرقم على 9 رقم فقط
-                    </div>
-                    <div
-                      *ngIf="getLinePhone.hasError('pattern')"
-                      id="phone"
-                      class="form-text text-danger w-75"
-                    >
-                      رقم المحمول غير صالح
-                    </div>
-                  </ng-container>
+                <div class="row  mb-3">
+                  <div class="col">
+                    <label for="exampleFormControlInput1" class="form-label">  التليفون المحمول 2 </label>
+                    <input formControlName="phoneNumber2" type="text" class="form-control" id="exampleFormControlInput1" placeholder=" ">
+                    <ng-container *ngIf="getphoneNumber2.touched">
+                      <div *ngIf="getphoneNumber2.hasError('required')" id="phone" class="form-text text-danger  w-75">
+                       من فضلك  ادخل رقم المحمول
+                      </div>
+                      <div *ngIf="getphoneNumber2.hasError('max')" id="phone" class="form-text text-danger  w-75">
+                        يجب ان يحتوى الرقم على 11 رقم فقط
+                       </div>
+                       <div *ngIf="getphoneNumber2.hasError('pattern')" id="phone" class="form-text text-danger  w-75">
+                        رقم المحمول غير صالح
+                       </div>
+                      </ng-container>
+                  </div>
+                  <div class="col">
+                    <label for="exampleFormControlInput1" class="form-label"> جهة الترشيح </label>
+                  <input type="text" formControlName="recommand" class="form-control" id="exampleFormControlInput1" placeholder=" ">
+                  <ng-container  *ngIf="getRecommend.touched">
+                    <div *ngIf="getRecommend.hasError('required')" id="name" class="form-text    text-danger">
+            من فضلك ادخل جهه الترشيح
+                        </div>
+                        <div *ngIf="getRecommend.hasError('pattern')" id="name" class="form-text    text-danger">
+                            جهة الترشيح نحتوي علي حروف فقط
+                            </div>
+                        <div *ngIf="getRecommend.hasError('minlength')" id="name" class="form-text    text-danger">
+                 جهة الترشيح لا يقل  عن ثلاث احرف
+                        </div>
+                 </ng-container>
                 </div>
-                <div class="">
-                  <label for="exampleFormControlInput1" class="form-label">
-                    التليفون المحمول 1
-                  </label>
-                  <input
-                    type="text"
-                    formControlName="phoneNumber1"
-                    class="form-control"
-                    id="exampleFormControlInput1"
-                    placeholder=""
-                  />
-                  <ng-container *ngIf="getphoneNumber1.touched">
-                    <div
-                      *ngIf="getphoneNumber1.hasError('required')"
-                      id="phone"
-                      class="form-text text-danger w-75"
-                    >
-                      من فضلك ادخل رقم المحمول
-                    </div>
-                    <div
-                      *ngIf="getphoneNumber1.hasError('max')"
-                      id="phone"
-                      class="form-text text-danger w-75"
-                    >
-                      يجب ان يحتوى الرقم على 11 رقم فقط
-                    </div>
-                    <div
-                      *ngIf="getphoneNumber1.hasError('pattern')"
-                      id="phone"
-                      class="form-text text-danger w-75"
-                    >
-                      رقم المحمول غير صالح
-                    </div>
-                  </ng-container>
-                </div>
-                <div class="">
-                  <label for="exampleFormControlInput1" class="form-label">
-                    التليفون المحمول 2
-                  </label>
-                  <input
-                    formControlName="phoneNumber2"
-                    type="text"
-                    class="form-control"
-                    id="exampleFormControlInput1"
-                    placeholder=" "
-                  />
-                  <ng-container *ngIf="getphoneNumber2.touched">
-                    <div
-                      *ngIf="getphoneNumber2.hasError('required')"
-                      id="phone"
-                      class="form-text text-danger w-75"
-                    >
-                      من فضلك ادخل رقم المحمول
-                    </div>
-                    <div
-                      *ngIf="getphoneNumber2.hasError('max')"
-                      id="phone"
-                      class="form-text text-danger w-75"
-                    >
-                      يجب ان يحتوى الرقم على 11 رقم فقط
-                    </div>
-                    <div
-                      *ngIf="getphoneNumber2.hasError('pattern')"
-                      id="phone"
-                      class="form-text text-danger w-75"
-                    >
-                      رقم المحمول غير صالح
-                    </div>
-                  </ng-container>
-                </div>
-                <div class="">
-                  <label for="exampleFormControlInput1" class="form-label">
-                    جهة الترشيح
-                  </label>
-                  <input
-                    type="text"
-                    formControlName="recommand"
-                    class="form-control"
-                    id="exampleFormControlInput1"
-                    placeholder=" "
-                  />
-                  <ng-container *ngIf="getRecommend.touched">
-                    <div
-                      *ngIf="getRecommend.hasError('required')"
-                      id="name"
-                      class="form-text text-danger"
-                    >
-                      من فضلك ادخل جهه الترشيح
-                    </div>
-                    <div
-                      *ngIf="getRecommend.hasError('pattern')"
-                      id="name"
-                      class="form-text text-danger"
-                    >
-                      جهة الترشيح نحتوي علي حروف فقط
-                    </div>
-                    <div
-                      *ngIf="getRecommend.hasError('minlength')"
-                      id="name"
-                      class="form-text text-danger"
-                    >
-                      جهة الترشيح لا يقل عن ثلاث احرف
-                    </div>
-                     </ng-container
-                  >
-                </div>
-                <div class="">
-                  <label for="exampleFormControlInput1" class="form-label">
-                    المؤهل
-                  </label>
-                  <input
-                    type="text"
-                    formControlName="Quali"
-                    class="form-control"
-                    id="exampleFormControlInput1"
-                    placeholder="    "
-                  />
-                  <ng-container *ngIf="getQuality.touched">
-                    <div
-                      *ngIf="getQuality.hasError('required')"
-                      id="name"
-                      class="form-text text-danger"
-                    >
+                <div class="col">
+                  <label for="exampleFormControlInput1" class="form-label"> المؤهل </label>
+                  <input type="text" formControlName="Quali" class="form-control" id="exampleFormControlInput1" placeholder="    ">
+                  <ng-container  *ngIf="getQuality.touched">
+                    <div *ngIf="getQuality.hasError('required')" id="name" class="form-text    text-danger">
                       من فضلك ادخل المؤهل
-                    </div>
-                    <div
-                      *ngIf="getQuality.hasError('pattern')"
-                      id="name"
-                      class="form-text text-danger"
-                    >
-                      المؤهل يحتوي علي حروف فقط
-                    </div>
-                    <div
-                      *ngIf="getQuality.hasError('minlength')"
-                      id="name"
-                      class="form-text text-danger"
-                    >
-                      المؤهل لا يقل عن ثلاث احرف
-                    </div>
-                     </ng-container
-                  >
+                        </div>
+                        <div *ngIf="getQuality.hasError('pattern')" id="name" class="form-text    text-danger">
+                            المؤهل يحتوي علي حروف فقط
+                            </div>
+                        <div *ngIf="getQuality.hasError('minlength')" id="name" class="form-text    text-danger">
+                          المؤهل لا يقل  عن ثلاث احرف
+                        </div>
+              </ng-container>
                 </div>
-                <div class="">
-                  <label>عام الحصول على المؤهل</label>
-
-                  <select formControlName="year" class="form-select">
-                    <option *ngFor="let B of year" [value]="B">{{ B }}</option>
-                  </select>
-                  <ng-container *ngIf="getyear.touched">
-                    <div
-                      *ngIf="getyear.hasError('required')"
-                      id="name"
-                      class="form-text text-danger"
-                    >
-                      اختر عام الحصول علي المؤهل
-                    </div>
-                     </ng-container
-                  >
-                </div>
-                <div class="">
-                  <label for="exampleFormControlInput1" class="form-label">
-                    العام الدراسى
-                  </label>
-                  <select formControlName="YearStudy" class="form-select">
-                    <option *ngFor="let B of year" [value]="B">{{ B }}</option>
-                  </select>
-                  <ng-container *ngIf="getYearStudy.touched">
-                    <div
-                      *ngIf="getYearStudy.hasError('required')"
-                      id="name"
-                      class="form-text text-danger"
-                    >
-                      اختر العام الدراسى
-                    </div>
-                     </ng-container
-                  >
-                </div>
-                <div class="">
-                  <label class="form-label">الموقف من التجنيد</label>
-                  <select
-                    formControlName="status"
-                    class="form-select"
-                    id="disabledSelect"
-                  >
-                    <option *ngFor="let Stats of Status" [value]="Stats">
-                      {{ Stats }}
-                    </option>
-                  </select>
-                  <ng-container *ngIf="getstatus.touched">
-                    <div
-                      *ngIf="getstatus.hasError('required')"
-                      id="name"
-                      class="form-text text-danger"
-                    >
-                      اختر موقفك من التجنيد
-                    </div>
-                     </ng-container
-                  >
                 </div>
 
-                <!-- <div class=" col-md-12 mb-1">
-                                            <label for="formFile" class="form-label">صورة الطالب الشخصية</label>
-                                            <input formControlName="personalImage" class="form-control" type="file" id="formFile">
-                                            <ng-container *ngIf="getpersonalImage.touched">
-                                              <div *ngIf="getpersonalImage.hasError('required')" id="Username" class="form-text text-danger">
-                                              من فضلك اضف الصورة الشخصيه
-                                              </div>
-                                              </ng-container>
-                                          </div> -->
-                <!-- <div class=" col-md-12 mb-1">
-                                            <label for="formFile" class="form-label">صورة بطاقة الرقم القومى</label>
-                                            <input formControlName="nationalImage" class="form-control" type="file" id="formFile">
-                                            <ng-container *ngIf="getnationalImage.touched">
-                                              <div *ngIf="getnationalImage.hasError('required')" id="Username" class="form-text text-danger">
-                                              من فضلك اضف صورة البطاقة
-                                              </div>
-                                              </ng-container>
-                                          </div> -->
-                <!-- <div class=" col-md-12 mb-1">
-                                            <label for="formFile" class="form-label">صورة شهادة المؤهل الدراسى</label>
-                                            <input formControlName="QulifImage" class="form-control" type="file" id="formFile">
-                                            <ng-container *ngIf="getQulifImage.touched">
-                                              <div *ngIf="getQulifImage.hasError('required')" id="Username" class="form-text text-danger">
-                                              من فضلك اضف صورى الشهادة المؤهل
-                                              </div>
-                                              </ng-container>
-                                          </div> -->
-                <div class="">
-                  <label class="form-label">اسم الفرع الملتحق فيه الطالب</label>
-                  <select formControlName="branch" class="form-select">
-                    <option selected>Select Branch ...</option>
-                    <option *ngFor="let B of Branches" [value]="B.id">
-                      {{ B.name }}
-                    </option>
-                  </select>
-                  <ng-container *ngIf="getbranch.touched">
-                    <div
-                      *ngIf="getbranch.hasError('required')"
-                      id="Username"
-                      class="form-text text-danger"
-                    >
-                      من فضلك اختر الفرع
+                <div class="row">
+                  <div class="col  mb-3">
+                    <label >عام الحصول على المؤهل</label>
+
+                  <select formControlName="year" class="form-select" >
+                    <option *ngFor="let B of year" [value]="B">{{B}}</option>
+                  </select>                                        <ng-container  *ngIf="getyear.touched">
+                    <div *ngIf="getyear.hasError('required')" id="name" class="form-text    text-danger">
+                     اختر عام  الحصول علي المؤهل
                     </div>
-                  </ng-container>
+              </ng-container>
+
+                  </div>
+                  <div class="col  mb-3">
+                    <label for="exampleFormControlInput1" class="form-label"> العام الدراسى </label>
+                    <select formControlName="YearStudy" class="form-select" >
+                      <option *ngFor="let B of year" [value]="B">{{B}}</option>
+                    </select>                                         <ng-container  *ngIf="getYearStudy.touched">
+                      <div *ngIf="getYearStudy.hasError('required')" id="name" class="form-text    text-danger">
+                        اختر العام الدراسى
+                      </div>
+                </ng-container>
+                  </div>
+                  <div class="col  mb-3">
+                    <label class="form-label">الموقف من التجنيد</label>
+                  <select formControlName="status" class="form-select" id="disabledSelect">
+                      <option *ngFor="let Stats of Status" [value]="Stats">{{Stats}}</option>
+                    </select>
+                    <ng-container  *ngIf="getstatus.touched">
+                      <div *ngIf="getstatus.hasError('required')" id="name" class="form-text    text-danger">
+                         اختر موقفك من التجنيد
+                      </div>
+                </ng-container>
+                  </div>
                 </div>
 
-                <button
-                  (click)="back()"
-                  type="submit"
-                  class="btn btn-success m-2 pull-right"
-                >
-                  تراجع
-                </button>
+                <div class="row">
+                  <div class="col mb-3">
+                    <label class="form-label">اسم الفرع الملتحق فيه الطالب</label>
+                      <select  formControlName="branch" class="form-select" >
+                        <option  selected>Select Branch ...</option>
+                          <option  *ngFor="let B of Branches" [value]="B.id">{{B.name}}</option>
+                        </select>
+                        <ng-container *ngIf="getbranch.touched">
+                          <div *ngIf="getbranch.hasError('required')" id="Username" class="form-text text-danger">
+                          من فضلك اختر الفرع
+                          </div>
+                          </ng-container>
+                </div>
 
-                <button
-                  raised-button
-                  [disabled]="!StusForm.valid"
-                  (click)="addStudent()"
-                  *ngIf="!flag"
-                  class="btn btn-danger m-2 pull-right"
-                >
-                  إضافة
-                </button>
-                <button
-                  raised-button
-                  (click)="Save()"
-                  *ngIf="flag"
-                  class="btn btn-warning m-2 pull-right"
-                >
-                  تعديل
-                </button>
+                </div>
+                  <!-- <div class=" col-md-12 mb-1">
+                      <label for="formFile" class="form-label">صورة الطالب الشخصية</label>
+                      <input formControlName="personalImage" class="form-control" type="file" id="formFile">
+                      <ng-container *ngIf="getpersonalImage.touched">
+                        <div *ngIf="getpersonalImage.hasError('required')" id="Username" class="form-text text-danger">
+                        من فضلك اضف الصورة الشخصيه
+                        </div>
+                        </ng-container>
+                    </div> -->
+                    <!-- <div class=" col-md-12 mb-1">
+                      <label for="formFile" class="form-label">صورة بطاقة الرقم القومى</label>
+                      <input formControlName="nationalImage" class="form-control" type="file" id="formFile">
+                      <ng-container *ngIf="getnationalImage.touched">
+                        <div *ngIf="getnationalImage.hasError('required')" id="Username" class="form-text text-danger">
+                        من فضلك اضف صورة البطاقة
+                        </div>
+                        </ng-container>
+                    </div> -->
+                    <!-- <div class=" col-md-12 mb-1">
+                      <label for="formFile" class="form-label">صورة شهادة المؤهل الدراسى</label>
+                      <input formControlName="QulifImage" class="form-control" type="file" id="formFile">
+                      <ng-container *ngIf="getQulifImage.touched">
+                        <div *ngIf="getQulifImage.hasError('required')" id="Username" class="form-text text-danger">
+                        من فضلك اضف صورى الشهادة المؤهل
+                        </div>
+                        </ng-container>
+                    </div> -->
 
-                <div class="clearfix"></div>
-              </form>
+         <button  (click)="back()" type="submit" class="btn btn-success m-2 pull-right float-start back">تراجع</button>
+          <button raised-button [disabled]="!StusForm.valid" (click)="addStudent()" *ngIf="!flag"  class="btn btn-danger m-2 pull-right float-start save">إضافة</button>
+          <button raised-button (click)="Save()" *ngIf="flag" class="btn btn-warning m-2 pull-right float-start save">تعديل </button>
+
+          <div class="clearfix"></div>
+      </form>
             </div>
           </div>
         </div>
@@ -642,7 +393,7 @@
       </div>-->
 <p class="p-3 d-flex justify-content-start">
   <button
-    class="btn btn-primary p-3 fs-4"
+    class="btn p-3 fs-4 show"
     type="button"
     data-bs-toggle="collapse"
     data-bs-target="#collapseExample"
@@ -662,8 +413,9 @@
               <div
                 class="table table-striped tabel-hover table-bordered text-center"
               >
-                <table class="table table-bordered table-hover text-center">
-                  <thead class="text-primary">
+              <table class="table text-center table table-striped table-hover">
+                <thead class="text-primary">
+                  <tr>
                     <th>اسم الطالب</th>
                     <th>الرقم القومى</th>
                     <th>المؤهل</th>
@@ -674,6 +426,7 @@
                     <th>تفاصيل</th>
                     <th>تعديل</th>
                     <th>حذف</th>
+                  </tr>
                   </thead>
                   <tbody>
                     <tr *ngFor="let s of students; let i = index">

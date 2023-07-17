@@ -5,17 +5,17 @@ import { Injectable } from '@angular/core';
   providedIn: 'root',
 })
 export class StudentsServices {
-  baseUrl:string='https://localhost:44334/academy-api/trainee/all';
-  idUrl:string='https://localhost:44334/academy-api/trainee/';
-  addUrl:string='https://localhost:44334/academy-api/trainee/insert';
-  updateUrl:string='https://localhost:44334/academy-api/trainee/update';
-  religionUrl:string='https://localhost:44334/academy-api/trainee/religion-combobox-values';
-  genderUrl:string='https://localhost:44334/academy-api/trainee/gender-combobox-values';
-  statusUrl:string='https://localhost:44334/academy-api/trainee/military-status-combobox-values';
-  yearsUrl:string='https://localhost:44334/academy-api/trainee/years-from-1980-till-now';
-  deleteUrl:string='https://localhost:44334/academy-api/trainee/delete/';
-  branchUrl: string='https://localhost:44334/academy-api/branch/all';
- deactiveUrl:string='https://localhost:44334/academy-api/trainee/deactivate/';
+  baseUrl:string='https://localhost:7044/academy-api/trainee/all';
+  idUrl:string='https://localhost:7044/academy-api/trainee/';
+  addUrl:string='https://localhost:7044/academy-api/trainee/insert';
+  updateUrl:string='https://localhost:7044/academy-api/trainee/update';
+  religionUrl:string='https://localhost:7044/academy-api/trainee/religion-combobox-values';
+  genderUrl:string='https://localhost:7044/academy-api/trainee/gender-combobox-values';
+  statusUrl:string='https://localhost:7044/academy-api/trainee/military-status-combobox-values';
+  yearsUrl:string='https://localhost:7044/academy-api/trainee/years-from-1980-till-now';
+  deleteUrl:string='https://localhost:7044/academy-api/trainee/delete/';
+  branchUrl: string='https://localhost:7044/academy-api/branch/all';
+ deactiveUrl:string='https://localhost:7044/academy-api/trainee/deactivate/';
  studentbyBranch:string=' https://localhost:7044/academy-api/trainee/all-by-branch-id'
 
 

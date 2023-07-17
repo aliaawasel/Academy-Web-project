@@ -1,25 +1,11 @@
-<div>
-    <div class="row flex-nowrap ">
-      <div class="col-md-3 col-xl-10 px-sm-2 px-0 test">
+<div [ngStyle]="{'display': navhidden ? 'block' : 'none'}">
+    <div class="row flex-nowrap">
+      <div class="col-md-3 col-xl-10 px-sm-2 px-0 test" >
          <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white">
              <a href="/" class="d-flex align-items-center pb-3 mb-md-0 me-md-auto text-white text-decoration-none">
                  <span class="fs-5 d-none d-sm-inline">Menu</span>
                 </a> <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start" id="menu">
-
-                    <li class="nav-item">
-                         <a href="#" class="nav-link align-middle px-0">
-                         <i class="fs-4 bi-house"></i> <span class="ms-1 d-none d-sm-inline">Home</span>
-                </a>
-                </li>
-                <li class="nav-item">
-                  <a [routerLink]="['/login']" class="nav-link align-middle px-0 text-light">
-                      <div class="d-flex justify-content-around">
-                          <i class=" fs-4 bi bi-person ms-2"></i>
-                          <span class="ms-2 d-none d-sm-inline fs-5 ">تسجل الدخول</span>
-                      </div>
-                  </a>
-              </li>
-                <li class="nav-item">
+                <li class="nav-item" [hidden]="!GroupsPagePower" >
                     <a [routerLink]="['/groups']" class="nav-link align-middle px-0 text-light">
                         <div class="d-flex justify-content-around">
                             <i class=" fs-4 bi bi-person-lines-fill ms-2"></i>
@@ -28,7 +14,7 @@
                     </a>
                 </li>
 
-                <li class="nav-item">
+                <li class="nav-item" [hidden]="!UsersPagePower">
                     <a [routerLink]="['/users']" class="nav-link align-middle px-0 text-light">
                         <div class="d-flex justify-content-around">
                             <i class=" fs-4 bi bi-people-fill ms-2"></i>
@@ -36,7 +22,7 @@
                         </div>
                     </a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item" [hidden]="!BranchesPagePower">
                     <a [routerLink]="['/branches']" class="nav-link align-middle px-0 text-light">
                         <div class="d-flex justify-content-around">
                             <i class=" fs-4 bi  bi-three-dots ms-2"></i>
@@ -44,7 +30,7 @@
                         </div>
                     </a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item" [hidden]="!CoursesPagePower">
                     <a [routerLink]="['/courses']" class="nav-link align-middle px-0 text-light">
 
                         <div class="d-flex justify-content-around">
@@ -54,7 +40,7 @@
 
                     </a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item" [hidden]="!SubjectsPower">
                     <a [routerLink]="['/subjects']" class="nav-link align-middle px-0 text-light">
                         <div class="d-flex justify-content-around">
                             <i class=" fs-4 bi bi-book ms-2"></i>
@@ -62,7 +48,7 @@
                         </div>
                     </a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item" [hidden]="!TraineeAdditionPower">
 
                     <a [routerLink]="['/students']" class="nav-link align-middle px-0 text-light">
 
@@ -73,7 +59,7 @@
 
                     </a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item"[hidden]="!TraineeCombinedAccountStatementPagePower">
                     <a [routerLink]="['/payments']" class="nav-link align-middle px-0 text-light">
                         <div class="d-flex justify-content-around">
                             <i class=" fs-4 bi bi-person ms-2"></i>
@@ -81,7 +67,7 @@
                         </div>
                     </a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item"[hidden]="!CoursesToTraineeAdditionPower">
                   <a [routerLink]="['studentcourse']" class="nav-link align-middle px-0 text-light">
                       <div class="d-flex justify-content-around">
                           <i class=" fs-4 bi bi-person ms-2"></i>
@@ -90,8 +76,17 @@
                   </a>
               </li>
 
+              <li class="nav-item" >
+                <a [routerLink]="['/login']" class="nav-link align-middle px-0 text-light" (click)="signOut()">
+                    <div class="d-flex justify-content-around">
+                        <i class=" fs-4 bi bi-person ms-2"></i>
+                        <span class="ms-2 d-none d-sm-inline fs-5 ">تسجل خروج</span>
+                    </div>
+                </a>
+            </li>
 
-                <!-- <li> <a href="#submenu3" data-bs-toggle="collapse" class="nav-link px-0 align-middle">
+<!-- 
+                <li> <a href="#submenu3" data-bs-toggle="collapse" class="nav-link px-0 align-middle">
                      <i class="fs-4 bi-grid"></i> <span class="ms-1 d-none d-sm-inline">Products</span> </a>
                       <ul class="collapse nav flex-column ms-1" id="submenu3" data-bs-parent="#menu">
                                  <li class="w-100"> <a href="#" class="nav-link px-0">

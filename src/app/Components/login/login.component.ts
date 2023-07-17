@@ -37,27 +37,42 @@ constructor(private router: Router,
     };
     
     this.loginService.login(user).subscribe({
-      next: (response: HttpResponse<any>) => {
-        const statusCode = this.loginService.getStatus(response);
-        if (statusCode === 200) { // Check the status code
-          this.token = response.body.generatedJwtToken; // Extract the JWT token from the response body
-          const tokenData = jwt_decode(this.token);
-          console.log("Logged in successfully");
-          localStorage.setItem("token", this.token); 
-          console.log(tokenData);
-          
-          // Save the token to local storage
-          this.router.navigate(['/groups']);
-        } else {
-          console.log("Login failed with status code: " + statusCode);
-          this.router.navigate(['/login']);
-        }
+
+      next: (response: any) => {
+      console.log(response);
+        
+      this.token = response.body.generatedJwtToken;
+      localStorage.setItem("token", this.token); 
+      this.router.navigate(['/home']);
+
+
       },
-      error: (error: any) => {
-        console.error(error);
+      error: (error) => {
         this.router.navigate(['/login']);
+        console.log(error);
       }
     });
+      // next: (response: HttpResponse<any>) => {
+      //   const statusCode = this.loginService.getStatus(response);
+      //   if (statusCode === 200) { // Check the status code
+      //     this.token = response.body.generatedJwtToken; // Extract the JWT token from the response body
+      //     const tokenData = jwt_decode(this.token);
+      //     console.log("Logged in successfully");
+      //     localStorage.setItem("token", this.token); 
+      //     console.log(tokenData);
+          
+      //     // Save the token to local storage
+      //     this.router.navigate(['/groups']);
+      //   } else {
+      //     console.log("Login failed with status code: " + statusCode);
+      //     this.router.navigate(['/login']);
+      //   }
+      // },
+      // error: (error: any) => {
+      //   console.error(error);
+      //   this.router.navigate(['/login']);
+      // }
+    // });
     
    
   }
