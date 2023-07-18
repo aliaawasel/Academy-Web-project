@@ -13,6 +13,7 @@ export class StudentCourseComponent implements OnInit{
 /**
  *
  */
+showTable=false;
 constructor(private studentCourseService:StudentCourseService) {
 
 }
@@ -45,7 +46,7 @@ get getdateOfCoursee(){
   ngOnInit(): void {
     this.getbranches();
     this.getcourses();
-    this.getStudentName.disable();
+    //this.getStudentName.disable();
   }
   branches:any
   students:any
@@ -71,6 +72,7 @@ get getdateOfCoursee(){
       this.studentOfId=res
       console.log("done 1");
     })
+    this.showTable=true;
   }
   getcourses(){
     this.studentCourseService.getCourses().subscribe((res:any)=>{
@@ -96,9 +98,14 @@ addStudentCourse(){
 }
   this.studentCourseService.addStudentCourse(stdCrs).subscribe(()=>{
     console.log("done")
-    this.ngOnInit();
+    this.getStudentById();
+    this.getStudentdCourse();
+  console.log("added");
   })
-  this.studentCourseForm.reset();
+
+  this.getcourseName.reset();
+  this.getdateOfCoursee.reset();
+
 }
 deleteCourseStudent(id:number,Date:any){
   const stdCrs={
@@ -106,6 +113,8 @@ deleteCourseStudent(id:number,Date:any){
     courseId:id,
     registrationDate:Date
   }
+  console.log(stdCrs);
+  
   this.studentCourseService.deleteCourse(stdCrs).subscribe(()=>{
     this.getStudentdCourse();
     this.ngOnInit();
@@ -114,5 +123,7 @@ deleteCourseStudent(id:number,Date:any){
 }
 back(){
   this.studentCourseForm.reset();
+  this.showTable=false;
+
 }
 }

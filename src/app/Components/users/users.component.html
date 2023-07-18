@@ -57,16 +57,16 @@
                     <td class="p-3">
                       <button
                         (click)="deactivUser(item.userId)"
-                        class="btn btn-outline-danger ss"
+                        class="btn ss"
                         [ngStyle]="{
                           color: item.isActive ? '#28a745' : '#dc3545'
                         }"
                       >
                         <ng-container *ngIf="item.isActive; else inactiveIcon">
-                          <i class="bi bi-toggle-on"></i>
+                          <i class="bi fs-5 bi-toggle-on"></i>
                         </ng-container>
                         <ng-template #inactiveIcon>
-                          <i class="bi bi-toggle2-off"></i>
+                          <i class="bi fs-5 bi-toggle2-off"></i>
                         </ng-template>
                       </button>
                     </td>
@@ -108,7 +108,7 @@
     إضافة مستخدم جديد
   </button>
 </p>
-<div class="collapse mt-5 Cardform" id="collapseExample">
+<div class="collapse mt-5 Cardform" id="collapseExample"[ngClass]="{ 'show': flag }">
   <div class="card card-body">
     <div class="main-content">
       <div class="container-fluid">
@@ -358,147 +358,6 @@
             </div>
           </div>
         </div>
-        <!--<p class="p-3 d-flex justify-content-start">
-  <button
-    class="btn btn-outline-danger fs-4"
-    type="button"
-    data-bs-toggle="collapse"
-    data-bs-target="#collapseExample"
-    aria-expanded="false"
-    aria-controls="collapseExample"
-  >
-       إضافة مستخدم
-  </button>
-</p>
-<div class="collapse mt-5" id="collapseExample">
-  <div class="card card-body">
-    <div class="main-content mt-3">
-      <div class="container-fluid">
-        <div class="row">
-          <div class="col-md-12">
-            <div class="card-body">
-              <div class="card-body text-right fs-5">
-                <form [formGroup]="usersForm" (submit)="formHandler($event)" >
-
-                  <div class="row">
-                    <div class="col">
-                      <label for="Username" class="form-label">إسم المستخدم</label>
-                      <input  formControlName="Username" type="text" class="form-control" id="Username" aria-describedby="emailHelp">
-                      <ng-container *ngIf="getUserName.touched">
-                        <div *ngIf="getUserName.hasError('required')" id="Username" class="form-text text-danger">
-                        من فضلك ادخل الاسم المستخدم
-                        </div>
-                        <div *ngIf="getUserName.hasError('minlength')" id="Username" class="form-text text-danger">
-                          لا يقل الاسم عن 3 حروف
-                          </div>
-                        </ng-container>
-                    </div>
-                    <div class="col">
-                      <label for="name" class="form-label">  الاسم كامل</label>
-                      <input formControlName="name"  type="text" class="form-control" id="name" aria-describedby="emailHelp">
-                      <ng-container *ngIf="getName.touched" >
-                        <div *ngIf="getName.hasError('required')" id="name" class="form-text text-danger  w-75">
-                         من فضلك ادخل الاسم كامل
-                        </div>
-                        <div *ngIf="getName.hasError('minlength')" id="name" class="form-text text-danger  w-75">
-                          لا يقل الاسم عن 3 حروف
-                         </div>
-                         <div *ngIf="getName.hasError('pattern')" id="Username" class="form-text text-danger">
-                          ادخل حروف فقط
-                          </div>
-                        </ng-container>
-                  </div>
-                  </div>
-                  <div class="row">
-                    <div class="col">
-                      <label for="password" class="form-label"> كلمة المرور</label>
-                        <input formControlName="password" type="password" class="form-control" id="password" aria-describedby="emailHelp">
-                        <ng-container *ngIf="getUserPassword.touched">
-                          <div *ngIf="getUserPassword.hasError('required')" id="password" class="form-text text-danger  w-75">
-                           من فضلك ادخل كلمة المرور
-                          </div>
-                          <div *ngIf="getUserPassword.hasError('pattern')" id="password" class="form-text text-danger  w-75">
-                            يجب ان تحتوى كلمة المرور على الاقل حرف كبير وحروف خاصة وارقام واحرف صغيرة
-                           </div>
-                          </ng-container>
-                    </div>
-                    <div class="col">
-                      <label for="email" class="form-label">  البريد الالكتروني</label>
-                        <input formControlName="email"  type="email" class="form-control" id="email" aria-describedby="emailHelp">
-                        <ng-container *ngIf="getUserEmail.touched">
-                          <div *ngIf="getUserEmail.hasError('required')" id="email" class="form-text text-danger  w-75">
-                           من فضلك ادخل البريد الالكتروني
-                          </div>
-                          <div *ngIf="getUserEmail.hasError('email')" id="email" class="form-text text-danger  w-75">
-                           البريد الالكترونى غير صالح
-                           </div>
-                          </ng-container>
-                  </div>
-                  </div>
-                  <div class="row">
-                    <div class="col">
-                      <label for="phone" class="form-label"> التليفون المحمول</label>
-                        <input formControlName="phone" type="text" class="form-control" id="phone" aria-describedby="emailHelp">
-                        <ng-container *ngIf="getUserPhone.touched">
-                          <div *ngIf="getUserPhone.hasError('required')" id="phone" class="form-text text-danger  w-75">
-                           من فضلك  ادخل رقم المحمول
-                          </div>
-                          <div *ngIf="getUserPhone.hasError('max')" id="phone" class="form-text text-danger  w-75">
-                            يجب ان يحتوى الرقم على 11 رقم فقط
-                           </div>
-                           <div *ngIf="getUserPhone.hasError('pattern')" id="phone" class="form-text text-danger  w-75">
-                            رقم المحمول غير صالح
-                           </div>
-                          </ng-container>
-                    </div>
-                    <div class="col">
-                      <label for="disabledSelect" class="form-label">اسم المجموعه</label>
-                        <select  formControlName="group" class="form-select" >
-                          <option  *ngFor="let G of Groups" [value]="G.groupId">{{G.groupName}} </option>
-                        </select>
-                        <ng-container *ngIf="getUserGroup.touched">
-                          <div *ngIf="getUserGroup.hasError('required')" id="disabledSelect" class="form-text text-danger  w-75">
-                           من فضلك اختر  اسم المجموعة
-                          </div>
-                          </ng-container>
-                  </div>
-                  </div>
-
-                  <div class="row">
-                    <div class="col">
-                      <label for="disabledSelect" class="form-label">الفرع</label>
-                        <select  formControlName="branch"   class="form-select">
-                          <option *ngFor="let B of Branches" [value]="B.id">{{B.name}}</option>
-                        </select>
-                        <ng-container *ngIf="getUserBranch.touched">
-                          <div *ngIf="getUserBranch.hasError('required')"  class="form-text text-danger  w-75">
-                           من فضلك اختر اسم الفرع
-                          </div>
-                          </ng-container>
-                    </div>
-                    <div class="col">
-                      <label for="disabledSelect" class="form-label">اللغة</label>
-                        <select formControlName="language"  class="form-select">
-                          <option *ngFor="let L of Languages" [value]="L.languageId">{{L.languageName}}</option>
-                        </select>
-                        <ng-container *ngIf="getUserLanguage.touched">
-                          <div *ngIf="getUserLanguage.hasError('required')" id="disabledSelect" class="form-text text-danger  w-75">
-                           من فضلك اختر اللغة
-                          </div>
-                          </ng-container>
-                  </div>
-                  </div>
-                    <button (click)="back()" class="btn btn-primary m-2 float-start back">تراجع</button>
-                    <button [disabled]="!usersForm.valid"  (click)="addUser()" *ngIf="!flag" class="btn btn-danger m-2 float-start save">إضافة </button>
-                    <button  (click)="saveUser()" *ngIf="flag" class="btn btn-success m-2 float-start save">تعديل </button>
-
-                  </form>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>-->
       </div>
     </div>
   </div>

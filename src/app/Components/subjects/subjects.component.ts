@@ -18,6 +18,8 @@ export class SubjectsComponent implements  OnInit {
   courceId:any
   courseId:any
   subjectId:any
+  showTable = false;
+  
 
 
   // courseId:any
@@ -57,6 +59,7 @@ loadSubjects() {
      console.log(error);
    }
  });
+ this.showTable =true;
 }
 
     ngOnInit(): void {
@@ -122,12 +125,14 @@ DeleteSubject(id:number){
     this.subjectService.addSubject(subject).subscribe(()=>{
       console.log("added");
       this.loadSubjects();
-      this.subjectForm.reset();
+      // this.subjectForm.reset();
+      this.getSubjectName.reset();
 
     })
   }
   back(){
     this.subjectForm.reset();
+    this.showTable =false;
   }
 
 }

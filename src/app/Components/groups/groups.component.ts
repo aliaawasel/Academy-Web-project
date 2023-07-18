@@ -15,6 +15,8 @@ export class GroupsComponent implements OnInit {
   selectedGroupID!: number;
   falseValue: any;
   ischecked:boolean=false;
+  showTable=false;
+
   constructor(private groupService: GroupService) { }
   ngOnInit(): void {
     this.loadAllGroubs();
@@ -150,7 +152,7 @@ export class GroupsComponent implements OnInit {
   }
 
   EditGroup(id: number) {
-
+this.showTable=true;
     this.selectedGroupID = id;
     this.groupService.GetGroupByID(id).subscribe((result: any) => {
       console.log(result);
@@ -197,6 +199,7 @@ export class GroupsComponent implements OnInit {
       console.log(group2);
 
     })
+    this.showTable=false;
 
   }
 

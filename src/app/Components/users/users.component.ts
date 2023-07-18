@@ -17,9 +17,9 @@ export class UsersComponent implements OnInit {
     branch : new FormControl("",[Validators.required]),
     group : new FormControl("",[Validators.required]),
     language : new FormControl("",[Validators.required]),
-
-
+    
   })
+  
   get getUserName(){
     return this.usersForm.controls['Username']
   };

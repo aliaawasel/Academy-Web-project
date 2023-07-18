@@ -4,6 +4,8 @@ import { Validators,FormControl,FormGroup } from '@angular/forms';
 import { BranchService } from 'src/Service/branch.service';
 import { CourseService } from 'src/Service/course.service';
 import { StudentsServices } from 'src/Service/StudentsServices.service'; 
+import jwt_decode from 'jwt-decode';
+
 @Component({
   selector: 'app-payments',
   templateUrl: './payments.component.html',
@@ -21,6 +23,9 @@ export class PaymentsComponent {
   tarineeTrainsactionData:any
   AllTransactions:any
   transactionId:any
+  showTable = false;
+  tokenData:any
+token:any;
 
   constructor(
     private paymentService:PaymentService,
@@ -112,6 +117,8 @@ export class PaymentsComponent {
           },
           error:()=>{},
         })
+        this.showTable =true;
+
         }
 
         getAllTransactions(){
@@ -126,13 +133,18 @@ export class PaymentsComponent {
           
         }
         addTrainsaction(){
+          this.token=localStorage.getItem("token");
+          this.tokenData= jwt_decode(this.token);
+          console.log(this.tokenData);
+          
+
           this.selectedCourseIndex=this.trainsacteForm.value.courseSelect;
       
           const trainsaction={
                   courseName:this.traineeCourses[this.selectedCourseIndex].courseName,
                   transactionDateTime:new Date().toISOString(),
                   receivedMoneyAmount:Number(this.trainsacteForm.value.Theamountpaid),
-                  dashboardUser:"mayar",
+                  dashboardUser:this.tokenData["http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name"],
                   notes:this.trainsacteForm.value.notes,
                   traineeId:Number(this.traineeId),
                   courseId: this.traineeCourses[this.selectedCourseIndex].courseId
@@ -140,23 +152,22 @@ export class PaymentsComponent {
                 console.log(trainsaction);
                     this.paymentService.AddTransction(trainsaction).subscribe(()=>{
                       console.log("added");
-                      // this.loadSubjects();
+                      this.loadTransactions();
                       this.trainsacteForm.reset();
                 
                     })
-                    // this.getCoursesAccountStatements();
-                    // this.getAllTransactions();
-                    this.loadTransactions();
+        
         }
         
   
         back(){
           this.trainsacteForm.reset();
+          this.showTable=false;
         }
         Delete(id:number){
           this.transactionId=id;
           this.paymentService.DeleteTransction(this.transactionId).subscribe(()=>{
-          //   this.loadSubjects();
+          this.loadTransactions();
         })
         }
 
