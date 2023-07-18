@@ -1,144 +1,227 @@
-
 <div class="main-content" dir="rtl">
-    <h2 class="hea mx-5 float-right">المجموعات</h2>
-
-    <div class="container-fluid">
-
-        <div class="row">
-            <div class="col-md-12">
-
-                <div class="container">
-                    <h2 class="card-title m-3 mb-5 text-center">إضافة مجموعة</h2>
-                  </div>
-               
-                <div class="card mx-5">
-                  
-                    <div class="card-body fs-5">
-                        <form action="post" [formGroup]="GroupAuthForm" (submit)="AddNewGroup($event)">
-
-                            <div class="row ">
-                                <div class="col">
-                                    <label class="py-2" for="GroubName">إسم المجموعة</label><br>
-                                    <input type="input" class="form-control" id="name" aria-describedby="emailHelp"
-                                        formControlName="name">
-                                    <ng-container *ngIf="groupName.touched">
-                                        <div *ngIf="groupName.hasError('required')">
-                                            <p class="text-danger"> بالرجاء إدخال إسم المستخدم</p>
-                                        </div>
-                                        <div *ngIf="groupName.hasError('minlength')">
-                                            <p class="text-danger"> يجب أن لا يقل أسم المستخدم عن 5 أحرف </p>
-                                        </div>
-                                    </ng-container>
-                                </div>
-
-                            </div>
-                            <div class="row">
-                                <div class="col mb-3">
-                                    <div class="ms-1 py-2">
-                                        <input class="form-check-input" type="checkbox" value="all" id="all"
-                                            formControlName="all">
-                                        <label class="form-check-label px-2 fs-5 text-primary" for="all"
-                                            form-control="defaultCheck">
-                                            إعطاء المجموعه جميع الصلاحيات
-                                        </label>
-                                    </div>
-                                </div>
-
-                                <div class="col mb-3">
-                                    <div class="ms-1 py-2">
-                                        <input class="form-check-input" type="checkbox" value="academyinnumber"
-                                            id="academyinnumber" formControlName="academyinnumber">
-                                        <label class="form-check-label px-2 fs-5 text-primary" for="academyinnumber">
-                                            الأكاديمية فى أرقام
-                                        </label>
-                                    </div>
-
-                                </div>
-
-                            </div>
-                            <div class="row">
-                                <div class="col mb-3">
-                                    <div class="ms-1">
-                                        <input class="form-check-input" type="checkbox" value="users" id="users"
-                                            formControlName="users">
-                                        <label class="form-check-label px-2 fs-5 text-primary" for="users">
-                                            المستخدمين
-                                        </label>
-                                    </div>
-
-                                      
-                                </div>
-                                <div class="col mb-3">
-                                    <div class="ms-1">
-                                        <input class="form-check-input" type="checkbox" value="Groups" id="Groups"
-                                            formControlName="Groups">
-                                        <label class="form-check-label px-2 fs-5 text-primary" for="Groups">
-                                            المجموعات
-                                        </label>
-                                    </div>
-
-                                </div>
-
-                            </div>
-
-                            <div class="row">
-                                <div class="col mb-3">
-                                    <div class="ms-1">
-                                        <input class="form-check-input" type="checkbox" value="branches" id="branches"
-                                            formControlName="branches">
-                                        <label class="form-check-label px-2 fs-5 text-primary" for="branches">
-                                            الفروع
-                                        </label>
-                                    </div>
-
-                                        
-                                </div>
-                                <div class="col mb-3">
-                                    <div class="ms-1">
-                                        <input class="form-check-input" type="checkbox" value="Courses" id="Courses"
-                                            formControlName="Courses">
-                                        <label class="form-check-label px-2 fs-5 text-primary" for="Courses">
-                                            الكورسات
-                                        </label>
-                                    </div>
-
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col mb-3">
-                                    <div class="ms-1">
-                                        <input class="form-check-input" type="checkbox" value="Subject" id="Subject"
-                                            formControlName="Subject">
-                                        <label class="form-check-label px-3 fs-5 text-primary" for="Subject">
-                                            المواد
-                                        </label>
-                                    </div>
-                                </div>
-                                <div class="col mb-3">
-                                    <div class="ms-1">
-                                        <input class="form-check-input" type="checkbox" value="Student" id="Student"
-                                            formControlName="Student">
-                                        <label class="form-check-label px-2 fs-5 text-primary" for="Student">
-                                            الطلاب
-                                        </label>
-                                    </div>
-
-                                      
-                                </div>
-                            </div>
-
-
-                            <button *ngIf="!isEdit" type="submit" class="float-start save" (click)="addNewGroup()">اضافه
-                            </button>
-                            <button *ngIf="isEdit" type="submit" class="float-start save" (click)="saveUpdate()">حفظ
-                                التعديل </button>
-                        </form>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card">
+          <div class="card-header text-light p-3 address">
+            <h4 class="card-title text-center">
+              إنشاء مجموعه جديده و إدراج صلاحياتها
+            </h4>
+          </div>
+          <div class="card-body fs-5">
+            <form
+              action="post"
+              [formGroup]="GroupAuthForm"
+              (submit)="AddNewGroup($event)"
+            >
+              <div class="row">
+                <div class="col">
+                  <label class="py-2" for="GroubName">إسم المجموعة</label><br />
+                  <input
+                    type="input"
+                    class="form-control"
+                    id="name"
+                    aria-describedby="emailHelp"
+                    formControlName="name"
+                  />
+                  <ng-container *ngIf="groupName.touched">
+                    <div *ngIf="groupName.hasError('required')">
+                      <p class="text-danger">بالرجاء إدخال إسم المستخدم</p>
                     </div>
+                    <div *ngIf="groupName.hasError('minlength')">
+                      <p class="text-danger">
+                        يجب أن لا يقل أسم المستخدم عن 5 أحرف
+                      </p>
+                    </div>
+                  </ng-container>
                 </div>
-            </div>
-        </div>
+              </div>
+              <div class="row">
+                <div class="col mb-3">
+                  <div class="ms-1 py-2">
+                    <input
+                      class="form-check-input"
+                      type="checkbox"
+                      [(ngModel)]="ischecked"
+                      (change)="CheckedboxChange()"
+                      value="all"
+                      id="all"
+                      formControlName="all"
+                    />
+                    <label
+                      class="form-check-label px-2 fs-5 text-primary"
+                      for="all"
+                      form-control="defaultCheck"
+                    >
+                      إعطاء المجموعه جميع الصلاحيات
+                    </label>
+                  </div>
+                </div>
 
-        <!----     <div class="col-md-12  mt-4     ">
+                <div class="col mb-3">
+                  <div class="ms-1 py-2">
+                    <input
+                      class="form-check-input"
+                      type="checkbox"
+                      value="academyinnumber"
+                      [checked]="ischecked"
+                      id="academyinnumber"
+                      formControlName="academyinnumber"
+                    />
+                    <label
+                      class="form-check-label px-2 fs-5 text-primary"
+                      for="academyinnumber"
+                    >
+                      الأكاديمية فى أرقام
+                    </label>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col mb-3">
+                  <div class="ms-1">
+                    <input
+                      class="form-check-input"
+                      type="checkbox"
+                      value="users"
+                      id="users"
+                      [checked]="ischecked"
+                      formControlName="users"
+                    />
+                    <label
+                      class="form-check-label px-2 fs-5 text-primary"
+                      for="users"
+                    >
+                      المستخدمين
+                    </label>
+                  </div>
+
+                    
+                </div>
+                <div class="col mb-3">
+                  <div class="ms-1">
+                    <input
+                      class="form-check-input"
+                      type="checkbox"
+                      value="Groups"
+                      id="Groups"
+                      [checked]="ischecked"
+                      formControlName="Groups"
+                    />
+                    <label
+                      class="form-check-label px-2 fs-5 text-primary"
+                      for="Groups"
+                    >
+                      المجموعات
+                    </label>
+                  </div>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col mb-3">
+                  <div class="ms-1">
+                    <input
+                      class="form-check-input"
+                      type="checkbox"
+                      value="branches"
+                      id="branches"
+                      [checked]="ischecked"
+                      formControlName="branches"
+                    />
+                    <label
+                      class="form-check-label px-2 fs-5 text-primary"
+                      for="branches"
+                    >
+                      الفروع
+                    </label>
+                  </div>
+
+                    
+                </div>
+                <div class="col mb-3">
+                  <div class="ms-1">
+                    <input
+                      class="form-check-input"
+                      type="checkbox"
+                      value="Courses"
+                      id="Courses"
+                      [checked]="ischecked"
+                      formControlName="Courses"
+                    />
+                    <label
+                      class="form-check-label px-2 fs-5 text-primary"
+                      for="Courses"
+                    >
+                      الكورسات
+                    </label>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col mb-3">
+                  <div class="ms-1">
+                    <input
+                      class="form-check-input"
+                      type="checkbox"
+                      value="Subject"
+                      id="Subject"
+                      [checked]="ischecked"
+                      formControlName="Subject"
+                    />
+                    <label
+                      class="form-check-label px-3 fs-5 text-primary"
+                      for="Subject"
+                    >
+                      المواد
+                    </label>
+                  </div>
+                </div>
+                <div class="col mb-3">
+                  <div class="ms-1">
+                    <input
+                      class="form-check-input"
+                      type="checkbox"
+                      value="Student"
+                      id="Student"
+                      [checked]="ischecked"
+                      formControlName="Student"
+                    />
+                    <label
+                      class="form-check-label px-2 fs-5 text-primary"
+                      for="Student"
+                    >
+                      الطلاب
+                    </label>
+                  </div>
+
+                    
+                </div>
+              </div>
+
+              <button
+                *ngIf="!isEdit"
+                type="submit"
+                class="float-start save"
+                (click)="addNewGroup()"
+              >
+                اضافه
+              </button>
+              <button
+                *ngIf="isEdit"
+                type="submit"
+                class="float-start save"
+                (click)="saveUpdate()"
+              >
+                حفظ التعديل
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!----     <div class="col-md-12  mt-4     ">
             <div class="card">
                 <div class="card-header bg-dark text-light p-4">
                     <h4 class="card-title text-right ">عرض المجموعات المنشأة وصلاحياتها </h4>
@@ -239,99 +322,148 @@
             </div>
         </div>
     </div>-->
-        <p class="p-3 d-flex justify-content-start">
-            <button class="btn btn-primary p-3 fs-4 show" type="button" data-bs-toggle="collapse"
-                data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-                عرض المجموعات المنشأة وصلاحياتها
-            </button>
-        </p>
-        <div class="collapse" id="collapseExample">
-            <div class="card card-body">
-                <div class="main-content mt-1">
-                    <div class="container-fluid">
-                        <div class="row">
-                            <div class="col-md-12">
-                                <div class="card-body">
-                                    <div class="table-responsive">
-                                        <table class="table text-center table table-striped table-hover Tabletext">
-                                            <thead>
-                                                <tr>
-                                                    <th>الأسم</th>
-                                                    <th>الأكاديمية فى أرقام</th>
-                                                    <th> المجموعات</th>
-                                                    <th> المستخدمين</th>
-                                                    <th>
-                                                        الفروع
-                                                    </th>
-                                                    <th>
-                                                        الكورسات
-                                                    </th>
-                                                    <th>
-                                                        المواد
-                                                    </th>
-                                                    <th>
-                                                        الطلاب
-                                                    </th>
-                                                    <th>
-                                                        الرقم المميز
-                                                    </th>
-                                                    <th>تعديل</th>
-                                                    <th>حذف</th>
-                                                </tr>
-                                            </thead>
+    <p class="p-3 d-flex justify-content-start">
+      <button
+        class="btn btn-primary p-3 fs-4 show"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#collapseExample"
+        aria-expanded="false"
+        aria-controls="collapseExample"
+      >
+        عرض المجموعات المنشأة وصلاحياتها
+      </button>
+    </p>
+    <div class="collapse" id="collapseExample">
+      <div class="card card-body">
+        <div class="main-content mt-1">
+          <div class="container-fluid">
+            <div class="row">
+              <div class="col-md-12">
+                <div class="card-body">
+                  <div class="table-responsive">
+                    <table
+                      class="table text-center table table-striped table-hover Tabletext"
+                    >
+                      <thead>
+                        <tr>
+                          <th>الأسم</th>
+                          <th>الأكاديمية فى أرقام</th>
+                          <th>المجموعات</th>
+                          <th>المستخدمين</th>
+                          <th>الفروع</th>
+                          <th>الكورسات</th>
+                          <th>المواد</th>
+                          <th>الطلاب</th>
+                          <th>الرقم المميز</th>
+                          <th>تعديل</th>
+                          <th>حذف</th>
+                        </tr>
+                      </thead>
 
-                                            <tbody>
-                                                <tr *ngFor="let ch of groups">
-                                                    <td>
-                                                        {{ch.groupName}}
-                                                    </td>
-                                                    <td>
+                      <tbody>
+                        <tr *ngFor="let ch of groups">
+                          <td>
+                            {{ ch.groupName }}
+                          </td>
+                          <td>
+                            <ng-container
+                              *ngIf="ch.academyInNumbersPage; else falselogo"
+                            >
+                              <i class="bi bi-check-square-fill"></i>
+                            </ng-container>
+                            <ng-template #falselogo>
+                              <i class="bi bi-x-square-fill"></i>
+                            </ng-template>
+                          </td>
+                          <td>
+                            <ng-container *ngIf="ch.groupsPage; else falselogo">
+                              <i class="bi bi-check-square-fill"></i>
+                            </ng-container>
+                            <ng-template #falselogo>
+                              <i class="bi bi-x-square-fill"></i>
+                            </ng-template>
+                          </td>
+                          <td>
+                            <ng-container *ngIf="ch.usersPage; else falselogo">
+                              <i class="bi bi-check-square-fill"></i>
+                            </ng-container>
+                            <ng-template #falselogo>
+                              <i class="bi bi-x-square-fill"></i>
+                            </ng-template>
+                          </td>
 
-                                                        {{ch.academyInNumbersPage}}
-                                                    </td>
-                                                    <td>
-                                                        {{ch.groupsPage}}
-                                                    </td>
-                                                    <td>
-                                                        {{ch.usersPage}}
-                                                    </td>
+                          <td>
+                            <ng-container
+                              *ngIf="ch.branchesPage; else falselogo"
+                            >
+                              <i class="bi bi-check-square-fill"></i>
+                            </ng-container>
+                            <ng-template #falselogo>
+                              <i class="bi bi-x-square-fill"></i>
+                            </ng-template>
+                          </td>
+                          <td>
+                            <ng-container
+                              *ngIf="ch.coursesPage; else falselogo"
+                            >
+                              <i class="bi bi-check-square-fill"></i>
+                            </ng-container>
+                            <ng-template #falselogo>
+                              <i class="bi bi-x-square-fill"></i>
+                            </ng-template>
+                          </td>
+                          <td>
+                            <ng-container
+                              *ngIf="ch.subjectsPage; else falselogo"
+                            >
+                              <i class="bi bi-check-square-fill"></i>
+                            </ng-container>
+                            <ng-template #falselogo>
+                              <i class="bi bi-x-square-fill"></i>
+                            </ng-template>
+                          </td>
+                          <td>
+                            <ng-container
+                              *ngIf="ch.traineeAdditionPage; else falselogo"
+                            >
+                              <i class="bi bi-check-square-fill"></i>
+                            </ng-container>
+                            <ng-template #falselogo>
+                              <i class="bi bi-x-square-fill"></i>
+                            </ng-template>
+                          </td>
 
-                                                    <td>
-                                                        {{ch.branchesPage}}
-                                                    </td>
-                                                    <td>
-                                                        {{ch.coursesPage}}
-                                                    </td>
-                                                    <td>
-                                                        {{ch.subjectsPage}}
-                                                    </td>
-                                                    <td>
-                                                        {{ch.traineeAdditionPage}}
-                                                    </td>
+                          <td>
+                            {{ ch.groupId }}
+                          </td>
 
-                                                    <td>
-                                                        {{ch.groupId}}
-                                                    </td>
-
-                                                    <td>
-                                                        <button class="btn btn-warning" (click)="EditGroup(ch.groupId)">
-                                                            <i class="bi bi-pencil-square text-light"></i>
-                                                        </button>
-                                                    </td>
-                                                    <td>
-                                                        <button class="btn btn-danger"
-                                                            (click)="DeleteGroup(ch.groupId)">
-                                                            <i class="bi bi-trash3-fill"></i>
-
-                                                        </button>
-                                                    </td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                          <td>
+                            <button
+                              class="btn btn-warning"
+                              (click)="EditGroup(ch.groupId)"
+                            >
+                              <i class="bi bi-pencil-square text-light"></i>
+                            </button>
+                          </td>
+                          <td>
+                            <button
+                              class="btn btn-danger"
+                              (click)="DeleteGroup(ch.groupId)"
+                            >
+                              <i class="bi bi-trash3-fill"></i>
+                            </button>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
                 </div>
+              </div>
             </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

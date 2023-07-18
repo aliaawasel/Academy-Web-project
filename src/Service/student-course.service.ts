@@ -11,7 +11,7 @@ export class StudentCourseService {
   stdudentbybranchUrl:string="https://localhost:7044/academy-api/trainee/all-by-branch-id"
   studentsUrl:string="https://localhost:7044/academy-api/trainee"
   stdudentCoursUrl:string="https://localhost:7044/academy-api/trainee-course-relation"
-  //https://localhost:7044/academy-api/trainee/2
+
 
 
   constructor(private http:HttpClient) { }
@@ -28,11 +28,11 @@ export class StudentCourseService {
   getStudentByid(traineeId:number){
     return this.http.get(`${this.baseUrl}/${traineeId}`)
   }
-  getStudentdCourse(courseId:number){
-    return this.http.get(`${this.courseUrl}/all-trainee-courses/${courseId}`)
+  getStudentdCourse(traineeId:number){
+    return this.http.get(`${this.stdudentCoursUrl}/all/${traineeId}`)
   }
   deleteCourse(data:any){
-    return this.http.put(`${this.stdudentCoursUrl}/delete/`,data)
+    return this.http.put(`${this.stdudentCoursUrl}/delete`,data)
   }
   addStudentCourse(data:any){
     return this.http.post(`${this.stdudentCoursUrl}/insert`,data)

@@ -27,7 +27,7 @@ export class SubjectsComponent implements  OnInit {
     ){}
 
     subjectForm =new FormGroup({
-    subjectName: new FormControl('',[Validators.required,Validators.minLength(3),Validators.pattern('^[a-zA-Z\u0600-\u06FF]+$')]),
+    subjectName: new FormControl('',[Validators.required,Validators.minLength(3)]),
     subjectCourse: new FormControl('',[Validators.required]),
   })
 

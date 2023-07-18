@@ -16,7 +16,7 @@ constructor(private courseService:CourseService) {
   }
 courseForm=new  FormGroup({
   courseName:new  FormControl('',[Validators.required,Validators.minLength(3),Validators.maxLength(100),Validators.pattern('^[a-zA-Z\u0600-\u06FF\s]+$')]),
-  courseDesc : new  FormControl('',[Validators.required,Validators.minLength(3),Validators.pattern('^[a-zA-Z\u0600-\u06FF\s]+$')]),
+  courseDesc : new  FormControl('',[Validators.required,Validators.minLength(3)]),
   courseduration:new  FormControl('',[Validators.required,Validators.pattern('^[0-9]+$')]),
   courseCost:new  FormControl('',[Validators.required,Validators.pattern('^[0-9]+$')])
   })

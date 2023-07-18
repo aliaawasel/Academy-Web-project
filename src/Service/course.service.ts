@@ -12,10 +12,9 @@ baseUrl:string="https://localhost:7044/academy-api/course"
     return  this.http.get(`${this.baseUrl}/all`)
   }
   getCourseById(courseId:number){
-
-     return  this.http.get(`${this.baseUrl}/${courseId}`)
-     }
-     deleteCourse(courseId:number){
+    return  this.http.get(`${this.baseUrl}/${courseId}`)
+  }
+  deleteCourse(courseId:number){
       return  this.http.delete(`${this.baseUrl}/delete/${courseId}`)
     }
     addCourse(data:any){
