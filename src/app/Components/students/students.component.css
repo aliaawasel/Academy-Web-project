@@ -76,7 +76,13 @@ input:hover,select:hover{
 .card{
   box-shadow: 2px 2px 2px 2px rgb(203, 201, 201);
   /* background-color: #EEEEEE; */
+  margin-bottom: 25px;
 }
 .address{
   background-color: #30475E;
+}
+.Cardform{
+  padding-left: 7rem;
+  padding-right: 7rem;
+  margin: 25px;
 }

@@ -1,4 +1,4 @@
-
+/*
 .ss:hover {
   background-color: inherit;
 }
@@ -68,4 +68,16 @@ input:hover,select:hover{
 }.Tabletext{
   color: #30475E;
   font-size: 20px;
+} */
+.card{
+  box-shadow: 2px 2px 2px 2px rgb(203, 201, 201);
+  /* background-color: #EEEEEE; */
+}
+.address{
+  background-color: #30475E;
+}
+.Cardform{
+  padding-left: 12rem;
+  padding-right: 12rem;
+  margin: 25px;
 }
