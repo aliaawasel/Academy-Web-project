@@ -14,10 +14,22 @@ export class GroupsComponent implements OnInit {
   isEdit: boolean = false;
   selectedGroupID!: number;
   falseValue: any;
+  ischecked:boolean=false;
   constructor(private groupService: GroupService) { }
   ngOnInit(): void {
     this.loadAllGroubs();
   }
+
+  CheckedboxChange(){
+    if(this.ischecked==false){
+      this.ischecked=true;
+    }
+    else{
+        this.ischecked=false;
+      }
+    }
+
+
 
 
   GroupAuthForm = new FormGroup({
