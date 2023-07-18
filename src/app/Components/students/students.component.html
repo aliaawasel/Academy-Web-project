@@ -158,9 +158,9 @@
                       <td scope="row" class="p-3">
                         <button
                           (click)="UdateStudent(s.traineeId)"
-                          class="btn btn-success"
+                          class="btn btn-warning"
                         >
-                          <i class="bi bi-pencil-square"></i>
+                        <i class="bi bi-pencil-square text-light"></i>
                         </button>
                       </td>
                       <td scope="row" class="p-3">
@@ -732,7 +732,7 @@
                       <button
                         (click)="back()"
                         type="submit"
-                        class="btn btn-success m-2 pull-right float-start back"
+                        class="btn btn-success m-2 pull-right float-start back bb"
                       >
                         تراجع
                       </button>
@@ -741,7 +741,7 @@
                         [disabled]="!StusForm.valid"
                         (click)="addStudent()"
                         *ngIf="!flag"
-                        class="btn btn-danger m-2 pull-right float-start save"
+                        class="btn btn-danger m-2 pull-right float-start bb"
                       >
                         إضافة
                       </button>
@@ -749,7 +749,7 @@
                         raised-button
                         (click)="Save()"
                         *ngIf="flag"
-                        class="btn btn-warning m-2 pull-right float-start save"
+                        class="btn btn-warning m-2 pull-right float-start bb"
                       >
                         تعديل
                       </button>

@@ -59,8 +59,7 @@
   </div>
 </div>
 
-
-  <!--</p>
+<!--</p>
 <div class="collapse mt-5" id="collapseExample">
   <div class="card card-body">
     <div class="main-content mt-3">
@@ -197,92 +196,88 @@
   </button>
 </p>
 <div class="collapse mt-5 Cardform" id="collapseExample">
-  <div class="card card-body ">
+  <div class="card card-body">
     <div class="main-content">
       <div class="container-fluid">
         <div class="row">
           <div class="col-md-12">
             <div class="card-body">
               <form [formGroup]="subjectForm" (submit)="formHandler($event)">
+                <div class="mb-3">
+                  <label for="subjectName" class="form-label">إسم المادة</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    formControlName="subjectName"
+                    id="subjectName"
+                    aria-describedby="emailHelp"
+                  />
+                  <ng-container *ngIf="getSubjectName.touched">
+                    <div
+                      *ngIf="getSubjectName.hasError('required')"
+                      id="subjectName"
+                      class="form-text text-danger w-75"
+                    >
+                      من فضلك ادخل الاسم المادة
+                    </div>
+                    <div
+                      *ngIf="getSubjectName.hasError('minlength')"
+                      id="subjectName"
+                      class="form-text text-danger w-75"
+                    >
+                      لا يقل الاسم عن 3 حروف
+                    </div>
+                  </ng-container>
+                </div>
 
-                      <div class="mb-3">
-                        <label for="subjectName" class="form-label"
-                          >إسم المادة</label
-                        >
-                        <input
-                          type="text"
-                          class="form-control"
-                          formControlName="subjectName"
-                          id="subjectName"
-                          aria-describedby="emailHelp"
-                        />
-                        <ng-container *ngIf="getSubjectName.touched">
-                          <div
-                            *ngIf="getSubjectName.hasError('required')"
-                            id="subjectName"
-                            class="form-text text-danger w-75"
-                          >
-                            من فضلك ادخل الاسم المادة
-                          </div>
-                          <div
-                            *ngIf="getSubjectName.hasError('minlength')"
-                            id="subjectName"
-                            class="form-text text-danger w-75"
-                          >
-                            لا يقل الاسم عن 3 حروف
-                          </div>
-                          
-                        </ng-container>
-                      </div>
+                <div class="mb-3">
+                  <label for="subjectCourse" class="form-label"
+                    >الاسم الكورسم المحتوي له</label
+                  >
+                  <select
+                    id="subjectCourse"
+                    class="form-select"
+                    formControlName="subjectCourse"
+                    (change)="loadSubjects()"
+                  >
+                    <option
+                      *ngFor="let course of Allcourses; let i = index"
+                      value="{{ course.courseId }}"
+                    >
+                      {{ course.courseName }}
+                    </option>
+                  </select>
 
-                      <div class="mb-3">
-                        <label for="subjectCourse" class="form-label"
-                          >الاسم الكورسم المحتوي له</label
-                        >
-                        <select
-                          id="subjectCourse"
-                          class="form-select"
-                          formControlName="subjectCourse"
-                          (change)="loadSubjects()"
-                        >
-                          <option
-                            *ngFor="let course of Allcourses; let i = index"
-                            value="{{ course.courseId }}"
-                          >
-                            {{ course.courseName }}
-                          </option>
-                        </select>
-
-                        <ng-container *ngIf="getSubjectName.touched">
-                          <div
-                            *ngIf="getSubjectCourse.hasError('required')"
-                            id="subjectName"
-                            class="form-text text-danger w-75"
-                          >
-                            من فضلك ادخل الكورس التابعه له المادة
-                          </div>
-                        </ng-container>
-                      </div>
-                      <button
-                        class="btn btn-primary ms-2 float-start back"
-                        (click)="back()"
-                      >
-                        تراجع
-                      </button>
-                      <button
-                        *ngIf="!isEdit"
-                        class="btn btn-primary ms-2 float-start save"
-                        (click)="AddSubject()"
-                      >
-                        اضافة
-                      </button>
-                      <button
-                        *ngIf="isEdit"
-                        class="btn btn-primary ms-2 float-start save"
-                        (click)="saveUpdate()"
-                      >
-                        حفظ
-                      </button>
+                  <ng-container *ngIf="getSubjectName.touched">
+                    <div
+                      *ngIf="getSubjectCourse.hasError('required')"
+                      id="subjectName"
+                      class="form-text text-danger w-75"
+                    >
+                      من فضلك ادخل الكورس التابعه له المادة
+                    </div>
+                  </ng-container>
+                </div>
+                <button
+                class="btn btn-success m-2 pull-right float-start back bb"
+                (click)="back()"
+                >
+                  تراجع
+                </button>
+                <button
+                  *ngIf="!isEdit"
+                  class="btn btn-danger m-2 pull-right float-start bb"
+                  (click)="AddSubject()"
+                >
+                  اضافة
+                </button>
+                <button
+                  *ngIf="isEdit"
+                  class="btn btn-warning m-2 pull-right float-start bb"
+                  (click)="saveUpdate()"
+                >
+                  تعديل
+                </button>
               </form>
             </div>
           </div>
