@@ -1,32 +1,26 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark-c mb-1">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark-c" [ngStyle]="{'display': navhidden ? 'block' : 'none'}">
     <div class="container">
 
-        <button class="navbar-toggler order-1" type="button" data-toggle="collapse" data-target="#navbarNav"
-        aria-controls="navbarNav" aria-expanded="true" aria-label="Toggle navigation">
+        <button class="navbar-toggler order-1" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation"> 
         <span class="navbar-toggler-icon"></span>
     </button>
-        <a class="navbar-brand" href="#">الاكاديمية</a>
+        <a class="navbar-brand" href="#"></a>
        
         <div class="collapse navbar-collapse ml-auto" id="navbarNav">
+
             <ul class="navbar-nav">
-                <li class="nav-item active">
-                    <a class="nav-link" href="#">المجموعات</a>
+                
+                <li class="nav-item" >
+                    <a [routerLink]="['/login']" class="nav-link align-items-left px-0 text-light" (click)="signOut()">
+                        <div class="d-flex">
+                            <span class="ms-2 d-none d-sm-inline fs-5 ">تسجل خروج</span>
+                            <i class="fs-4 bi bi-box-arrow-left"></i>
+
+                        </div>
+                    </a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">المستخدمين</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">الفروع</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">الكورسات</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">المواد</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">الطلاب</a>
-                </li>
+             
             </ul>
         </div>
     </div>

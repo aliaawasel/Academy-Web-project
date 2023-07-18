@@ -71,8 +71,6 @@ loadSubjects() {
       }
     });
 
-// this.loadSubjects()
-console.log("on it fn");
 
 
 }

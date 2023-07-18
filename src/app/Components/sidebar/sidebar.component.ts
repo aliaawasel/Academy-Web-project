@@ -43,6 +43,8 @@ export class SidebarComponent implements DoCheck {
   console.log(this.GroupsPagePower);
 
   
+}else{
+  this.navhidden=false;
 }
 
  }

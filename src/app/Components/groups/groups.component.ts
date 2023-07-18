@@ -80,31 +80,31 @@ export class GroupsComponent implements OnInit {
         this.GroupAuthForm.reset();
       });
     }
-    else {
-      if (this.GroupAuthForm.value.academyinnumber == null) {
+     else {
+      if (!this.GroupAuthForm.value.academyinnumber) {
         this.setFalseValueAcademyNumbers = false;
       }
-      if (this.GroupAuthForm.value.Groups == null) {
-        this.setFalseValuegroupsPage = false;
+      if (!this.GroupAuthForm.value.Groups) {
+        this.setFalseValuegroupsPage= false;
 
       }
-      if (this.GroupAuthForm.value.users == null) {
-        this.setFalseValueusersPage = false;
+      if (!this.GroupAuthForm.value.users) {
+        this.setFalseValueusersPage=false;
       }
-      if (this.GroupAuthForm.value.branches == null) {
-        this.setFalseValuebranchesPage = false;
+      if (!this.GroupAuthForm.value.branches) {
+        this.setFalseValuebranchesPage=false;
 
       }
-      if (this.GroupAuthForm.value.Courses == null) {
-        this.setFalseValuecoursesPage = false;
+      if (!this.GroupAuthForm.value.Courses) {
+        this.setFalseValuecoursesPage=false;
 
       }
-      if (this.GroupAuthForm.value.Subject == null) {
-        this.setFalseValuesubjectsPage = false;
+      if (!this.GroupAuthForm.value.Subject) {
+        this.setFalseValuesubjectsPage=false;
 
       }
-      if (this.GroupAuthForm.value.Student == null) {
-        this.setFalseValuetraineeAdditionPage = false;
+      if (!this.GroupAuthForm.value.Student) {
+        this.setFalseValuetraineeAdditionPage=false;
 
       }
       const Group = {
@@ -125,12 +125,10 @@ export class GroupsComponent implements OnInit {
         console.log("Done New Group Added");
         this.loadAllGroubs();
         this.GroupAuthForm.reset();
-        this.resetFalsyValyes();
       });
     }
 
   }
-
 
   DeleteGroup(id: number) {
     this.groupService.Delete(id).subscribe(() => {

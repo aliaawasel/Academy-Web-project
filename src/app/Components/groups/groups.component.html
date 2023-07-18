@@ -1,11 +1,18 @@
+
 <div class="main-content" dir="rtl">
+    <h2 class="hea mx-5 float-right">المجموعات</h2>
+
     <div class="container-fluid">
+
         <div class="row">
             <div class="col-md-12">
-                <div class="card">
-                    <div class="card-header text-light p-3 address">
-                        <h4 class="card-title text-center">إنشاء مجموعه جديده و إدراج صلاحياتها</h4>
-                    </div>
+
+                <div class="container">
+                    <h2 class="card-title m-3 mb-5 text-center">إضافة مجموعة</h2>
+                  </div>
+               
+                <div class="card mx-5">
+                  
                     <div class="card-body fs-5">
                         <form action="post" [formGroup]="GroupAuthForm" (submit)="AddNewGroup($event)">
 

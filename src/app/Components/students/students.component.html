@@ -2,11 +2,206 @@
   <div class="main-content">
     <div class="container-fluid">
       <div class="row">
+     
         <div class="col-md-12">
-          <div class="card">
+          <div class="card mb-5">
             <div class="card-header card-header-danger text-white address">
-              <h4 class="card-title text-center">إضافة طالب</h4>
+              <h2 class="text-center">عرض طلاب الاكاديمية</h2>
+              </div>
+
+            <div
+                class="table table-striped tabel-hover table-bordered text-center"
+              >
+              <table class="table text-center table table-striped table-hover">
+                <thead class="text-primary">
+                  <tr>
+                    <th scope="col" class="p-3">اسم الطالب</th>
+                    <th scope="col" class="p-3">الرقم القومى</th>
+                    <th scope="col" class="p-3">المؤهل</th>
+                    <th scope="col" class="p-3">التليفون للتواصل</th>
+                    <th scope="col" class="p-3">الموقف التجنيدى</th>
+                    <th scope="col" class="p-3">اسم الفرع</th>
+                    <th scope="col" class="p-3">الحالة</th>
+                    <th scope="col" class="p-3">تفاصيل</th>
+                    <th scope="col" class="p-3">تعديل</th>
+                    <th scope="col" class="p-3">حذف</th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let s of students; let i = index">
+                      <td scope="row" class="p-3">
+                        {{ s.arabicFullName }}
+                      </td>
+                      <td scope="row" class="p-3">
+                        {{ s.traineeNationalId }}
+                      </td>
+                      <td scope="row" class="p-3">
+                        {{ s.academicQualification }}
+                      </td>
+                      <td scope="row" class="p-3">
+                        {{ s.firstPhoneNumber }}
+                      </td>
+                      <td scope="row" class="p-3">
+                        {{ s.militaryStatus }}
+                      </td>
+                      <td scope="row" class="p-3">
+                        {{ s.branchName }}
+                      </td>
+                      <td scope="row" class="p-3">
+                        <button
+                          (click)="deactivateStudent(s.traineeId)"
+                          class="btn btn-outline ss"
+                          [ngStyle]="{
+                            color: s.isActive ? '#28a745' : '#dc3545'
+                          }"
+                        >
+                          <ng-container *ngIf="s.isActive; else inactiveIcon">
+                            <i class="bi bi-toggle-on"></i>
+                          </ng-container>
+                          <ng-template #inactiveIcon>
+                            <i class="bi bi-toggle2-off"></i>
+                          </ng-template>
+                        </button>
+                      </td>
+                      <td scope="row" class="p-3">
+                        <button
+                          class="btn btn-primary"
+                          type="button"
+                          data-bs-toggle="offcanvas"
+                          [attr.data-bs-target]="
+                            '#offcanvasExample-' + s.traineeId
+                          "
+                          aria-controls="offcanvasExample"
+                        >
+                          <i class="bi bi-eye-fill"></i>
+                        </button>
+                        <div
+                          class="offcanvas offcanvas-start"
+                          tabindex="-1"
+                          [id]="'offcanvasExample-' + s.traineeId"
+                          aria-labelledby="offcanvasExampleLabel"
+                        >
+                          <div class="offcanvas-header">
+                            <h5
+                              class="offcanvas-title text-center"
+                              id="offcanvasExampleLabel"
+                            >
+                              Detalis
+                            </h5>
+                            <button
+                              type="button"
+                              class="btn-close text-reset"
+                              data-bs-dismiss="offcanvas"
+                              aria-label="Close"
+                            ></button>
+                          </div>
+                          <div class="offcanvas-body m-auto text-center">
+                            <div class="card" style="width: 20rem">
+                              <ul
+                                class="list-group list-group-flush text-centr"
+                              >
+                                <li class="list-group-item text-danger">
+                                  <span class="btn btn-outline-dark"
+                                    >الاسم
+                                  </span>
+                                  {{ s.arabicFullName }}
+                                </li>
+                                <li class="list-group-item text-danger">
+                                  <span class="btn btn-outline-dark"
+                                    >رقم التليفون</span
+                                  >
+                                  {{ s.firstPhoneNumber }}
+                                </li>
+                                <li class="list-group-item text-danger">
+                                  <span class="btn btn-outline-dark"
+                                    >الفرع
+                                  </span>
+                                  {{ s.branchName }}
+                                </li>
+                                <li class="list-group-item text-danger">
+                                  <span class="btn btn-outline-dark">
+                                    الديانة</span
+                                  >
+                                  {{ s.religion }}
+                                </li>
+                                <li class="list-group-item text-danger">
+                                  <span class="btn btn-outline-dark">
+                                    العنوان</span
+                                  >
+                                  {{ s.address }}
+                                </li>
+                                <li class="list-group-item text-danger">
+                                  <span class="btn btn-outline-dark">
+                                    النوع</span
+                                  >
+                                  {{ s.gender }}
+                                </li>
+                                <li class="list-group-item text-danger">
+                                  <span class="btn btn-outline-dark">
+                                    الترشيح</span
+                                  >
+                                  {{ s.recommender }}
+                                </li>
+                                <li class="list-group-item text-danger">
+                                  <span class="btn btn-outline-dark">
+                                    العام الدراسى</span
+                                  >
+                                  {{ s.academicYear }}
+                                </li>
+                              </ul>
+                            </div>
+                          </div>
+                        </div>
+                      </td>
+                      <td scope="row" class="p-3">
+                        <button
+                          (click)="UdateStudent(s.traineeId)"
+                          class="btn btn-success"
+                        >
+                          <i class="bi bi-pencil-square"></i>
+                        </button>
+                      </td>
+                      <td scope="row" class="p-3">
+                        <button
+                          (click)="DeleteStudent(s.traineeId)"
+                          class="btn btn-danger"
+                        >
+                          <i class="bi bi-trash3-fill"></i>
+                        </button>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            
+            <div class="card-body">
+            
             </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+
+
+<p class="p-3 d-flex justify-content-center">
+  <button
+    class="btn btn-outline-danger fs-4"
+    type="button"
+    data-bs-toggle="collapse"
+    data-bs-target="#collapseExample"
+    aria-expanded="false"
+    aria-controls="collapseExample"
+  >
+       إضافة طالب
+  </button>
+</p>
+<div class="collapse mt-5" id="collapseExample">
+  <div class="card card-body">
+    <div class="main-content ">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-md-12">
             <div class="card-body">
               <form [formGroup]="StusForm"(submit)="formHandler($event)" >
                 <div class="row">
@@ -278,306 +473,5 @@
   </div>
 </div>
 
-<!-- tabel
-
-      <div class="main-content dd">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="card">
-                        <div class="card-header card-header-dark bg-dark">
-                            <h4 class="card-title text-center text-white  ">عرض الطلاب المسجلين</h4>
-                        </div>
-      <div class="card-body">
-        <div class=" table table-striped tabel-hover table-bordered text-center">
-            <table class="table table-bordered table-hover text-center">
-                <thead class=" text-primary">
-
-                    <th>
-                        اسم الطالب
-                    </th>
-                    <th>
-                      الرقم القومى
-                  </th>
-                  <th>
-                    المؤهل
-                </th>
-                    <th>
-                        التليفون للتواصل
-                    </th>
-                    <th>
-                         الموقف التجنيدى
-                    </th>
-                    <th>
-                        اسم الفرع
-                  </th>
-                <th>
-                   الحالة
-              </th>
-              <th>تفاصيل</th>
-                    <th>  تعديل   </th>
-                    <th>
-                        حذف
-                    </th>
-                </thead>
-                <tbody>
-                    <tr *ngFor="let s of students  let i =index"  >
-                        <td>
-                            {{s.arabicFullName}}
-                        </td>
-                        <td>
-                          {{s.traineeNationalId}}
-                        </td>
-                        <td>
-                            {{s.academicQualification}}
-                        </td>
-                        <td>
-                            {{s.firstPhoneNumber}}
-                        </td>
-                        <td >
-                           {{s.militaryStatus}}
-                        </td>
-                        <td >
-                           {{s.branchName}}
-                        </td>
-                        <td >
-                          <button (click)="deactivateStudent(s.traineeId)" class="btn btn-outline-danger ss" [ngStyle]="{'color': s.isActive ? '#28a745' : '#dc3545'}">
-                            <ng-container *ngIf="s.isActive; else inactiveIcon">
-                              <i class="bi bi-toggle-on"></i>
-                            </ng-container>
-                            <ng-template #inactiveIcon>
-                              <i class="bi bi-toggle2-off"></i>
-                            </ng-template>
-                          </button>                        </td>
-                        <td >
-
-                          <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" [attr.data-bs-target]="'#offcanvasExample-'+s.traineeId" aria-controls="offcanvasExample">
-                            <i class="bi bi-eye-fill"></i>
-                          </button>
-                          <div class="offcanvas offcanvas-start" tabindex="-1" [id]="'offcanvasExample-'+s.traineeId" aria-labelledby="offcanvasExampleLabel">
-                            <div class="offcanvas-header">
-                              <h5 class="offcanvas-title text-center" id="offcanvasExampleLabel">Detalis</h5>
-                              <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-                            </div>
-                            <div class="offcanvas-body m-auto text-center">
-                              <div class="card" style="width: 20rem;">
-                                <ul class="list-group list-group-flush text-centr ">
-                                  <li class="list-group-item text-danger"><span class="btn btn-outline-dark" >الاسم </span>      {{s.arabicFullName}}</li>
-                                  <li class="list-group-item text-danger"> <span class="btn btn-outline-dark">رقم التليفون</span>   {{s.firstPhoneNumber}} </li>
-                                  <li class="list-group-item text-danger"> <span class="btn btn-outline-dark">الفرع </span>    {{s.branchName}}</li>
-                                  <li class="list-group-item text-danger"> <span class="btn btn-outline-dark"> الديانة</span>   {{s.religion}}</li>
-                                  <li class="list-group-item text-danger"> <span class="btn btn-outline-dark"> العنوان</span>   {{s.address}}</li>
-                                  <li class="list-group-item text-danger"> <span class="btn btn-outline-dark"> النوع</span>    {{s.gender}}</li>
-                                  <li class="list-group-item text-danger"> <span class="btn btn-outline-dark"> الترشيح</span>    {{s.recommender}}</li>
-                                  <li class="list-group-item text-danger"> <span class="btn btn-outline-dark"> العام الدراسى</span>   {{s.academicYear}}</li>
-                                </ul>
-
-                              </div>
 
 
-
-                            </div>
-                          </div>
-                       </td>
-                       <td >
-                        <button (click)="UdateStudent(s.traineeId)" class="btn btn-success"><i class="bi bi-pencil-square"></i></button>
-                     </td>
-                     <td >
-                      <button  (click)="DeleteStudent(s.traineeId)" class="btn btn-danger"><i class="bi bi-trash3-fill"></i></button>
-                   </td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-      </div>
-      </div>-->
-<p class="p-3 d-flex justify-content-start">
-  <button
-    class="btn p-3 fs-4 show"
-    type="button"
-    data-bs-toggle="collapse"
-    data-bs-target="#collapseExample"
-    aria-expanded="false"
-    aria-controls="collapseExample"
-  >
-    عرض ببيانات الطلاب
-  </button>
-</p>
-<div class="collapse" id="collapseExample">
-  <div class="card card-body">
-    <div class="main-content mt-3">
-      <div class="container-fluid">
-        <div class="row">
-          <div class="col-md-12">
-            <div class="card-body">
-              <div
-                class="table table-striped tabel-hover table-bordered text-center"
-              >
-              <table class="table text-center table table-striped table-hover">
-                <thead class="text-primary">
-                  <tr>
-                    <th>اسم الطالب</th>
-                    <th>الرقم القومى</th>
-                    <th>المؤهل</th>
-                    <th>التليفون للتواصل</th>
-                    <th>الموقف التجنيدى</th>
-                    <th>اسم الفرع</th>
-                    <th>الحالة</th>
-                    <th>تفاصيل</th>
-                    <th>تعديل</th>
-                    <th>حذف</th>
-                  </tr>
-                  </thead>
-                  <tbody>
-                    <tr *ngFor="let s of students; let i = index">
-                      <td>
-                        {{ s.arabicFullName }}
-                      </td>
-                      <td>
-                        {{ s.traineeNationalId }}
-                      </td>
-                      <td>
-                        {{ s.academicQualification }}
-                      </td>
-                      <td>
-                        {{ s.firstPhoneNumber }}
-                      </td>
-                      <td>
-                        {{ s.militaryStatus }}
-                      </td>
-                      <td>
-                        {{ s.branchName }}
-                      </td>
-                      <td>
-                        <button
-                          (click)="deactivateStudent(s.traineeId)"
-                          class="btn btn-outline-danger ss"
-                          [ngStyle]="{
-                            color: s.isActive ? '#28a745' : '#dc3545'
-                          }"
-                        >
-                          <ng-container *ngIf="s.isActive; else inactiveIcon">
-                            <i class="bi bi-toggle-on"></i>
-                          </ng-container>
-                          <ng-template #inactiveIcon>
-                            <i class="bi bi-toggle2-off"></i>
-                          </ng-template>
-                        </button>
-                      </td>
-                      <td>
-                        <button
-                          class="btn btn-primary"
-                          type="button"
-                          data-bs-toggle="offcanvas"
-                          [attr.data-bs-target]="
-                            '#offcanvasExample-' + s.traineeId
-                          "
-                          aria-controls="offcanvasExample"
-                        >
-                          <i class="bi bi-eye-fill"></i>
-                        </button>
-                        <div
-                          class="offcanvas offcanvas-start"
-                          tabindex="-1"
-                          [id]="'offcanvasExample-' + s.traineeId"
-                          aria-labelledby="offcanvasExampleLabel"
-                        >
-                          <div class="offcanvas-header">
-                            <h5
-                              class="offcanvas-title text-center"
-                              id="offcanvasExampleLabel"
-                            >
-                              Detalis
-                            </h5>
-                            <button
-                              type="button"
-                              class="btn-close text-reset"
-                              data-bs-dismiss="offcanvas"
-                              aria-label="Close"
-                            ></button>
-                          </div>
-                          <div class="offcanvas-body m-auto text-center">
-                            <div class="card" style="width: 20rem">
-                              <ul
-                                class="list-group list-group-flush text-centr"
-                              >
-                                <li class="list-group-item text-danger">
-                                  <span class="btn btn-outline-dark"
-                                    >الاسم
-                                  </span>
-                                  {{ s.arabicFullName }}
-                                </li>
-                                <li class="list-group-item text-danger">
-                                  <span class="btn btn-outline-dark"
-                                    >رقم التليفون</span
-                                  >
-                                  {{ s.firstPhoneNumber }}
-                                </li>
-                                <li class="list-group-item text-danger">
-                                  <span class="btn btn-outline-dark"
-                                    >الفرع
-                                  </span>
-                                  {{ s.branchName }}
-                                </li>
-                                <li class="list-group-item text-danger">
-                                  <span class="btn btn-outline-dark">
-                                    الديانة</span
-                                  >
-                                  {{ s.religion }}
-                                </li>
-                                <li class="list-group-item text-danger">
-                                  <span class="btn btn-outline-dark">
-                                    العنوان</span
-                                  >
-                                  {{ s.address }}
-                                </li>
-                                <li class="list-group-item text-danger">
-                                  <span class="btn btn-outline-dark">
-                                    النوع</span
-                                  >
-                                  {{ s.gender }}
-                                </li>
-                                <li class="list-group-item text-danger">
-                                  <span class="btn btn-outline-dark">
-                                    الترشيح</span
-                                  >
-                                  {{ s.recommender }}
-                                </li>
-                                <li class="list-group-item text-danger">
-                                  <span class="btn btn-outline-dark">
-                                    العام الدراسى</span
-                                  >
-                                  {{ s.academicYear }}
-                                </li>
-                              </ul>
-                            </div>
-                          </div>
-                        </div>
-                      </td>
-                      <td>
-                        <button
-                          (click)="UdateStudent(s.traineeId)"
-                          class="btn btn-success"
-                        >
-                          <i class="bi bi-pencil-square"></i>
-                        </button>
-                      </td>
-                      <td>
-                        <button
-                          (click)="DeleteStudent(s.traineeId)"
-                          class="btn btn-danger"
-                        >
-                          <i class="bi bi-trash3-fill"></i>
-                        </button>
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
