@@ -1,4 +1,4 @@
-.address {
+/* .address {
   background-color: #30475E;
 }
 
@@ -60,4 +60,18 @@ input:hover {
 }
 .hea {
   text-align: right;
+} */
+
+.card{
+  box-shadow: 2px 2px 2px 2px rgb(203, 201, 201);
+  margin-bottom: 25px;
+  /* background-color: #EEEEEE; */
+}
+.address{
+  background-color: #30475E;
+}
+.Cardform{
+  padding-left: 7rem;
+  padding-right: 7rem;
+  margin: 25px;
 }

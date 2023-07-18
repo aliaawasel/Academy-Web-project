@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark-c" [ngStyle]="{'display': navhidden ? 'block' : 'none'}">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark-c" [ngStyle]="{'display': navhidden ? 'block' : 'none'}"style="direction: ltr;">
     <div class="container">
 
         <button class="navbar-toggler order-1" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
@@ -12,11 +12,10 @@
             <ul class="navbar-nav">
                 
                 <li class="nav-item" >
-                    <a [routerLink]="['/login']" class="nav-link align-items-left px-0 text-light" (click)="signOut()">
+                    <a [routerLink]="['/login']" class="nav-link float-start px-0 text-light" (click)="signOut()">
                         <div class="d-flex">
-                            <span class="ms-2 d-none d-sm-inline fs-5 ">تسجل خروج</span>
-                            <i class="fs-4 bi bi-box-arrow-left"></i>
-
+                            <i class="fs-4  me-3 bi bi-person-fill-x"></i>
+                            <span class="ms-2d-none d-sm-inline fs-5 ">تسجل خروج</span>
                         </div>
                     </a>
                 </li>
